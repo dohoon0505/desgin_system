@@ -3962,7 +3962,7 @@ footer {
     </div>
   </a>
 
-  <!-- Resources (external / quick links) -->
+  <!-- Resources (external) -->
   <div class="sidebar-group">
     <div class="sidebar-group-title">UIUX-DH · Resources</div>
     <ul class="sidebar-nav">
@@ -3970,47 +3970,48 @@ footer {
         <span class="ico">⎇</span>GitHub 저장소<span class="ext">↗</span></a></li>
       <li><a class="sidebar-link is-external" href="#changelog">
         <span class="ico">◷</span>릴리스 노트<span class="ext">→</span></a></li>
-      <li><a class="sidebar-link is-external" href="#top">
-        <span class="ico">☖</span>문서 맨 위로<span class="ext">↑</span></a></li>
+      <li><a class="sidebar-link is-external" href="#writing">
+        <span class="ico">✎</span>UX Writing 가이드<span class="ext">→</span></a></li>
     </ul>
   </div>
 
-  <!-- PART 01 · Foundations -->
+  <!-- Getting Started -->
   <div class="sidebar-group">
-    <div class="sidebar-group-title">Part 01 · Foundations</div>
+    <div class="sidebar-group-title">시작하기</div>
     <ul class="sidebar-nav">
-      <li><a class="sidebar-link" href="#about" data-section="about"><span class="ico">✦</span>디자인시스템이란</a></li>
-      <li><a class="sidebar-link" href="#principles" data-section="principles"><span class="ico">※</span>6가지 원칙</a></li>
-      <li><a class="sidebar-link" href="#tokens" data-section="tokens"><span class="ico">◎</span>토큰 아키텍처</a></li>
+      <li class="sidebar-expandable is-open">
+        <a class="sidebar-link" href="#about" data-section="about">
+          <span class="ico">✦</span>디자인시스템이란<span class="chevron">⌄</span>
+        </a>
+        <ul class="sidebar-sub">
+          <li><a class="sidebar-link" href="#principles" data-section="principles">6가지 원칙</a></li>
+          <li><a class="sidebar-link" href="#tokens" data-section="tokens">토큰 아키텍처</a></li>
+          <li><a class="sidebar-link" href="#naming" data-section="naming">네이밍 컨벤션</a></li>
+          <li><a class="sidebar-link" href="#policy" data-section="policy">그라데이션 정책</a></li>
+        </ul>
+      </li>
+      <li><a class="sidebar-link" href="#writing" data-section="writing">
+        <span class="ico">✎</span>UX Writing 7원칙
+      </a></li>
+    </ul>
+  </div>
+
+  <!-- Foundations -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">Foundations</div>
+    <ul class="sidebar-nav">
       <li><a class="sidebar-link" href="#color" data-section="color"><span class="ico">◐</span>Color</a></li>
       <li><a class="sidebar-link" href="#typography" data-section="typography"><span class="ico">Aa</span>Typography</a></li>
       <li><a class="sidebar-link" href="#sizing" data-section="sizing"><span class="ico">▭</span>Sizing</a></li>
       <li><a class="sidebar-link" href="#radius" data-section="radius"><span class="ico">◖</span>Radius</a></li>
       <li><a class="sidebar-link" href="#motion" data-section="motion"><span class="ico">➤</span>Motion</a></li>
       <li><a class="sidebar-link" href="#component-tokens" data-section="component-tokens"><span class="ico">◇</span>Component Tokens</a></li>
-      <li><a class="sidebar-link" href="#naming" data-section="naming"><span class="ico">≈</span>네이밍 컨벤션</a></li>
     </ul>
   </div>
 
-  <!-- PART 02 · Design Policy -->
+  <!-- Components -->
   <div class="sidebar-group">
-    <div class="sidebar-group-title">Part 02 · Design Policy</div>
-    <ul class="sidebar-nav">
-      <li><a class="sidebar-link" href="#policy" data-section="policy"><span class="ico">◉</span>그라데이션 정책</a></li>
-    </ul>
-  </div>
-
-  <!-- PART 03 · UX Writing -->
-  <div class="sidebar-group">
-    <div class="sidebar-group-title">Part 03 · UX Writing</div>
-    <ul class="sidebar-nav">
-      <li><a class="sidebar-link" href="#writing" data-section="writing"><span class="ico">✎</span>UX Writing 7원칙</a></li>
-    </ul>
-  </div>
-
-  <!-- PART 04 · Components -->
-  <div class="sidebar-group">
-    <div class="sidebar-group-title">Part 04 · Components</div>
+    <div class="sidebar-group-title">Components · 기본</div>
     <ul class="sidebar-nav">
       <li><a class="sidebar-link" href="#asset" data-section="asset"><span class="ico">◉</span>Asset · Icon</a></li>
       <li><a class="sidebar-link" href="#badge" data-section="badge"><span class="ico">◆</span>Badge</a></li>
@@ -4029,9 +4030,9 @@ footer {
     </ul>
   </div>
 
-  <!-- PART 05 · Overlays & Navigation -->
+  <!-- Overlays & Navigation -->
   <div class="sidebar-group">
-    <div class="sidebar-group-title">Part 05 · Overlays · Navigation</div>
+    <div class="sidebar-group-title">Overlays · Navigation</div>
     <ul class="sidebar-nav">
       <li><a class="sidebar-link" href="#dialog" data-section="dialog"><span class="ico">◫</span>Dialog</a></li>
       <li><a class="sidebar-link" href="#sheet" data-section="sheet"><span class="ico">⌆</span>Bottom Sheet</a></li>
@@ -4042,29 +4043,22 @@ footer {
     </ul>
   </div>
 
-  <!-- PART 06 · States -->
+  <!-- States & Density -->
   <div class="sidebar-group">
-    <div class="sidebar-group-title">Part 06 · States</div>
+    <div class="sidebar-group-title">States · Density</div>
     <ul class="sidebar-nav">
       <li><a class="sidebar-link" href="#skeleton" data-section="skeleton"><span class="ico">▨</span>Skeleton Loader</a></li>
       <li><a class="sidebar-link" href="#empty" data-section="empty"><span class="ico">◌</span>Empty State</a></li>
-    </ul>
-  </div>
-
-  <!-- PART 07 · Density -->
-  <div class="sidebar-group">
-    <div class="sidebar-group-title">Part 07 · Density</div>
-    <ul class="sidebar-nav">
       <li><a class="sidebar-link" href="#table" data-section="table"><span class="ico">⊞</span>Data Table</a></li>
       <li><a class="sidebar-link" href="#accordion" data-section="accordion"><span class="ico">⌄</span>Accordion · Tree</a></li>
     </ul>
   </div>
 
-  <!-- Release & Governance -->
+  <!-- Release -->
   <div class="sidebar-group">
-    <div class="sidebar-group-title">Part 08 · Release & Governance</div>
+    <div class="sidebar-group-title">운영</div>
     <ul class="sidebar-nav">
-      <li><a class="sidebar-link" href="#changelog" data-section="changelog"><span class="ico">⎌</span>릴리스 로그</a></li>
+      <li><a class="sidebar-link" href="#changelog" data-section="changelog"><span class="ico">⎌</span>Release & Governance</a></li>
     </ul>
   </div>
 
@@ -4133,14 +4127,13 @@ footer {
     </p>
 
     <div class="hero-toc">
-      <a class="toc-link" href="#foundations"><span class="num">01</span> Foundations</a>
-      <a class="toc-link" href="#policy"><span class="num">02</span> Design Policy</a>
-      <a class="toc-link" href="#writing"><span class="num">03</span> UX Writing</a>
-      <a class="toc-link" href="#components"><span class="num">04</span> Components</a>
-      <a class="toc-link" href="#overlays"><span class="num">05</span> Overlays & Nav</a>
-      <a class="toc-link" href="#states"><span class="num">06</span> States</a>
-      <a class="toc-link" href="#density"><span class="num">07</span> Density</a>
-      <a class="toc-link" href="#changelog"><span class="num">08</span> Release Log</a>
+      <a class="toc-link" href="#getting-started"><span class="num">01</span> Getting Started</a>
+      <a class="toc-link" href="#foundations"><span class="num">02</span> Foundations</a>
+      <a class="toc-link" href="#components"><span class="num">03</span> Components</a>
+      <a class="toc-link" href="#overlays"><span class="num">04</span> Overlays & Nav</a>
+      <a class="toc-link" href="#states"><span class="num">05</span> States</a>
+      <a class="toc-link" href="#density"><span class="num">06</span> Density</a>
+      <a class="toc-link" href="#changelog"><span class="num">07</span> Release Log</a>
     </div>
 
     <div class="whats-new">
@@ -4167,13 +4160,13 @@ footer {
   </section>
 
   <!-- ================================================================
-       PART 1 · FOUNDATIONS  (originated in v0.1.0)
+       PART 1 · 시작하기 (Getting Started) — 원칙 · 토큰 · 정책 · UX Writing
        ================================================================ -->
-  <div class="part-header" id="foundations">
-    <div class="part-label">Part 01 · Foundations</div>
-    <h2 class="part-title">토큰과 원칙, 시스템의 지반</h2>
-    <p class="part-desc">UIUX-DH의 뿌리. 토큰 아키텍처, 여섯 가지 원칙, 컬러·타이포·사이즈·모션의 기본 규칙. 이 아래 모든 컴포넌트는 여기서 정의된 값을 참조합니다.</p>
-    <div class="part-meta">Since v0.1.0 · 2026.04.21</div>
+  <div class="part-header" id="getting-started">
+    <div class="part-label">Part 01 · 시작하기</div>
+    <h2 class="part-title">시스템의 약속, 시작하기 전에</h2>
+    <p class="part-desc">디자인시스템이 무엇인지, 어떤 원칙을 따르는지, 토큰은 어떻게 구조화되는지, 이름을 어떻게 붙이는지, 그라데이션은 언제 쓰는지, 문장은 어떻게 쓰는지. 컴포넌트를 만들기 전에 알아야 할 모든 것.</p>
+    <div class="part-meta">Since v0.1.0 · 2026.04.21 · UX Writing added in v0.3.0</div>
   </div>
 <!-- ============ SECTION 01: WHAT IS A DESIGN SYSTEM ============ -->
   <section class="section" id="about">
@@ -4339,6 +4332,347 @@ footer {
    <span class="c1">ex)</span> <span class="c2">--cm</span>-<span class="c3">button-primary</span>-<span class="c4">hover</span>
    <span class="c1">ex)</span> <span class="c2">--cm</span>-<span class="c3">input-border</span>-<span class="c4">focus</span></div>
   </section>
+
+  <!-- ============ SECTION: NAMING CONVENTIONS ============ -->
+  <section class="section" id="naming">
+    <div class="section-index">
+      <span class="num">03</span><span>·</span><span>NAMING CONVENTIONS</span>
+    </div>
+    <div class="section-header">
+      <h2 class="section-title">이름은 계약이다</h2>
+      <p class="section-desc">
+        디자이너, 프론트엔드, 앱 개발자가 같은 컴포넌트를 다르게 부르면 시스템은 무너집니다. 이름은 팀 간의 계약입니다. 약어는 대부분 금지입니다.
+      </p>
+    </div>
+
+    <table class="naming-table">
+      <thead>
+        <tr>
+          <th>권장</th>
+          <th>금지</th>
+          <th>이유</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>Button</code></td>
+          <td class="bad"><code>Btn</code></td>
+          <td>풀네임 원칙. 코드에서도 풀네임.</td>
+        </tr>
+        <tr>
+          <td><code>Navigation</code></td>
+          <td class="bad"><code>Nav</code></td>
+          <td>의미가 즉시 파악되어야 합니다.</td>
+        </tr>
+        <tr>
+          <td><code>BottomSheet</code></td>
+          <td class="bad"><code>BSheet / BtmSheet</code></td>
+          <td>두 단어 합성어는 PascalCase.</td>
+        </tr>
+        <tr>
+          <td><code>background-default</code></td>
+          <td class="bad"><code>bg-white</code></td>
+          <td>색 이름(white)이 아닌 용도(default)로.</td>
+        </tr>
+        <tr>
+          <td><code>content-primary</code></td>
+          <td class="bad"><code>text-dark</code></td>
+          <td>'dark'는 라이트 모드 기준의 말입니다.</td>
+        </tr>
+        <tr>
+          <td><code>interactive-brand-hover</code></td>
+          <td class="bad"><code>primary-hover</code></td>
+          <td>'primary'는 브랜드를 뜻하는지 모호.</td>
+        </tr>
+        <tr>
+          <td><code>size-400</code></td>
+          <td class="bad"><code>spacing-16</code></td>
+          <td>값이 바뀌면 이름이 거짓말이 됩니다.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>예외</strong>
+      업계 관례가 된 약어는 허용합니다: <code style="font-family:var(--font-mono);font-size:12px">CTA</code>, <code style="font-family:var(--font-mono);font-size:12px">URL</code>, <code style="font-family:var(--font-mono);font-size:12px">SVG</code>, <code style="font-family:var(--font-mono);font-size:12px">FAQ</code>. 단, 새로운 축약어를 만들지는 않습니다.
+    </div>
+  </section>
+
+  <!-- ============ SECTION: GRADIENT POLICY ============ -->
+  <section class="component-section" id="policy">
+    <div class="section-head">
+      <div>
+        <div class="section-meta"><span class="num">04</span><span>·</span><span>REFINEMENT</span></div>
+        <h2 class="section-title">그라데이션 정책</h2>
+      </div>
+      <p class="section-desc">
+        v0.2에서 쓰인 두-색 그라데이션은 <code>tacky</code>했습니다. 확신 없는 톤 변화는 색의 의미를 흐리고, 브랜드의 일관성을 깎아먹습니다. v0.3부터는 솔리드가 기본입니다.
+      </p>
+    </div>
+
+    <div class="variant-block">
+      <div class="variant-label">Before · After</div>
+      <div class="policy-grid">
+        <div class="policy-card bad">
+          <div class="head">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-5h2v2h-2zm0-8h2v6h-2z"/></svg>
+            v0.2 · 금지
+          </div>
+          <div class="policy-samples">
+            <div class="sample-circle g1"></div>
+            <div class="sample-circle g2"></div>
+            <div class="sample-circle g3"></div>
+            <div class="sample-circle" style="background:linear-gradient(135deg, #FCD34D, #DB2777);"></div>
+            <div class="sample-circle" style="background:linear-gradient(135deg, #60A5FA, #22C55E);"></div>
+          </div>
+          <p>두 색의 중간 지점이 탁해지고, 방향(135도)이 모든 요소에 기계적으로 적용되면서 개성 없는 인공적 톤이 됩니다. 색의 의미도 사라집니다 — 왜 보라에서 인디고로 변하는가?</p>
+        </div>
+        <div class="policy-card good">
+          <div class="head">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8z"/></svg>
+            v0.3 · 솔리드
+          </div>
+          <div class="policy-samples">
+            <div class="sample-circle s1"></div>
+            <div class="sample-circle s2"></div>
+            <div class="sample-circle s3"></div>
+            <div class="sample-circle s4"></div>
+            <div class="sample-circle s5"></div>
+          </div>
+          <p>각 색이 하나의 의미를 가집니다. 인디고는 브랜드, 초록은 성공, 호박은 강조, 빨강은 경고. 사용자가 색을 기호로 학습할 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="variant-block">
+      <div class="variant-label">When gradients ARE allowed</div>
+      <div class="variant-sub">그라데이션이 금지된 것은 아닙니다. 목적이 분명할 때만, 의도적으로 씁니다.</div>
+      <div class="stage stack" style="gap:var(--size-500);">
+        <div style="display:flex;gap:var(--size-500);flex-wrap:wrap;align-items:center;">
+          <div style="flex:0 0 auto;">
+            <div style="width:100%;max-width:280px;">
+              <div style="font:500 12px/1 var(--font-mono);color:var(--sm-content-tertiary);margin-bottom:8px;">PROGRESS · 값의 변화를 나타냄</div>
+              <div style="height:8px;background:var(--sm-background-muted);border-radius:var(--radius-full);overflow:hidden;">
+                <div style="height:100%;width:70%;background:linear-gradient(90deg, var(--p-indigo-500), var(--p-indigo-300));border-radius:var(--radius-full);"></div>
+              </div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-tertiary);margin-top:6px;">같은 색상군 안에서 명도만 변화 — 의도 명확</div>
+            </div>
+          </div>
+          <div style="flex:0 0 auto;">
+            <div style="width:100%;max-width:280px;">
+              <div style="font:500 12px/1 var(--font-mono);color:var(--sm-content-tertiary);margin-bottom:8px;">BRAND MOMENT · 한 번뿐인 순간</div>
+              <div style="padding:var(--size-500);border-radius:var(--radius-lg);background:linear-gradient(135deg, #4F46E5, #DB2777, #EAB700);color:white;text-align:center;">
+                <div style="font:700 18px/1 var(--font-sans);letter-spacing:-0.02em;">🎉 프리미엄 가입 완료</div>
+              </div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-tertiary);margin-top:6px;">축하·성취의 특수 순간 한정</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Rule</strong>
+        그라데이션을 쓰려면 두 가지 질문에 답해야 합니다. ① 왜 두 색이 필요한가? ② 이 상황이 반복되지 않는가? 둘 다 "예"가 아니면 솔리드로 갑니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION: UX WRITING ============ -->
+  <section class="component-section" id="writing">
+    <div class="section-head">
+      <div>
+        <div class="section-meta"><span class="num">05</span><span>·</span><span>UX WRITING</span></div>
+        <h2 class="section-title">쓰여지는 것도 시스템이다</h2>
+      </div>
+      <p class="section-desc">
+        사용자는 버튼과 문구를 분리하지 않습니다. <strong>'저장'</strong>과 <strong>'저장하기'</strong>는 다른 컴포넌트입니다. 여기서 정의하는 원칙은 모든 화면의 모든 문장에 적용됩니다.
+      </p>
+    </div>
+
+    <h3 style="font: 700 22px/1.2 var(--font-sans); letter-spacing: -0.02em; margin: 0 0 var(--size-500);">7가지 라이팅 원칙</h3>
+
+    <div class="writing-principles">
+      <div class="wp">
+        <div class="wp-num">PRINCIPLE 01</div>
+        <h4>해요체로 일관되게</h4>
+        <p>상황, 맥락, 화면 종류 불문 모든 문구는 해요체로 통일합니다. 합쇼체·반말·구어체 혼용은 브랜드 보이스를 깎아먹습니다.</p>
+        <div class="wp-compare">
+          <div class="wp-before">저장되었습니다</div>
+          <div class="wp-after">저장했어요</div>
+        </div>
+      </div>
+      <div class="wp">
+        <div class="wp-num">PRINCIPLE 02</div>
+        <h4>능동형, 사용자가 주어</h4>
+        <p>수동형은 주체를 모호하게 만듭니다. 사용자가 주체인 문장이 행동을 명확히 합니다.</p>
+        <div class="wp-compare">
+          <div class="wp-before">이메일이 전송되었습니다</div>
+          <div class="wp-after">이메일을 보냈어요</div>
+        </div>
+      </div>
+      <div class="wp">
+        <div class="wp-num">PRINCIPLE 03</div>
+        <h4>부정 대신 긍정</h4>
+        <p>"안 돼요"라고 말하지 말고, 무엇을 하면 되는지 알려줍니다. 사용자는 막힘이 아닌 길을 원합니다.</p>
+        <div class="wp-compare">
+          <div class="wp-before">1,000원 이하는 송금할 수 없어요</div>
+          <div class="wp-after">1,000원부터 보낼 수 있어요</div>
+        </div>
+      </div>
+      <div class="wp">
+        <div class="wp-num">PRINCIPLE 04</div>
+        <h4>잡초 뽑기 · 빼도 되는 단어는 뺀다</h4>
+        <p>"혹시", "앞으로", "방금", "일단", "정말" — 넣어도 빠져도 의미가 같으면 뺍니다. 모바일 사용자는 읽지 않고 스캔합니다.</p>
+        <div class="wp-compare">
+          <div class="wp-before">혹시 앞으로 알림을 받으시려면 설정해주세요</div>
+          <div class="wp-after">알림을 받으려면 설정해주세요</div>
+        </div>
+      </div>
+      <div class="wp">
+        <div class="wp-num">PRINCIPLE 05</div>
+        <h4>버튼 라벨은 결과를 담는다</h4>
+        <p>"확인"은 무엇을 확인하는지 모릅니다. 이 버튼을 누르면 무슨 일이 일어나는지 동사로 말합니다.</p>
+        <div class="wp-compare">
+          <div class="wp-before">확인 / 완료 / OK</div>
+          <div class="wp-after">결제하기 / 보내기 / 신청하기</div>
+        </div>
+      </div>
+      <div class="wp">
+        <div class="wp-num">PRINCIPLE 06</div>
+        <h4>에러는 막다른 길이 아니라 안내다</h4>
+        <p>왜 발생했는지 간결하게, 어떻게 해결할지 구체적으로. "다시 시도해주세요"는 아무것도 알려주지 않습니다.</p>
+        <div class="wp-compare">
+          <div class="wp-before">오류가 발생했어요. 다시 시도해주세요</div>
+          <div class="wp-after">네트워크가 불안정해요.<br>Wi-Fi를 확인해주세요</div>
+        </div>
+      </div>
+      <div class="wp" style="grid-column: span 2;">
+        <div class="wp-num">PRINCIPLE 07</div>
+        <h4>숫자는 정확하게, 단위는 일관되게</h4>
+        <p>"잠시", "많은", "곧"은 라이팅이 아니라 회피입니다. 가능한 한 구체적인 숫자로. 단위 표기(₩, 원, %, MB, 분)는 한 제품에 한 방식으로 통일합니다.</p>
+        <div class="wp-compare">
+          <div class="wp-before">잠시 후 다시 확인해주세요 · 용량이 부족해요 · 곧 만료되는 쿠폰이 있어요</div>
+          <div class="wp-after">3초 뒤에 다시 확인해주세요 · 저장 공간이 500MB 남았어요 · 23일 뒤에 만료되는 쿠폰이 있어요</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Writing Examples Table -->
+    <h3 style="font: 700 20px/1.2 var(--font-sans); letter-spacing: -0.02em; margin: var(--size-900) 0 var(--size-400);">컴포넌트별 라이팅 규칙</h3>
+    <p class="section-desc" style="padding:0;margin-bottom:var(--size-500);">자주 등장하는 컴포넌트는 문구도 패턴화합니다. 고민의 여지를 줄여 일관성을 높이는 방법입니다.</p>
+
+    <table class="writing-table">
+      <thead>
+        <tr>
+          <th style="width: 140px;">컴포넌트</th>
+          <th>금지</th>
+          <th>권장</th>
+          <th style="width: 180px;">이유</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Dialog 왼쪽 버튼</strong></td>
+          <td class="bad">취소</td>
+          <td class="good">닫기</td>
+          <td class="note">'취소'는 지금까지 한 작업이 취소될까 봐 사용자가 망설입니다.</td>
+        </tr>
+        <tr>
+          <td><strong>Dialog 오른쪽 버튼</strong></td>
+          <td class="bad">확인 · OK · 네</td>
+          <td class="good">삭제하기 · 나가기 · 저장하기</td>
+          <td class="note">결과를 담는 동사여야 무엇이 일어나는지 예측됩니다.</td>
+        </tr>
+        <tr>
+          <td><strong>Empty State 제목</strong></td>
+          <td class="bad">데이터가 없습니다</td>
+          <td class="good">아직 저장한 항목이 없어요</td>
+          <td class="note">어떤 데이터인지 구체적으로.</td>
+        </tr>
+        <tr>
+          <td><strong>Empty State 액션</strong></td>
+          <td class="bad">추가</td>
+          <td class="good">첫 항목 추가하기</td>
+          <td class="note">비어 있다는 상황을 맥락으로 가져갑니다.</td>
+        </tr>
+        <tr>
+          <td><strong>Toast 성공</strong></td>
+          <td class="bad">성공하였습니다</td>
+          <td class="good">저장했어요</td>
+          <td class="note">일반적 단어('성공') 대신 구체적 행위.</td>
+        </tr>
+        <tr>
+          <td><strong>Loading 상태</strong></td>
+          <td class="bad">Loading... · 잠시만요</td>
+          <td class="good">불러오고 있어요</td>
+          <td class="note">해요체 + 능동형.</td>
+        </tr>
+        <tr>
+          <td><strong>Text Field 필수 표시</strong></td>
+          <td class="bad">(필수)</td>
+          <td class="good">빨간 별표 *</td>
+          <td class="note">단어는 공간을 먹고, 기호는 국제적으로 통용됩니다.</td>
+        </tr>
+        <tr>
+          <td><strong>Form 입력 안내</strong></td>
+          <td class="bad">올바른 이메일을 입력해주세요</td>
+          <td class="good">'@' 기호가 빠진 것 같아요</td>
+          <td class="note">정확히 무엇이 문제인지 짚어줍니다.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Error Message System -->
+    <h3 style="font: 700 20px/1.2 var(--font-sans); letter-spacing: -0.02em; margin: var(--size-900) 0 var(--size-400);">에러 메시지 템플릿</h3>
+    <p class="section-desc" style="padding:0;margin-bottom:var(--size-500);">모든 에러는 세 가지 질문에 답해야 합니다. <strong>무슨 일이 일어났나 · 왜 그런가 · 어떻게 할까</strong>.</p>
+
+    <div class="err-template">
+      <div class="err-template-label">TEMPLATE A · 네트워크 오류</div>
+      <div class="err-template-formula">
+        <span class="tag">상황</span> + <span class="tag">원인</span> + <span class="tag">해결</span>
+      </div>
+      <div class="err-template-example">
+        <strong>연결에 실패했어요</strong>
+        <span class="sub">네트워크가 불안정해요. Wi-Fi를 확인해주세요.</span>
+      </div>
+    </div>
+
+    <div class="err-template">
+      <div class="err-template-label">TEMPLATE B · 유효성 검증 실패</div>
+      <div class="err-template-formula">
+        <span class="tag">어디서</span> + <span class="tag">무엇이 틀렸나</span>
+      </div>
+      <div class="err-template-example">
+        <strong>휴대폰 번호를 다시 확인해주세요</strong>
+        <span class="sub">11자리 숫자를 모두 입력해주세요.</span>
+      </div>
+    </div>
+
+    <div class="err-template">
+      <div class="err-template-label">TEMPLATE C · 시스템 점검</div>
+      <div class="err-template-formula">
+        <span class="tag">대상</span> + <span class="tag">시간</span> + <span class="tag">대안</span>
+      </div>
+      <div class="err-template-example">
+        <strong>하나은행 점검 중이에요</strong>
+        <span class="sub">04월 21일 23시까지 송금이 어려워요. 다른 계좌를 써주세요.</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Navigating Error</strong>
+      에러 메시지의 역할은 "문제를 알림"이 아니라 "다음 화면으로 넘어갈 수 있게 안내"입니다. 메시지가 끝나도 사용자는 한 발자국 더 갈 수 있어야 합니다.
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PART 2 · FOUNDATIONS — Visual Tokens (originated in v0.1.0)
+       ================================================================ -->
+  <div class="part-header" id="foundations">
+    <div class="part-label">Part 02 · Foundations</div>
+    <h2 class="part-title">보이는 것의 기초</h2>
+    <p class="part-desc">색 · 타이포 · 크기 · 반경 · 모션. 시스템의 모든 시각 토큰이 여기서 정의됩니다. Light/Dark를 횡단하는 시맨틱 이름으로 참조하세요.</p>
+    <div class="part-meta">Since v0.1.0 · 2026.04.21</div>
+  </div>
 
   <!-- ============ SECTION 04: COLOR ============ -->
   <section class="section" id="color">
@@ -4746,367 +5080,11 @@ footer {
     </div>
   </section>
 
-  <!-- ============ SECTION 10: NAMING CONVENTIONS ============ -->
-  <section class="section" id="naming">
-    <div class="section-index">
-      <span class="num">09</span><span>·</span><span>NAMING CONVENTIONS</span>
-    </div>
-    <div class="section-header">
-      <h2 class="section-title">이름은 계약이다</h2>
-      <p class="section-desc">
-        디자이너, 프론트엔드, 앱 개발자가 같은 컴포넌트를 다르게 부르면 시스템은 무너집니다. 이름은 팀 간의 계약입니다. 약어는 대부분 금지입니다.
-      </p>
-    </div>
-
-    <table class="naming-table">
-      <thead>
-        <tr>
-          <th>권장</th>
-          <th>금지</th>
-          <th>이유</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>Button</code></td>
-          <td class="bad"><code>Btn</code></td>
-          <td>풀네임 원칙. 코드에서도 풀네임.</td>
-        </tr>
-        <tr>
-          <td><code>Navigation</code></td>
-          <td class="bad"><code>Nav</code></td>
-          <td>의미가 즉시 파악되어야 합니다.</td>
-        </tr>
-        <tr>
-          <td><code>BottomSheet</code></td>
-          <td class="bad"><code>BSheet / BtmSheet</code></td>
-          <td>두 단어 합성어는 PascalCase.</td>
-        </tr>
-        <tr>
-          <td><code>background-default</code></td>
-          <td class="bad"><code>bg-white</code></td>
-          <td>색 이름(white)이 아닌 용도(default)로.</td>
-        </tr>
-        <tr>
-          <td><code>content-primary</code></td>
-          <td class="bad"><code>text-dark</code></td>
-          <td>'dark'는 라이트 모드 기준의 말입니다.</td>
-        </tr>
-        <tr>
-          <td><code>interactive-brand-hover</code></td>
-          <td class="bad"><code>primary-hover</code></td>
-          <td>'primary'는 브랜드를 뜻하는지 모호.</td>
-        </tr>
-        <tr>
-          <td><code>size-400</code></td>
-          <td class="bad"><code>spacing-16</code></td>
-          <td>값이 바뀌면 이름이 거짓말이 됩니다.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="callout">
-      <strong>예외</strong>
-      업계 관례가 된 약어는 허용합니다: <code style="font-family:var(--font-mono);font-size:12px">CTA</code>, <code style="font-family:var(--font-mono);font-size:12px">URL</code>, <code style="font-family:var(--font-mono);font-size:12px">SVG</code>, <code style="font-family:var(--font-mono);font-size:12px">FAQ</code>. 단, 새로운 축약어를 만들지는 않습니다.
-    </div>
-  </section>
-
-  
   <!-- ================================================================
-       PART 2 · DESIGN POLICY
-       ================================================================ -->
-  <div class="part-header">
-    <div class="part-label">Part 02 · Design Policy</div>
-    <h2 class="part-title">시스템 안의 약속</h2>
-    <p class="part-desc">규칙은 토큰만으로 충분하지 않습니다. 언제 그라데이션을 쓰고, 언제 솔리드로 가는가 같은 판단 기준이 필요합니다.</p>
-    <div class="part-meta">Updated in v0.3.0 · 2026.04.22</div>
-  </div>
-<!-- ============================================================
-       01. DESIGN REFINEMENT — GRADIENT POLICY
-       ============================================================ -->
-  <section class="component-section" id="policy">
-    <div class="section-head">
-      <div>
-        <div class="section-meta"><span class="num">01</span><span>·</span><span>REFINEMENT</span></div>
-        <h2 class="section-title">그라데이션 정책</h2>
-      </div>
-      <p class="section-desc">
-        v0.2에서 쓰인 두-색 그라데이션은 <code>tacky</code>했습니다. 확신 없는 톤 변화는 색의 의미를 흐리고, 브랜드의 일관성을 깎아먹습니다. v0.3부터는 솔리드가 기본입니다.
-      </p>
-    </div>
-
-    <div class="variant-block">
-      <div class="variant-label">Before · After</div>
-      <div class="policy-grid">
-        <div class="policy-card bad">
-          <div class="head">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-5h2v2h-2zm0-8h2v6h-2z"/></svg>
-            v0.2 · 금지
-          </div>
-          <div class="policy-samples">
-            <div class="sample-circle g1"></div>
-            <div class="sample-circle g2"></div>
-            <div class="sample-circle g3"></div>
-            <div class="sample-circle" style="background:linear-gradient(135deg, #FCD34D, #DB2777);"></div>
-            <div class="sample-circle" style="background:linear-gradient(135deg, #60A5FA, #22C55E);"></div>
-          </div>
-          <p>두 색의 중간 지점이 탁해지고, 방향(135도)이 모든 요소에 기계적으로 적용되면서 개성 없는 인공적 톤이 됩니다. 색의 의미도 사라집니다 — 왜 보라에서 인디고로 변하는가?</p>
-        </div>
-        <div class="policy-card good">
-          <div class="head">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8z"/></svg>
-            v0.3 · 솔리드
-          </div>
-          <div class="policy-samples">
-            <div class="sample-circle s1"></div>
-            <div class="sample-circle s2"></div>
-            <div class="sample-circle s3"></div>
-            <div class="sample-circle s4"></div>
-            <div class="sample-circle s5"></div>
-          </div>
-          <p>각 색이 하나의 의미를 가집니다. 인디고는 브랜드, 초록은 성공, 호박은 강조, 빨강은 경고. 사용자가 색을 기호로 학습할 수 있습니다.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="variant-block">
-      <div class="variant-label">When gradients ARE allowed</div>
-      <div class="variant-sub">그라데이션이 금지된 것은 아닙니다. 목적이 분명할 때만, 의도적으로 씁니다.</div>
-      <div class="stage stack" style="gap:var(--size-500);">
-        <div style="display:flex;gap:var(--size-500);flex-wrap:wrap;align-items:center;">
-          <div style="flex:0 0 auto;">
-            <div style="width:100%;max-width:280px;">
-              <div style="font:500 12px/1 var(--font-mono);color:var(--sm-content-tertiary);margin-bottom:8px;">PROGRESS · 값의 변화를 나타냄</div>
-              <div style="height:8px;background:var(--sm-background-muted);border-radius:var(--radius-full);overflow:hidden;">
-                <div style="height:100%;width:70%;background:linear-gradient(90deg, var(--p-indigo-500), var(--p-indigo-300));border-radius:var(--radius-full);"></div>
-              </div>
-              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-tertiary);margin-top:6px;">같은 색상군 안에서 명도만 변화 — 의도 명확</div>
-            </div>
-          </div>
-          <div style="flex:0 0 auto;">
-            <div style="width:100%;max-width:280px;">
-              <div style="font:500 12px/1 var(--font-mono);color:var(--sm-content-tertiary);margin-bottom:8px;">BRAND MOMENT · 한 번뿐인 순간</div>
-              <div style="padding:var(--size-500);border-radius:var(--radius-lg);background:linear-gradient(135deg, #4F46E5, #DB2777, #EAB700);color:white;text-align:center;">
-                <div style="font:700 18px/1 var(--font-sans);letter-spacing:-0.02em;">🎉 프리미엄 가입 완료</div>
-              </div>
-              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-tertiary);margin-top:6px;">축하·성취의 특수 순간 한정</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="callout">
-        <strong>Rule</strong>
-        그라데이션을 쓰려면 두 가지 질문에 답해야 합니다. ① 왜 두 색이 필요한가? ② 이 상황이 반복되지 않는가? 둘 다 "예"가 아니면 솔리드로 갑니다.
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       PART 3 · UX WRITING
-       ================================================================ -->
-  <div class="part-header">
-    <div class="part-label">Part 03 · UX Writing</div>
-    <h2 class="part-title">문장도 컴포넌트다</h2>
-    <p class="part-desc">화면에 적히는 모든 문구의 원칙. 해요체, 능동, 긍정형, 잡초 제거, 에러는 안내. 제품 전체의 목소리를 하나로 맞춥니다.</p>
-    <div class="part-meta">New in v0.3.0 · 2026.04.22</div>
-  </div>
-
-  <!-- ============================================================
-       UX WRITING GUIDE
-       ============================================================ -->
-  <section class="component-section" id="writing">
-    <div class="section-head">
-      <div>
-        <div class="section-meta"><span class="num">02</span><span>·</span><span>UX WRITING</span></div>
-        <h2 class="section-title">쓰여지는 것도 시스템이다</h2>
-      </div>
-      <p class="section-desc">
-        사용자는 버튼과 문구를 분리하지 않습니다. <strong>'저장'</strong>과 <strong>'저장하기'</strong>는 다른 컴포넌트입니다. 여기서 정의하는 원칙은 모든 화면의 모든 문장에 적용됩니다.
-      </p>
-    </div>
-
-    <h3 style="font: 700 22px/1.2 var(--font-sans); letter-spacing: -0.02em; margin: 0 0 var(--size-500);">7가지 라이팅 원칙</h3>
-
-    <div class="writing-principles">
-      <div class="wp">
-        <div class="wp-num">PRINCIPLE 01</div>
-        <h4>해요체로 일관되게</h4>
-        <p>상황, 맥락, 화면 종류 불문 모든 문구는 해요체로 통일합니다. 합쇼체·반말·구어체 혼용은 브랜드 보이스를 깎아먹습니다.</p>
-        <div class="wp-compare">
-          <div class="wp-before">저장되었습니다</div>
-          <div class="wp-after">저장했어요</div>
-        </div>
-      </div>
-      <div class="wp">
-        <div class="wp-num">PRINCIPLE 02</div>
-        <h4>능동형, 사용자가 주어</h4>
-        <p>수동형은 주체를 모호하게 만듭니다. 사용자가 주체인 문장이 행동을 명확히 합니다.</p>
-        <div class="wp-compare">
-          <div class="wp-before">이메일이 전송되었습니다</div>
-          <div class="wp-after">이메일을 보냈어요</div>
-        </div>
-      </div>
-      <div class="wp">
-        <div class="wp-num">PRINCIPLE 03</div>
-        <h4>부정 대신 긍정</h4>
-        <p>"안 돼요"라고 말하지 말고, 무엇을 하면 되는지 알려줍니다. 사용자는 막힘이 아닌 길을 원합니다.</p>
-        <div class="wp-compare">
-          <div class="wp-before">1,000원 이하는 송금할 수 없어요</div>
-          <div class="wp-after">1,000원부터 보낼 수 있어요</div>
-        </div>
-      </div>
-      <div class="wp">
-        <div class="wp-num">PRINCIPLE 04</div>
-        <h4>잡초 뽑기 · 빼도 되는 단어는 뺀다</h4>
-        <p>"혹시", "앞으로", "방금", "일단", "정말" — 넣어도 빠져도 의미가 같으면 뺍니다. 모바일 사용자는 읽지 않고 스캔합니다.</p>
-        <div class="wp-compare">
-          <div class="wp-before">혹시 앞으로 알림을 받으시려면 설정해주세요</div>
-          <div class="wp-after">알림을 받으려면 설정해주세요</div>
-        </div>
-      </div>
-      <div class="wp">
-        <div class="wp-num">PRINCIPLE 05</div>
-        <h4>버튼 라벨은 결과를 담는다</h4>
-        <p>"확인"은 무엇을 확인하는지 모릅니다. 이 버튼을 누르면 무슨 일이 일어나는지 동사로 말합니다.</p>
-        <div class="wp-compare">
-          <div class="wp-before">확인 / 완료 / OK</div>
-          <div class="wp-after">결제하기 / 보내기 / 신청하기</div>
-        </div>
-      </div>
-      <div class="wp">
-        <div class="wp-num">PRINCIPLE 06</div>
-        <h4>에러는 막다른 길이 아니라 안내다</h4>
-        <p>왜 발생했는지 간결하게, 어떻게 해결할지 구체적으로. "다시 시도해주세요"는 아무것도 알려주지 않습니다.</p>
-        <div class="wp-compare">
-          <div class="wp-before">오류가 발생했어요. 다시 시도해주세요</div>
-          <div class="wp-after">네트워크가 불안정해요.<br>Wi-Fi를 확인해주세요</div>
-        </div>
-      </div>
-      <div class="wp" style="grid-column: span 2;">
-        <div class="wp-num">PRINCIPLE 07</div>
-        <h4>숫자는 정확하게, 단위는 일관되게</h4>
-        <p>"잠시", "많은", "곧"은 라이팅이 아니라 회피입니다. 가능한 한 구체적인 숫자로. 단위 표기(₩, 원, %, MB, 분)는 한 제품에 한 방식으로 통일합니다.</p>
-        <div class="wp-compare">
-          <div class="wp-before">잠시 후 다시 확인해주세요 · 용량이 부족해요 · 곧 만료되는 쿠폰이 있어요</div>
-          <div class="wp-after">3초 뒤에 다시 확인해주세요 · 저장 공간이 500MB 남았어요 · 23일 뒤에 만료되는 쿠폰이 있어요</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Writing Examples Table -->
-    <h3 style="font: 700 20px/1.2 var(--font-sans); letter-spacing: -0.02em; margin: var(--size-900) 0 var(--size-400);">컴포넌트별 라이팅 규칙</h3>
-    <p class="section-desc" style="padding:0;margin-bottom:var(--size-500);">자주 등장하는 컴포넌트는 문구도 패턴화합니다. 고민의 여지를 줄여 일관성을 높이는 방법입니다.</p>
-
-    <table class="writing-table">
-      <thead>
-        <tr>
-          <th style="width: 140px;">컴포넌트</th>
-          <th>금지</th>
-          <th>권장</th>
-          <th style="width: 180px;">이유</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Dialog 왼쪽 버튼</strong></td>
-          <td class="bad">취소</td>
-          <td class="good">닫기</td>
-          <td class="note">'취소'는 지금까지 한 작업이 취소될까 봐 사용자가 망설입니다.</td>
-        </tr>
-        <tr>
-          <td><strong>Dialog 오른쪽 버튼</strong></td>
-          <td class="bad">확인 · OK · 네</td>
-          <td class="good">삭제하기 · 나가기 · 저장하기</td>
-          <td class="note">결과를 담는 동사여야 무엇이 일어나는지 예측됩니다.</td>
-        </tr>
-        <tr>
-          <td><strong>Empty State 제목</strong></td>
-          <td class="bad">데이터가 없습니다</td>
-          <td class="good">아직 저장한 항목이 없어요</td>
-          <td class="note">어떤 데이터인지 구체적으로.</td>
-        </tr>
-        <tr>
-          <td><strong>Empty State 액션</strong></td>
-          <td class="bad">추가</td>
-          <td class="good">첫 항목 추가하기</td>
-          <td class="note">비어 있다는 상황을 맥락으로 가져갑니다.</td>
-        </tr>
-        <tr>
-          <td><strong>Toast 성공</strong></td>
-          <td class="bad">성공하였습니다</td>
-          <td class="good">저장했어요</td>
-          <td class="note">일반적 단어('성공') 대신 구체적 행위.</td>
-        </tr>
-        <tr>
-          <td><strong>Loading 상태</strong></td>
-          <td class="bad">Loading... · 잠시만요</td>
-          <td class="good">불러오고 있어요</td>
-          <td class="note">해요체 + 능동형.</td>
-        </tr>
-        <tr>
-          <td><strong>Text Field 필수 표시</strong></td>
-          <td class="bad">(필수)</td>
-          <td class="good">빨간 별표 *</td>
-          <td class="note">단어는 공간을 먹고, 기호는 국제적으로 통용됩니다.</td>
-        </tr>
-        <tr>
-          <td><strong>Form 입력 안내</strong></td>
-          <td class="bad">올바른 이메일을 입력해주세요</td>
-          <td class="good">'@' 기호가 빠진 것 같아요</td>
-          <td class="note">정확히 무엇이 문제인지 짚어줍니다.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Error Message System -->
-    <h3 style="font: 700 20px/1.2 var(--font-sans); letter-spacing: -0.02em; margin: var(--size-900) 0 var(--size-400);">에러 메시지 템플릿</h3>
-    <p class="section-desc" style="padding:0;margin-bottom:var(--size-500);">모든 에러는 세 가지 질문에 답해야 합니다. <strong>무슨 일이 일어났나 · 왜 그런가 · 어떻게 할까</strong>.</p>
-
-    <div class="err-template">
-      <div class="err-template-label">TEMPLATE A · 네트워크 오류</div>
-      <div class="err-template-formula">
-        <span class="tag">상황</span> + <span class="tag">원인</span> + <span class="tag">해결</span>
-      </div>
-      <div class="err-template-example">
-        <strong>연결에 실패했어요</strong>
-        <span class="sub">네트워크가 불안정해요. Wi-Fi를 확인해주세요.</span>
-      </div>
-    </div>
-
-    <div class="err-template">
-      <div class="err-template-label">TEMPLATE B · 유효성 검증 실패</div>
-      <div class="err-template-formula">
-        <span class="tag">어디서</span> + <span class="tag">무엇이 틀렸나</span>
-      </div>
-      <div class="err-template-example">
-        <strong>휴대폰 번호를 다시 확인해주세요</strong>
-        <span class="sub">11자리 숫자를 모두 입력해주세요.</span>
-      </div>
-    </div>
-
-    <div class="err-template">
-      <div class="err-template-label">TEMPLATE C · 시스템 점검</div>
-      <div class="err-template-formula">
-        <span class="tag">대상</span> + <span class="tag">시간</span> + <span class="tag">대안</span>
-      </div>
-      <div class="err-template-example">
-        <strong>하나은행 점검 중이에요</strong>
-        <span class="sub">04월 21일 23시까지 송금이 어려워요. 다른 계좌를 써주세요.</span>
-      </div>
-    </div>
-
-    <div class="callout">
-      <strong>Navigating Error</strong>
-      에러 메시지의 역할은 "문제를 알림"이 아니라 "다음 화면으로 넘어갈 수 있게 안내"입니다. 메시지가 끝나도 사용자는 한 발자국 더 갈 수 있어야 합니다.
-    </div>
-  </section>
-
-  
-  <!-- ================================================================
-       PART 4 · COMPONENTS  (originated in v0.2.0)
+       PART 3 · COMPONENTS  (originated in v0.2.0)
        ================================================================ -->
   <div class="part-header" id="components">
-    <div class="part-label">Part 04 · Components</div>
+    <div class="part-label">Part 03 · Components</div>
     <h2 class="part-title">보이는 것의 규칙, 쓸 수 있는 조각</h2>
     <p class="part-desc">토큰과 원칙 위에 올라가는 실제 UI 단위. 각 컴포넌트는 자신만의 컴포넌트 토큰을 가지며, 시맨틱 토큰을 참조해 Light/Dark를 횡단합니다.</p>
     <div class="part-meta">Since v0.2.0 · 2026.04.21</div>
@@ -6196,7 +6174,7 @@ footer {
        PART 5 · OVERLAYS & NAVIGATION
        ================================================================ -->
   <div class="part-header" id="overlays">
-    <div class="part-label">Part 05 · Overlays & Navigation</div>
+    <div class="part-label">Part 04 · Overlays & Navigation</div>
     <h2 class="part-title">나타났다 사라지는 것들</h2>
     <p class="part-desc">Dialog · Bottom Sheet · Popover · App Bar · Tab Bar · Drawer. 화면 위에 잠시 머무는 모든 레이어와 이동 수단.</p>
     <div class="part-meta">Since v0.3.0 · 2026.04.22</div>
@@ -6556,7 +6534,7 @@ footer {
        PART 6 · STATES
        ================================================================ -->
   <div class="part-header" id="states">
-    <div class="part-label">Part 06 · States</div>
+    <div class="part-label">Part 05 · States</div>
     <h2 class="part-title">기다림과 비어있음의 화법</h2>
     <p class="part-desc">로딩 중에도, 아무것도 없어도, 사용자는 맥락을 잃어서는 안 됩니다. Skeleton은 곧 채워질 그림자, Empty State는 다음 행동으로의 초대.</p>
     <div class="part-meta">Since v0.3.0 · 2026.04.22</div>
@@ -6675,7 +6653,7 @@ footer {
        PART 7 · DENSITY
        ================================================================ -->
   <div class="part-header" id="density">
-    <div class="part-label">Part 07 · Density</div>
+    <div class="part-label">Part 06 · Density</div>
     <h2 class="part-title">많은 정보를 한 화면에</h2>
     <p class="part-desc">Data Table은 정렬과 비교, Accordion은 접어둠, Tree는 계층. 정보 밀도를 올리되 읽히는 질서를 잃지 않습니다.</p>
     <div class="part-meta">Since v0.3.0 · 2026.04.22</div>
