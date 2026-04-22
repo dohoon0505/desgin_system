@@ -5409,6 +5409,119 @@
 
       <div class="change-entry">
         <div class="change-ver">
+          <span class="v">v0.4.6</span>
+          <span class="date">2026.04.22 · Banner Component (image + text)</span>
+        </div>
+        <ul>
+          <li><span class="type add">Added</span>Banner 컴포넌트 신규 — <code>.banner</code> + 6 variant(Default / Hero / Compact / Dark / Overlay / Multi-row). <strong>두-색 그라데이션 금지</strong>, 솔리드 또는 이미지+투명 오버레이만 허용</li>
+          <li><span class="type add">Added</span>컴포넌트 토큰 — <code>--cm-banner-bg</code>, <code>--cm-banner-fg</code>, <code>--cm-banner-accent</code>, <code>--cm-banner-radius</code>, 색상 프리셋 5종(<code>.banner-warm/cool/rose/mint/dark</code>)</li>
+          <li><span class="type change">Changed</span>기존 4개 데모의 배너 영역을 <code>.banner</code>로 교체 — <code>demo-foodorder</code>(쿠폰), <code>demo-shopping</code>(히어로), <code>demo-booking</code>(BEST 3종), <code>demo-mypage</code>(멤버십)</li>
+          <li><span class="type change">Changed</span>총 컴포넌트 수 24 → <strong>25종</strong>, <a href="components/banner.md">components/banner.md</a> 신규 추가</li>
+        </ul>
+      </div>
+
+      <div class="change-entry">
+        <div class="change-ver">
+          <span class="v">v0.4.5</span>
+          <span class="date">2026.04.22 · Merge Duplicate "배달" Demo</span>
+        </div>
+        <ul>
+          <li><span class="type remove">Removed</span><code>demo-delivery</code> 섹션 전체 삭제 — 같은 "배달 앱" 컨셉이 단순형(<code>demo-delivery</code>)과 풍부형(<code>demo-foodorder</code>)으로 이중 존재하던 문제 해결</li>
+          <li><span class="type change">Changed</span><code>demo-foodorder</code> 제목 "푸드 딜리버리" → "배달"로 통일, 사이드바 · CATEGORIES · HOME 카운트(19→18) 동기화</li>
+        </ul>
+      </div>
+
+      <div class="change-entry">
+        <div class="change-ver">
+          <span class="v">v0.4.4</span>
+          <span class="date">2026.04.22 · Native-app Scrollbar Hiding (demos only)</span>
+        </div>
+        <ul>
+          <li><span class="type change">Changed</span>실제 사용 데모 내 스크롤바 완전 숨김 — Firefox(<code>scrollbar-width</code>), 구 Edge/IE(<code>-ms-overflow-style</code>), Webkit(<code>::-webkit-scrollbar</code>) 3엔진 대응. 세로 + 내부 가로 캐러셀 모두 커버</li>
+          <li><span class="type change">Changed</span>범위 <code>.demo-screen</code>과 그 자손 한정 — 메인 페이지·컴포넌트 섹션 스크롤은 영향 없음. 스크롤 동작 자체는 유지</li>
+        </ul>
+      </div>
+
+      <div class="change-entry">
+        <div class="change-ver">
+          <span class="v">v0.4.3</span>
+          <span class="date">2026.04.22 · Tab Bar Fixed + Icon Semantics + Brand Scrubbing</span>
+        </div>
+        <ul>
+          <li><span class="type fix">Fixed</span>탭바가 스크롤과 함께 움직이던 버그 — <code>.demo-screen</code>에서 <code>position:relative</code> 제거, 탭바가 <code>.demo-phone</code>을 containing block으로 써 실제 앱처럼 하단 고정</li>
+          <li><span class="type add">Added</span>SVG 스프라이트 심볼 6종 — <code>i-chat / i-chat-fill / i-receipt / i-coffee / i-chart / i-users / i-users-fill</code></li>
+          <li><span class="type change">Changed</span>탭바 아이콘 의미 정리 — 채팅·라운지·주문내역·마이데이터·커뮤니티·주문이 모두 <code>i-diary</code>(스마일리)로 오인되던 문제 해결</li>
+          <li><span class="type remove">Removed</span>실제 브랜드 로고·색상 전면 제거 — 컬리(#5B1A95) · 오이(녹색) · 배민(민트/퍼플) · 쉐이크쉑 · 도미노 · 샐러디 · 스타벅스 · 쿠팡 등</li>
+        </ul>
+      </div>
+
+      <div class="change-entry">
+        <div class="change-ver">
+          <span class="v">v0.4.2</span>
+          <span class="date">2026.04.22 · Banking & Map Demo Refinement</span>
+        </div>
+        <ul>
+          <li><span class="type change">Changed</span><code>demo-banking</code> 재설계 (NH농협 레이아웃 레퍼런스) — 접근성 "큰글" 토글, 지점+혜택 뱃지, 큰 사용자 이름, 자사/타사 세그먼트, 페이지네이션 계좌 카드, 즐겨찾기 3×2 그리드</li>
+          <li><span class="type change">Changed</span><code>demo-map</code> 재설계 (여기어때 레이아웃 레퍼런스) — 일체형 검색(장소+날짜+장바구니), 하우스 SVG 핀+카운트 뱃지, 가격 툴팁, 목록 토글 버튼, 단일 카드 하단 시트</li>
+          <li><span class="type change">Changed</span>모든 시각 요소를 디자인시스템 토큰(<code>--sm-*</code>, <code>--p-*</code>)으로만 재구성 — 브랜드 컬러 일절 미사용, 레이아웃·정보 계층만 참고</li>
+        </ul>
+      </div>
+
+      <div class="change-entry">
+        <div class="change-ver">
+          <span class="v">v0.4.1</span>
+          <span class="date">2026.04.22 · Single-family Typography (Pretendard only)</span>
+        </div>
+        <ul>
+          <li><span class="type change">Changed</span><code>--font-mono</code>의 물리적 폰트를 JetBrains Mono → Pretendard Variable로 교체. <code>--font-sans</code>와 동일 폰트를 가리키되 <strong>변수 이름은 의미적 역할(라벨/메타/숫자) 표시용으로 유지</strong></li>
+          <li><span class="type remove">Removed</span>Google Fonts JetBrains Mono <code>&lt;link&gt;</code> 제거 — 초기 로드 네트워크 요청 1건 감소</li>
+          <li><span class="type remove">Removed</span>퍼글리프 한글 폴백 블록 제거 — <code>--font-mono</code>가 Pretendard로 통일되어 한글/라틴이 같은 메트릭 공유</li>
+        </ul>
+      </div>
+
+      <div class="change-entry">
+        <div class="change-ver">
+          <span class="v">v0.4.0</span>
+          <span class="date">2026.04.22 · Demo Expansion + Dependency Matrix</span>
+        </div>
+        <ul>
+          <li><span class="type add">Added</span>실제 사용 데모 10종 신규 — <code>demo-booking/foodorder/shopping/social/banking/map/mypage/chat/checkout/notify</code>. 기존 9종 + 신규 10종 = <strong>19종</strong></li>
+          <li><span class="type add">Added</span><code>data-uses</code> 의존성 매트릭스 — 각 데모가 사용 컴포넌트·토큰을 인라인 선언, <code>main.js</code>의 <code>buildDemoMatrix()</code>가 스캔해 <code>window.demoMatrix.{byDemo, byComponent, byToken}</code> 생성</li>
+          <li><span class="type add">Added</span>기존 9개 데모에도 <code>data-uses</code> 역추적 주석 일괄 추가 — 존재하지 않는 토큰 참조 시 콘솔 경고</li>
+          <li><span class="type change">Changed</span>CLAUDE.md 3단계 → <strong>4단계 작업 원칙</strong> — 컴포넌트/토큰 수정 시 <code>window.demoMatrix</code>로 영향 범위 사전 확인, 해당 데모 동시 업데이트 의무화. 예시 A/B/C 전면 보강</li>
+        </ul>
+      </div>
+
+      <div class="change-entry">
+        <div class="change-ver">
+          <span class="v">v0.3.2</span>
+          <span class="date">2026.04.22 · Icon Package v1 + Nav/Header Refinement</span>
+        </div>
+        <ul>
+          <li><span class="type add">Added</span>UIUX-DH Icon Package v1 — SVG 심볼 스프라이트(40+ 심볼). Navigation outline+fill 쌍(<code>i-home/calendar/diary/cart/user</code>), Action, Common, Status 계열 전수</li>
+          <li><span class="type add">Added</span>Icon CSS utilities — <code>svg.ico</code> 베이스 + <code>.ico-sm/md/lg/xl</code> 크기 변형</li>
+          <li><span class="type change">Changed</span>Tab Bar 섹션 재설계 — 5탭(디데이·다이어리·홈·스토어·마이페이지) 기준 5가지 활성 상태 매트릭스</li>
+          <li><span class="type change">Changed</span>Top App Bar 섹션 재설계 — 5가지 변형 (center/left back+more, left back+다음, left close, left+다음)</li>
+          <li><span class="type change">Changed</span>모바일 데모 아이콘 전수 교체 — 이모지 → SVG 심볼</li>
+        </ul>
+      </div>
+
+      <div class="change-entry">
+        <div class="change-ver">
+          <span class="v">v0.3.1</span>
+          <span class="date">2026.04.22 · Vanilla JS Architecture + SPA + Demos</span>
+        </div>
+        <ul>
+          <li><span class="type change">Changed</span>저장소 구조 재편 — 단일 HTML 파일을 <code>index.html</code> + <code>assets/css/main.css</code> + <code>assets/js/main.js</code>로 분리. 기존은 <code>Single HTML/</code>에 자기완결 배포본으로 보존</li>
+          <li><span class="type add">Added</span>CLAUDE.md 3단계 작업 원칙 — ① 운영 진본 ② Single HTML ③ AI 문서(md) 동시 갱신</li>
+          <li><span class="type add">Added</span>SPA 해시 라우팅 — 카테고리 클릭 시 하위 항목 카드 그리드 동적 생성, 섹션 클릭 시 단일 컴포넌트만 렌더</li>
+          <li><span class="type add">Added</span>실제 사용 데모 9종 — Splash · 로그인 · 회원가입 · 커뮤니티 · 배달 · 스토어 · 요금제 · 달력 · To-do List</li>
+          <li><span class="type add">Added</span>왼쪽 고정 사이드바 네비게이션 — 모바일 햄버거 토글 + 활성 섹션 자동 하이라이트</li>
+        </ul>
+      </div>
+
+      <div class="change-entry">
+        <div class="change-ver">
           <span class="v">v0.3.0</span>
           <span class="date">2026.04.22 · Overlays, Navigation, States & UX Writing</span>
         </div>
@@ -5464,19 +5577,6 @@
 
       <div class="change-entry">
         <div class="change-ver">
-          <span class="v" style="background:var(--sm-background-muted);color:var(--sm-content-tertiary);">v0.4.0</span>
-          <span class="date">Planned · 2026 Q2</span>
-        </div>
-        <ul>
-          <li><span class="type change">Planned</span>Figma Variables ↔ CSS 변수 자동 동기화 플러그인</li>
-          <li><span class="type change">Planned</span>WCAG 2.2 AA 대비 자동 검증</li>
-          <li><span class="type change">Planned</span>반응형 레이아웃 가이드 — Breakpoint · Grid · Density</li>
-          <li><span class="type change">Planned</span>AGENTS.md 기반 AI 코드 생성 가이드라인</li>
-        </ul>
-      </div>
-
-      <div class="change-entry">
-        <div class="change-ver">
           <span class="v" style="background:var(--sm-background-muted);color:var(--sm-content-tertiary);">v1.0.0</span>
           <span class="date">Target · 2026 Q4</span>
         </div>
@@ -5494,7 +5594,7 @@
   <!-- ============ FOOTER ============ -->
   <footer>
     <div class="footer-inner">
-      <div>UIUX-DH · Unified Design System · v0.3.0 · Foundations + 27 components + UX Writing Guide</div>
+      <div>UIUX-DH · Unified Design System · v0.4.6 · Foundations + 25 components + 18 demos + UX Writing Guide</div>
       <div class="footer-sig">MAINTAINED BY /DH · 2026 ©</div>
     </div>
   </footer>
