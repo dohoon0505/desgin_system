@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UIUX-DH — Design System</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body data-theme="light">
@@ -239,6 +238,50 @@
     <symbol id="i-star-fill" viewBox="0 0 24 24">
       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/>
     </symbol>
+
+    <!-- ===== v0.4.3 additions ===== -->
+    <!-- Chat (speech bubble) — outline + fill pair for tab bar -->
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+    </symbol>
+    <symbol id="i-chat-fill" viewBox="0 0 24 24">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="currentColor"/>
+    </symbol>
+
+    <!-- Receipt (order history · zig-zag bottom) -->
+    <symbol id="i-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M5 3h14v18l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5-2 1.5z"/>
+      <path d="M9 8h6M9 12h6M9 16h4"/>
+    </symbol>
+
+    <!-- Coffee (lounge · cafe) -->
+    <symbol id="i-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+      <path d="M6 2v3M10 2v3M14 2v3"/>
+    </symbol>
+
+    <!-- Bar chart (assets · my data · analytics) -->
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M3 21h18"/>
+      <path d="M7 17v-6"/>
+      <path d="M12 17V7"/>
+      <path d="M17 17v-9"/>
+    </symbol>
+
+    <!-- Users (people · social · meetup) -->
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </symbol>
+    <symbol id="i-users-fill" viewBox="0 0 24 24" fill="currentColor">
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2h16z"/>
+      <circle cx="17" cy="8" r="3"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87 5 5 0 0 1-1.4 1.15A3 3 0 0 1 21 19v2h2z"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -326,6 +369,7 @@
           <li><a class="sidebar-link" href="#progress" data-section="progress">Progress · Slider</a></li>
           <li><a class="sidebar-link" href="#tabs" data-section="tabs">Tabs · Segment</a></li>
           <li><a class="sidebar-link" href="#others" data-section="others">Card</a></li>
+          <li><a class="sidebar-link" href="#banner" data-section="banner">Banner</a></li>
         </ul>
       </li>
 
@@ -379,11 +423,20 @@
           <li><a class="sidebar-link" href="#demo-login" data-section="demo-login">로그인</a></li>
           <li><a class="sidebar-link" href="#demo-signup" data-section="demo-signup">회원가입</a></li>
           <li><a class="sidebar-link" href="#demo-community" data-section="demo-community">커뮤니티</a></li>
-          <li><a class="sidebar-link" href="#demo-delivery" data-section="demo-delivery">배달</a></li>
           <li><a class="sidebar-link" href="#demo-store" data-section="demo-store">스토어</a></li>
           <li><a class="sidebar-link" href="#demo-pricing" data-section="demo-pricing">요금제</a></li>
           <li><a class="sidebar-link" href="#demo-calendar" data-section="demo-calendar">달력</a></li>
           <li><a class="sidebar-link" href="#demo-todo" data-section="demo-todo">To-do List</a></li>
+          <li><a class="sidebar-link" href="#demo-booking" data-section="demo-booking">맛집 예약</a></li>
+          <li><a class="sidebar-link" href="#demo-foodorder" data-section="demo-foodorder">푸드 딜리버리</a></li>
+          <li><a class="sidebar-link" href="#demo-shopping" data-section="demo-shopping">쇼핑몰 홈</a></li>
+          <li><a class="sidebar-link" href="#demo-social" data-section="demo-social">소셜 모임</a></li>
+          <li><a class="sidebar-link" href="#demo-banking" data-section="demo-banking">뱅킹 홈</a></li>
+          <li><a class="sidebar-link" href="#demo-map" data-section="demo-map">지도 탐색</a></li>
+          <li><a class="sidebar-link" href="#demo-mypage" data-section="demo-mypage">마이페이지</a></li>
+          <li><a class="sidebar-link" href="#demo-chat" data-section="demo-chat">채팅 리스트</a></li>
+          <li><a class="sidebar-link" href="#demo-checkout" data-section="demo-checkout">결제 완료</a></li>
+          <li><a class="sidebar-link" href="#demo-notify" data-section="demo-notify">알림 센터</a></li>
         </ul>
       </li>
     </ul>
@@ -2496,7 +2549,7 @@
   <!-- ============================================================
        14. CARD (supplementary showcase)
        ============================================================ -->
-  <section class="component-section" id="others" style="border-bottom:none;">
+  <section class="component-section" id="others">
     <div class="section-head">
       <div>
         <div class="section-meta"><span class="num">14</span><span>·</span><span>CARD</span></div>
@@ -2576,7 +2629,187 @@
     </div>
   </section>
 
-  
+  <!-- ============================================================
+       15. BANNER — promotional image + text
+       ============================================================ -->
+  <section class="component-section" id="banner" style="border-bottom:none;">
+    <div class="section-head">
+      <div>
+        <div class="section-meta"><span class="num">15</span><span>·</span><span>BANNER</span></div>
+        <h2 class="section-title">Banner</h2>
+      </div>
+      <p class="section-desc">
+        이미지와 텍스트의 조화로운 조합으로 프로모션을 전달합니다. <strong>두-색 그라데이션으로 채우지 않습니다</strong> (v0.3 정책).
+        단색 pastel, 다크, 또는 단일 이미지 배경 + 투명도 오버레이만 허용합니다. 오른쪽에는 일러스트·제품·아이콘, 왼쪽에는 제목·부제·CTA·인디케이터를 배치합니다.
+      </p>
+    </div>
+
+    <!-- V1: Default (light pastel + illustration) -->
+    <div class="variant-block">
+      <div class="variant-label">Default · 솔리드 pastel + 일러스트</div>
+      <div class="variant-sub">가장 기본. 단색 pastel 배경 + 우측 일러스트. eyebrow에 브랜드 악센트(%) 허용.</div>
+      <div class="stage" style="flex-direction:column;gap:var(--size-500);align-items:stretch;">
+        <div class="banner" style="background:var(--sm-interactive-brand-subtle);max-width:640px;">
+          <div class="banner-content">
+            <div class="banner-eyebrow">디자인 캐시 <span class="banner-accent">5% 할인</span></div>
+            <h3 class="banner-title">할인받고 더 많이 이용하세요</h3>
+          </div>
+          <div class="banner-image">
+            <svg viewBox="0 0 96 96" width="96" height="96" aria-hidden="true">
+              <circle cx="80" cy="22" r="5" fill="#FDE047"/>
+              <circle cx="16" cy="30" r="4" fill="#FDE047"/>
+              <circle cx="86" cy="60" r="3" fill="#FDE047"/>
+              <path d="M30 30c0-4 8-10 18-10s18 6 18 10L60 40c8 10 14 18 14 30 0 8-10 14-26 14s-26-6-26-14c0-12 6-20 14-30z" fill="var(--sm-interactive-brand-default)"/>
+              <path d="M34 28h28l-6 10H40z" fill="var(--sm-content-brand)"/>
+              <text x="48" y="70" text-anchor="middle" font-family="inherit" font-size="22" font-weight="900" fill="#fff">₩</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V2: Dark + indicator -->
+    <div class="variant-block">
+      <div class="variant-label">Dark · 다크 배경 + 페이지 인디케이터</div>
+      <div class="variant-sub">프리미엄 · 혜택 강조용. 우하단 "2/10" 형식의 인디케이터로 캐러셀 위치 표시.</div>
+      <div class="stage" style="flex-direction:column;gap:var(--size-500);align-items:stretch;">
+        <div class="banner banner-dark" style="max-width:640px;">
+          <div class="banner-content">
+            <div class="banner-eyebrow" style="color:rgba(255,255,255,0.7);">프라이즈 이벤트</div>
+            <h3 class="banner-title">출석하고<br>크레딧 받기</h3>
+          </div>
+          <div class="banner-image">
+            <svg viewBox="0 0 112 112" width="112" height="112" aria-hidden="true">
+              <rect x="18" y="22" width="76" height="72" rx="4" fill="#fff"/>
+              <rect x="18" y="22" width="76" height="16" fill="#E5E7EB"/>
+              <g fill="#9CA3AF" font-family="inherit" font-size="6" font-weight="700">
+                <text x="28" y="33">SUN</text><text x="54" y="33">MON</text><text x="78" y="33">TUE</text>
+              </g>
+              <g fill="var(--sm-content-primary)" font-family="inherit" font-size="7" font-weight="700">
+                <text x="30" y="54">1</text><text x="58" y="54">2</text><text x="82" y="54">3</text>
+                <text x="30" y="72">8</text><text x="58" y="72">9</text><text x="82" y="72">10</text>
+              </g>
+              <circle cx="82" cy="54" r="8" fill="#FACC15" stroke="#D97706" stroke-width="1.5"/>
+              <text x="82" y="58" text-anchor="middle" font-family="inherit" font-size="9" font-weight="900" fill="#78350F">C</text>
+              <g transform="rotate(-14 42 60)">
+                <rect x="22" y="48" width="40" height="22" rx="2" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+                <text x="42" y="62" text-anchor="middle" font-family="inherit" font-size="8" font-weight="900" fill="#064E3B">10000</text>
+              </g>
+            </svg>
+          </div>
+          <div class="banner-indicator">2 / 10 <span style="opacity:0.5;">|</span> 모두 보기</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V3: Overlay (full image background + text overlay) -->
+    <div class="variant-block">
+      <div class="variant-label">Overlay · 이미지 배경 + 투명 오버레이</div>
+      <div class="variant-sub">제품·분위기 사진이 주인공일 때. 좌측 linear-gradient 오버레이는 가독성 목적(정책 예외 허용).</div>
+      <div class="stage" style="flex-direction:column;gap:var(--size-500);align-items:stretch;">
+        <div class="banner banner-overlay" style="background-image:linear-gradient(135deg,#1E40AF,#1E3A8A);max-width:640px;">
+          <div class="banner-content">
+            <div class="banner-eyebrow" style="color:rgba(255,255,255,0.75);">오직 20대에게만</div>
+            <h3 class="banner-title">20대<br>한정 특가!</h3>
+          </div>
+          <div class="banner-image">
+            <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
+              <rect x="8" y="18" width="104" height="60" rx="10" fill="#fff"/>
+              <text x="60" y="60" text-anchor="middle" font-family="inherit" font-size="40" font-weight="900" fill="#EA580C">20</text>
+              <rect x="22" y="78" width="76" height="24" rx="4" fill="#1E40AF"/>
+              <text x="60" y="96" text-anchor="middle" font-family="inherit" font-size="14" font-weight="900" fill="#fff" letter-spacing="1">ONLY</text>
+              <circle cx="100" cy="80" r="10" fill="#FACC15" stroke="#D97706" stroke-width="1.5"/>
+              <text x="100" y="85" text-anchor="middle" font-family="inherit" font-size="12" font-weight="900" fill="#78350F">₩</text>
+            </svg>
+          </div>
+          <div class="banner-indicator">1 / 10 <span style="opacity:0.5;">|</span> 모두 보기</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V4: Compact with ribbon -->
+    <div class="variant-block">
+      <div class="variant-label">Compact · 가로 긴 리본 뱃지</div>
+      <div class="variant-sub">카테고리·파트너 할인처럼 리스트에 끼워 넣을 때. 좌상단 리본으로 강한 프로모션 강조.</div>
+      <div class="stage" style="flex-direction:column;gap:var(--size-500);align-items:stretch;">
+        <div class="banner banner-compact banner-rose" style="max-width:640px;">
+          <div class="banner-ribbon">배짱할인</div>
+          <div class="banner-image">
+            <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#FBBF24,#D97706);display:grid;place-items:center;font-size:28px;">🍔</div>
+          </div>
+          <div class="banner-content">
+            <div class="banner-eyebrow">버거 파트너</div>
+            <h3 class="banner-title">최소 3,000원 할인부터</h3>
+          </div>
+          <div class="banner-indicator" style="position:static;margin-left:auto;">2 / 25</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V5: Hero with CTA -->
+    <div class="variant-block">
+      <div class="variant-label">Hero · 대형 히어로 + CTA</div>
+      <div class="variant-sub">홈 화면 최상단처럼 주목을 독점할 때. 제목·부제·CTA를 쌓아 전환 유도.</div>
+      <div class="stage" style="flex-direction:column;gap:var(--size-500);align-items:stretch;">
+        <div class="banner banner-hero banner-warm" style="max-width:640px;">
+          <div class="banner-content">
+            <div class="banner-eyebrow">단 7일 최대 33%</div>
+            <h3 class="banner-title" style="color:var(--sm-content-brand);">이달의 굿프라이스</h3>
+            <div class="banner-subtitle">장보기 필수템 · 화제의 신상 외</div>
+            <div class="banner-cta">지금 담으러 가기 →</div>
+          </div>
+          <div class="banner-image">
+            <svg viewBox="0 0 140 140" width="140" height="140" aria-hidden="true">
+              <rect x="30" y="24" width="80" height="24" rx="3" fill="#fff" stroke="#D97706" stroke-width="2"/>
+              <rect x="30" y="56" width="80" height="24" rx="3" fill="#fff" stroke="#D97706" stroke-width="2"/>
+              <rect x="30" y="88" width="80" height="24" rx="3" fill="#fff" stroke="#D97706" stroke-width="2"/>
+              <text x="70" y="40" text-anchor="middle" font-family="inherit" font-size="10" font-weight="800" fill="#DC2626">DEAL</text>
+              <text x="70" y="72" text-anchor="middle" font-family="inherit" font-size="10" font-weight="800" fill="#DC2626">DEAL</text>
+              <text x="70" y="104" text-anchor="middle" font-family="inherit" font-size="10" font-weight="800" fill="#DC2626">DEAL</text>
+              <circle cx="110" cy="30" r="12" fill="#DC2626"/>
+              <text x="110" y="34" text-anchor="middle" font-family="inherit" font-size="12" font-weight="900" fill="#fff">%</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V6: Compact partner/promotion row (for horizontal scroll carousels) -->
+    <div class="variant-block">
+      <div class="variant-label">Multi-banner row · 가로 스크롤 캐러셀</div>
+      <div class="variant-sub">여러 프로모션을 가로 스크롤로 나열할 때. 각 카드 우하단에 "N/전체" 인디케이터.</div>
+      <div class="stage" style="padding:var(--size-500);align-items:stretch;">
+        <div style="overflow-x:auto;white-space:nowrap;width:100%;padding-bottom:4px;">
+          <div class="banner banner-warm" style="display:inline-flex;width:280px;vertical-align:top;margin-right:var(--size-300);white-space:normal;">
+            <div class="banner-content">
+              <div class="banner-eyebrow">호텔 뷔페</div>
+              <h3 class="banner-title">최저가 보장</h3>
+              <div class="banner-subtitle">#매주 새로운 혜택</div>
+            </div>
+            <div class="banner-indicator">1 / 3</div>
+          </div>
+          <div class="banner banner-cool" style="display:inline-flex;width:280px;vertical-align:top;margin-right:var(--size-300);white-space:normal;">
+            <div class="banner-content">
+              <div class="banner-eyebrow">웨이팅 긴 핫플</div>
+              <h3 class="banner-title" style="color:var(--sm-status-error);">우선입장 하세요</h3>
+              <div class="banner-subtitle">#우선입장</div>
+            </div>
+            <div class="banner-indicator">2 / 3</div>
+          </div>
+          <div class="banner banner-dark" style="display:inline-flex;width:280px;vertical-align:top;white-space:normal;">
+            <div class="banner-content">
+              <div class="banner-eyebrow" style="color:rgba(255,255,255,0.7);">가정의 달</div>
+              <h3 class="banner-title">인기 맛집</h3>
+              <div class="banner-subtitle" style="opacity:0.75;">#오감만족</div>
+            </div>
+            <div class="banner-indicator">3 / 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
   <!-- ================================================================
        PART 5 · OVERLAYS & NAVIGATION
        ================================================================ -->
@@ -3302,7 +3535,8 @@
   </div>
 
   <!-- ==== Demo · Splash ==== -->
-  <section class="demo-section" id="demo-splash">
+  <section class="demo-section" id="demo-splash"
+           data-uses="--p-indigo-400,--p-indigo-500,--p-indigo-700,--font-sans,--font-mono">
     <div class="demo-header">
       <div class="demo-label">DEMO 01 · SPLASH</div>
       <h2>스플래시</h2>
@@ -3322,7 +3556,8 @@
   </section>
 
   <!-- ==== Demo · Login ==== -->
-  <section class="demo-section" id="demo-login">
+  <section class="demo-section" id="demo-login"
+           data-uses="textfield,button,appbar,--sm-interactive-brand-default,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-border-default,--sm-background-default">
     <div class="demo-header">
       <div class="demo-label">DEMO 02 · LOGIN</div>
       <h2>로그인</h2>
@@ -3374,7 +3609,8 @@
   </section>
 
   <!-- ==== Demo · Signup ==== -->
-  <section class="demo-section" id="demo-signup">
+  <section class="demo-section" id="demo-signup"
+           data-uses="textfield,button,progress,control,appbar,--sm-interactive-brand-default,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-status-error,--sm-border-default,--sm-background-muted">
     <div class="demo-header">
       <div class="demo-label">DEMO 03 · SIGNUP</div>
       <h2>회원가입</h2>
@@ -3435,7 +3671,8 @@
   </section>
 
   <!-- ==== Demo · Community ==== -->
-  <section class="demo-section" id="demo-community">
+  <section class="demo-section" id="demo-community"
+           data-uses="avatar,chip,badge,others,button,appbar,tabbar,--sm-interactive-brand-default,--sm-interactive-brand-subtle,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-content-brand,--sm-surface-default,--sm-border-subtle,--sm-background-muted,--p-indigo-400,--p-indigo-500,--p-indigo-600,--p-green-500,--p-amber-500">
     <div class="demo-header">
       <div class="demo-label">DEMO 04 · COMMUNITY</div>
       <h2>커뮤니티</h2>
@@ -3516,7 +3753,7 @@
         <!-- Bottom Tab Bar -->
         <div class="m-tabbar">
           <div class="m-tabbar-item"><svg class="ico"><use href="#i-home"/></svg>홈</div>
-          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-diary-fill"/></svg>커뮤니티</div>
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-users-fill"/></svg>커뮤니티</div>
           <div class="m-tabbar-item"><svg class="ico"><use href="#i-search"/></svg>탐색</div>
           <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>내 정보</div>
         </div>
@@ -3524,94 +3761,9 @@
     </div>
   </section>
 
-  <!-- ==== Demo · Delivery ==== -->
-  <section class="demo-section" id="demo-delivery">
-    <div class="demo-header">
-      <div class="demo-label">DEMO 05 · DELIVERY</div>
-      <h2>배달</h2>
-      <p>위치 헤더 · 카테고리 그리드 · 가게 리스트. 평점·배달비·시간이 한눈에 비교되도록 정렬과 여백을 설계합니다.</p>
-    </div>
-    <div class="demo-stage">
-      <div class="demo-phone"><div class="demo-screen">
-        <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
-        <div class="m-topbar" style="gap:8px;">
-          <div style="display:flex;align-items:center;gap:6px;flex:1;cursor:pointer;">
-            <svg class="ico"><use href="#i-map-pin"/></svg>
-            <div>
-              <div style="font:700 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">서울 강남구 테헤란로 ⌄</div>
-              <div style="font:400 10px/1.2 var(--font-sans);color:var(--sm-content-tertiary);margin-top:1px;">기본 배달지</div>
-            </div>
-          </div>
-          <div style="cursor:pointer;display:grid;place-items:center;position:relative;"><svg class="ico"><use href="#i-cart"/></svg></div>
-        </div>
-
-        <!-- Banner -->
-        <div style="padding:16px 20px 0;">
-          <div style="background:linear-gradient(120deg,var(--p-indigo-500),var(--p-indigo-700));color:#fff;border-radius:14px;padding:18px 20px;">
-            <div style="font:700 17px/1.3 var(--font-sans);margin-bottom:4px;">첫 주문 5,000원 할인</div>
-            <div style="font:400 12px/1.4 var(--font-sans);opacity:0.85;">코드 WELCOME · 모든 가게에서 사용</div>
-          </div>
-        </div>
-
-        <!-- Category grid -->
-        <div style="padding:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px;">
-          <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;background:var(--sm-background-muted);border-radius:14px;display:grid;place-items:center;font-size:26px;">🍔</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">버거</div></div>
-          <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;background:var(--sm-background-muted);border-radius:14px;display:grid;place-items:center;font-size:26px;">🍕</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">피자</div></div>
-          <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;background:var(--sm-background-muted);border-radius:14px;display:grid;place-items:center;font-size:26px;">🍗</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">치킨</div></div>
-          <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;background:var(--sm-background-muted);border-radius:14px;display:grid;place-items:center;font-size:26px;">🍜</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">분식</div></div>
-          <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;background:var(--sm-background-muted);border-radius:14px;display:grid;place-items:center;font-size:26px;">🍣</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">일식</div></div>
-          <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;background:var(--sm-background-muted);border-radius:14px;display:grid;place-items:center;font-size:26px;">🥗</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">샐러드</div></div>
-          <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;background:var(--sm-background-muted);border-radius:14px;display:grid;place-items:center;font-size:26px;">☕</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">카페</div></div>
-          <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;background:var(--sm-background-muted);border-radius:14px;display:grid;place-items:center;font-size:26px;">🍰</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">디저트</div></div>
-        </div>
-
-        <!-- Restaurants list -->
-        <div style="padding:4px 20px 100px;">
-          <div style="font:700 15px/1.2 var(--font-sans);color:var(--sm-content-primary);margin-bottom:12px;">가까운 가게 추천</div>
-
-          <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--sm-border-subtle);">
-            <div style="width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#FBBF24,#F59E0B);flex-shrink:0;display:grid;place-items:center;font-size:32px;">🍔</div>
-            <div style="flex:1;min-width:0;">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
-                <div style="font:700 14px/1.3 var(--font-sans);color:var(--sm-content-primary);">쉐이크쉑 강남점</div>
-                <span style="padding:2px 5px;background:var(--sm-status-error);color:#fff;border-radius:4px;font:700 9px/1 var(--font-mono);">15% OFF</span>
-              </div>
-              <div style="font:500 11px/1.2 var(--font-mono);color:var(--sm-content-secondary);margin-bottom:6px;">★ 4.8 (1,284) · 15-25분 · 배달 2,500원</div>
-              <div style="font:400 11px/1.3 var(--font-sans);color:var(--sm-content-tertiary);">대표 메뉴: 쉑버거 세트</div>
-            </div>
-          </div>
-
-          <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--sm-border-subtle);">
-            <div style="width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#EF4444,#DC2626);flex-shrink:0;display:grid;place-items:center;font-size:32px;">🍕</div>
-            <div style="flex:1;min-width:0;">
-              <div style="font:700 14px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">도미노피자 역삼점</div>
-              <div style="font:500 11px/1.2 var(--font-mono);color:var(--sm-content-secondary);margin-bottom:6px;">★ 4.6 (892) · 25-35분 · 무료배달</div>
-              <div style="font:400 11px/1.3 var(--font-sans);color:var(--sm-content-tertiary);">대표 메뉴: 페퍼로니 L</div>
-            </div>
-          </div>
-
-          <div style="display:flex;gap:12px;padding:12px 0;">
-            <div style="width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#16A34A,#15803D);flex-shrink:0;display:grid;place-items:center;font-size:32px;">🥗</div>
-            <div style="flex:1;min-width:0;">
-              <div style="font:700 14px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">샐러디 선릉</div>
-              <div style="font:500 11px/1.2 var(--font-mono);color:var(--sm-content-secondary);margin-bottom:6px;">★ 4.9 (2,103) · 20-30분 · 배달 3,000원</div>
-              <div style="font:400 11px/1.3 var(--font-sans);color:var(--sm-content-tertiary);">대표 메뉴: 그레인 볼</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="m-tabbar">
-          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-home-fill"/></svg>홈</div>
-          <div class="m-tabbar-item"><svg class="ico"><use href="#i-search"/></svg>검색</div>
-          <div class="m-tabbar-item"><svg class="ico"><use href="#i-calendar"/></svg>주문</div>
-          <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>내 정보</div>
-        </div>
-      </div></div>
-    </div>
-  </section>
-
   <!-- ==== Demo · Store ==== -->
-  <section class="demo-section" id="demo-store">
+  <section class="demo-section" id="demo-store"
+           data-uses="textfield,tabs,badge,others,appbar,tabbar,--sm-interactive-brand-default,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-background-muted,--sm-border-subtle,--sm-status-error,--p-indigo-400,--p-indigo-600">
     <div class="demo-header">
       <div class="demo-label">DEMO 06 · STORE</div>
       <h2>스토어</h2>
@@ -3694,7 +3846,8 @@
   </section>
 
   <!-- ==== Demo · Pricing ==== -->
-  <section class="demo-section" id="demo-pricing">
+  <section class="demo-section" id="demo-pricing"
+           data-uses="tabs,others,button,badge,appbar,--sm-interactive-brand-default,--sm-interactive-brand-subtle,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-brand,--sm-status-success,--sm-background-default,--sm-background-muted,--sm-border-subtle">
     <div class="demo-header">
       <div class="demo-label">DEMO 07 · PRICING</div>
       <h2>요금제</h2>
@@ -3768,7 +3921,8 @@
   </section>
 
   <!-- ==== Demo · Calendar ==== -->
-  <section class="demo-section" id="demo-calendar">
+  <section class="demo-section" id="demo-calendar"
+           data-uses="appbar,others,button,--sm-interactive-brand-default,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-status-error,--sm-status-success,--sm-status-warning,--sm-surface-default,--sm-border-subtle">
     <div class="demo-header">
       <div class="demo-label">DEMO 08 · CALENDAR</div>
       <h2>달력</h2>
@@ -3834,7 +3988,8 @@
   </section>
 
   <!-- ==== Demo · Todo ==== -->
-  <section class="demo-section" id="demo-todo">
+  <section class="demo-section" id="demo-todo"
+           data-uses="chip,control,badge,progress,button,appbar,others,--sm-interactive-brand-default,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-status-error,--sm-status-warning,--sm-surface-default,--sm-background-subtle,--sm-background-muted,--sm-border-subtle,--sm-border-default,--p-indigo-500,--p-indigo-700">
     <div class="demo-header">
       <div class="demo-label">DEMO 09 · TO-DO LIST</div>
       <h2>할 일</h2>
@@ -3920,6 +4075,1317 @@
         <!-- Bottom add button -->
         <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px 24px;background:var(--sm-background-default);border-top:1px solid var(--sm-border-subtle);">
           <button class="m-btn-primary">＋ 할 일 추가</button>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ==== Demo · Restaurant Booking ==== -->
+  <section class="demo-section" id="demo-booking"
+           data-uses="textfield,chip,tabs,badge,banner,tabbar,appbar,others,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-background-muted,--sm-background-default,--sm-border-subtle,--sm-interactive-brand-default,--sm-status-error,--p-indigo-500,--p-red-500,--p-amber-500">
+    <div class="demo-header">
+      <div class="demo-label">DEMO 10 · RESTAURANT BOOKING</div>
+      <h2>맛집 예약</h2>
+      <p>위치 필터 · 원형 카테고리 · 섹션별 BEST · 가격대 탭. 한 화면에 섹션을 쌓되 공기(여백)로 리듬을 만듭니다.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone"><div class="demo-screen">
+        <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
+        <div class="m-topbar" style="gap:10px;padding:8px 16px;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--p-red-500);color:#fff;display:grid;place-items:center;font:800 15px/1 var(--font-mono);flex-shrink:0;">C</div>
+          <div style="flex:1;display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--sm-background-muted);border-radius:99px;">
+            <svg class="ico ico-sm"><use href="#i-search"/></svg>
+            <div style="flex:1;font:400 12px/1.2 var(--font-sans);color:var(--sm-content-tertiary);">미쉐린 1스타를 검색해보세요!</div>
+          </div>
+          <div style="cursor:pointer;position:relative;display:grid;place-items:center;"><svg class="ico"><use href="#i-clock"/></svg><span style="position:absolute;top:-2px;right:-2px;width:6px;height:6px;border-radius:50%;background:var(--p-red-500);"></span></div>
+          <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-bell"/></svg></div>
+        </div>
+
+        <!-- Location bar -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px 6px;">
+          <div style="display:flex;align-items:center;gap:4px;font:700 15px/1 var(--font-sans);color:var(--sm-content-primary);cursor:pointer;">
+            <svg class="ico ico-sm"><use href="#i-map-pin"/></svg>
+            <span>전국</span>
+            <svg class="ico ico-sm"><use href="#i-chevron-down"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;gap:4px;font:500 12px/1 var(--font-sans);color:var(--sm-content-tertiary);cursor:pointer;">
+            <svg class="ico ico-sm"><use href="#i-map-pin"/></svg>현재 위치로
+          </div>
+        </div>
+
+        <!-- Area cards scroll -->
+        <div style="overflow-x:auto;white-space:nowrap;padding:12px 16px 20px;">
+          <div style="display:inline-block;text-align:center;margin-right:14px;width:72px;white-space:normal;">
+            <div style="width:72px;height:72px;border-radius:18px;background:linear-gradient(160deg,#FCA5A5,#DC2626);position:relative;margin-bottom:6px;">
+              <span style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);padding:3px 8px;background:var(--p-indigo-500);color:#fff;border-radius:99px;font:700 9px/1 var(--font-mono);white-space:nowrap;">인기</span>
+            </div>
+            <div style="font:600 12px/1.2 var(--font-sans);color:var(--sm-content-primary);margin-top:8px;">청담</div>
+          </div>
+          <div style="display:inline-block;text-align:center;margin-right:14px;width:72px;white-space:normal;">
+            <div style="width:72px;height:72px;border-radius:18px;background:linear-gradient(160deg,#93C5FD,#2563EB);position:relative;margin-bottom:6px;">
+              <span style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);padding:3px 8px;background:var(--sm-status-error);color:#fff;border-radius:99px;font:700 9px/1 var(--font-mono);white-space:nowrap;">핫플</span>
+            </div>
+            <div style="font:600 12px/1.2 var(--font-sans);color:var(--sm-content-primary);margin-top:8px;">잠실·송파</div>
+          </div>
+          <div style="display:inline-block;text-align:center;margin-right:14px;width:72px;white-space:normal;">
+            <div style="width:72px;height:72px;border-radius:18px;background:linear-gradient(160deg,#FCD34D,#B45309);position:relative;margin-bottom:6px;">
+              <span style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);padding:3px 8px;background:var(--p-indigo-500);color:#fff;border-radius:99px;font:700 9px/1 var(--font-mono);white-space:nowrap;">인기</span>
+            </div>
+            <div style="font:600 12px/1.2 var(--font-sans);color:var(--sm-content-primary);margin-top:8px;">광화문·종로</div>
+          </div>
+          <div style="display:inline-block;text-align:center;margin-right:14px;width:72px;white-space:normal;">
+            <div style="width:72px;height:72px;border-radius:18px;background:linear-gradient(160deg,#F9A8D4,#BE185D);position:relative;margin-bottom:6px;">
+              <span style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);padding:3px 8px;background:var(--sm-status-error);color:#fff;border-radius:99px;font:700 9px/1 var(--font-mono);white-space:nowrap;">핫플</span>
+            </div>
+            <div style="font:600 12px/1.2 var(--font-sans);color:var(--sm-content-primary);margin-top:8px;">이태원·한남</div>
+          </div>
+          <div style="display:inline-block;text-align:center;width:72px;white-space:normal;">
+            <div style="width:72px;height:72px;border-radius:18px;background:linear-gradient(160deg,#86EFAC,#15803D);margin-bottom:6px;"></div>
+            <div style="font:600 12px/1.2 var(--font-sans);color:var(--sm-content-primary);margin-top:8px;">성수</div>
+          </div>
+        </div>
+
+        <!-- Food type BEST -->
+        <div style="padding:10px 20px 6px;">
+          <div style="font:800 18px/1.2 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.025em;">음식종류별 <span style="font-family:var(--font-mono);">BEST</span></div>
+        </div>
+        <div style="overflow-x:auto;white-space:nowrap;padding:14px 16px 24px;">
+          <div style="display:inline-block;text-align:center;margin-right:16px;width:96px;white-space:normal;">
+            <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(160deg,#DDD6FE,#7C3AED);margin-bottom:10px;"></div>
+            <div style="font:600 13px/1.3 var(--font-sans);color:var(--sm-content-primary);">호텔 뷔페</div>
+          </div>
+          <div style="display:inline-block;text-align:center;margin-right:16px;width:96px;white-space:normal;">
+            <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(160deg,#FCA5A5,#B91C1C);margin-bottom:10px;"></div>
+            <div style="font:600 13px/1.3 var(--font-sans);color:var(--sm-content-primary);">스시 오마카세</div>
+          </div>
+          <div style="display:inline-block;text-align:center;margin-right:16px;width:96px;white-space:normal;">
+            <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(160deg,#FBBF24,#78350F);margin-bottom:10px;"></div>
+            <div style="font:600 13px/1.3 var(--font-sans);color:var(--sm-content-primary);">한우 오마카세</div>
+          </div>
+          <div style="display:inline-block;text-align:center;width:96px;white-space:normal;">
+            <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(160deg,#A3E635,#3F6212);margin-bottom:10px;"></div>
+            <div style="font:600 13px/1.3 var(--font-sans);color:var(--sm-content-primary);">다이닝바</div>
+          </div>
+        </div>
+
+        <!-- Situation BEST banners -->
+        <div style="padding:10px 20px 6px;">
+          <div style="font:800 18px/1.2 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.025em;">상황별·주제별 <span style="font-family:var(--font-mono);">BEST</span></div>
+        </div>
+        <div style="overflow-x:auto;white-space:nowrap;padding:14px 16px 24px;">
+          <div class="banner banner-warm" style="display:inline-flex;width:240px;min-height:140px;padding:16px;margin-right:10px;white-space:normal;vertical-align:top;">
+            <div class="banner-content">
+              <h3 class="banner-title" style="font:800 17px/1.3 var(--font-sans);">호텔 뷔페<br>최저가 보장</h3>
+              <div class="banner-subtitle" style="margin-top:auto;">#매주 새로운 혜택</div>
+            </div>
+          </div>
+          <div class="banner banner-cool" style="display:inline-flex;width:240px;min-height:140px;padding:16px;margin-right:10px;white-space:normal;vertical-align:top;">
+            <div class="banner-content">
+              <h3 class="banner-title" style="font:800 17px/1.3 var(--font-sans);">웨이팅 긴 핫플<br><span style="color:var(--sm-status-error);">우선입장</span>하세요</h3>
+              <div class="banner-subtitle" style="margin-top:auto;">#우선입장</div>
+            </div>
+          </div>
+          <div class="banner banner-dark" style="display:inline-flex;width:240px;min-height:140px;padding:16px;white-space:normal;vertical-align:top;">
+            <div class="banner-content">
+              <h3 class="banner-title" style="font:800 17px/1.3 var(--font-sans);">가정의 달<br>인기 맛집</h3>
+              <div class="banner-subtitle" style="margin-top:auto;">#오감만족</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price tabs -->
+        <div style="padding:10px 20px 6px;">
+          <div style="font:800 18px/1.2 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.025em;">가격대별 <span style="font-family:var(--font-mono);">BEST</span></div>
+        </div>
+        <div style="display:flex;gap:18px;padding:14px 20px 0;border-bottom:1px solid var(--sm-border-subtle);overflow-x:auto;white-space:nowrap;">
+          <div style="padding:8px 0;font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);white-space:nowrap;">3만원 이하</div>
+          <div style="padding:8px 0;font:700 14px/1 var(--font-sans);color:var(--sm-content-primary);border-bottom:2px solid var(--sm-content-primary);margin-bottom:-1px;white-space:nowrap;">3-5만원</div>
+          <div style="padding:8px 0;font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);white-space:nowrap;">5-10만원</div>
+          <div style="padding:8px 0;font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);white-space:nowrap;">10만원 이상</div>
+        </div>
+
+        <div style="padding:16px 20px 100px;">
+          <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--sm-border-subtle);">
+            <div style="width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#FCA5A5,#B91C1C);flex-shrink:0;"></div>
+            <div style="flex:1;min-width:0;">
+              <div style="font:700 14px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:3px;">스시 오마카세 · 강남</div>
+              <div style="font:500 11px/1.2 var(--font-mono);color:var(--sm-content-secondary);margin-bottom:6px;">★ 4.9 (328) · 런치 45,000원~</div>
+              <div style="font:400 11px/1.3 var(--font-sans);color:var(--sm-content-tertiary);">예약 가능 · 오늘 저녁 2자리</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;padding:12px 0;">
+            <div style="width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#FBBF24,#78350F);flex-shrink:0;"></div>
+            <div style="flex:1;min-width:0;">
+              <div style="font:700 14px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:3px;">한우 다이닝 · 청담</div>
+              <div style="font:500 11px/1.2 var(--font-mono);color:var(--sm-content-secondary);margin-bottom:6px;">★ 4.7 (512) · 디너 38,000원~</div>
+              <div style="font:400 11px/1.3 var(--font-sans);color:var(--sm-content-tertiary);">예약 가능 · 내일 점심</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-tabbar">
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-home-fill"/></svg>홈</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-heart"/></svg>저장</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-map-pin"/></svg>내 주변</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-diary"/></svg>마이다이닝</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>MY</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ==== Demo · Food Delivery ==== -->
+  <section class="demo-section" id="demo-foodorder"
+           data-uses="textfield,tabs,badge,banner,tabbar,appbar,button,others,list,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-content-brand,--sm-interactive-brand-default,--sm-interactive-brand-subtle,--sm-background-default,--sm-background-muted,--sm-border-subtle,--sm-status-error,--p-indigo-500,--p-indigo-600,--p-green-500,--p-amber-500">
+    <div class="demo-header">
+      <div class="demo-label">DEMO 11 · FOOD DELIVERY</div>
+      <h2>배달</h2>
+      <p>위치 헤더 · 쿠폰 배너 · 5-way 탭 · 2행 카테고리 그리드 · 무료배달 파트너 Row · 인기 맛집 카드. 많은 선택지를 리듬 있게 시각 계층으로 정리합니다.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone"><div class="demo-screen" style="background:var(--sm-background-muted);">
+        <div class="demo-statusbar" style="background:transparent;"><span>9:41</span><span class="icons">● ● ●●</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 20px;">
+          <div style="display:flex;align-items:center;gap:4px;font:700 18px/1 var(--font-sans);color:var(--sm-content-primary);cursor:pointer;">
+            본동 744-1 <svg class="ico ico-sm"><use href="#i-chevron-down"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--sm-interactive-brand-default);display:grid;place-items:center;color:#fff;font:800 11px/1 var(--font-mono);cursor:pointer;">%</div>
+            <div style="cursor:pointer;position:relative;display:grid;place-items:center;"><svg class="ico"><use href="#i-bell"/></svg><span style="position:absolute;top:-2px;right:-2px;width:6px;height:6px;border-radius:50%;background:var(--sm-status-error);"></span></div>
+            <div style="cursor:pointer;position:relative;display:grid;place-items:center;"><svg class="ico"><use href="#i-cart"/></svg><span style="position:absolute;top:-6px;right:-8px;min-width:16px;height:16px;padding:0 4px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:99px;font:700 9px/1 var(--font-mono);display:grid;place-items:center;">5</span></div>
+          </div>
+        </div>
+
+        <!-- Search -->
+        <div style="padding:6px 20px 0;">
+          <div style="display:flex;align-items:center;gap:8px;padding:12px 16px;background:#fff;border-radius:99px;border:1px solid rgba(0,0,0,0.04);">
+            <div style="flex:1;font:600 14px/1 var(--font-sans);color:var(--sm-content-primary);">육회비빔밥? 쌀국수? 육개장?</div>
+            <svg class="ico ico-sm"><use href="#i-search"/></svg>
+          </div>
+        </div>
+
+        <!-- Coupon banner (.banner component) -->
+        <div style="padding:16px 20px 12px;">
+          <div class="banner banner-compact" style="background:var(--sm-background-default);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:16px 18px;min-height:auto;">
+            <div class="banner-content">
+              <div class="banner-title" style="font:800 15px/1.3 var(--font-sans);">4월 NEW 쿠폰팩이 쏟아집니다</div>
+              <div class="banner-subtitle">지금 확인하고 모두 담아보세요!</div>
+              <div class="banner-cta">총 <span style="font-variant-numeric:tabular-nums;">61,000</span>원 할인 <svg class="ico ico-sm"><use href="#i-chevron-right"/></svg></div>
+            </div>
+            <div class="banner-image" style="width:96px;height:80px;">
+              <svg viewBox="0 0 96 80" width="96" height="80" aria-hidden="true" style="border-radius:14px;">
+                <rect width="96" height="80" rx="14" fill="var(--sm-interactive-brand-default)"/>
+                <rect x="62" y="10" width="22" height="22" rx="3" fill="#FBBF24"/>
+                <rect x="14" y="48" width="30" height="20" rx="3" fill="#DC2626"/>
+                <rect x="50" y="46" width="26" height="26" rx="3" fill="#fff" opacity="0.9"/>
+                <text x="63" y="64" text-anchor="middle" font-family="inherit" font-size="14" font-weight="900" fill="var(--sm-interactive-brand-default)">%</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main panel -->
+        <div style="background:var(--sm-background-default);border-top-left-radius:20px;border-top-right-radius:20px;padding-top:14px;margin-top:4px;">
+          <!-- Tabs -->
+          <div style="display:flex;align-items:center;gap:20px;padding:6px 20px 0;overflow-x:auto;white-space:nowrap;position:relative;">
+            <span style="position:absolute;top:-8px;left:20px;padding:2px 8px;background:var(--sm-background-default);border:1px solid var(--sm-border-subtle);border-radius:99px;font:700 9px/1 var(--font-mono);color:var(--sm-content-primary);">3천원딜</span>
+            <div style="padding:12px 0 10px;font:800 14px/1 var(--font-sans);color:var(--sm-content-primary);border-bottom:2px solid var(--sm-content-primary);margin-bottom:-1px;">음식배달</div>
+            <div style="padding:12px 0 10px;font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);">픽업</div>
+            <div style="padding:12px 0 10px;font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);">장보기·쇼핑</div>
+            <div style="padding:12px 0 10px;font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);">선물하기</div>
+            <div style="padding:12px 0 10px;font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);">혜택모아보기</div>
+          </div>
+
+          <!-- Category grid 2x5 -->
+          <div style="padding:18px 16px 20px;display:grid;grid-template-columns:repeat(5,1fr);gap:18px 6px;">
+            <div style="text-align:center;position:relative;">
+              <div style="width:56px;height:56px;margin:0 auto 6px;border-radius:14px;background:linear-gradient(160deg,#F9A8D4,#EC4899);display:grid;place-items:center;color:#fff;font:800 12px/1.1 var(--font-sans);">매일<br>할인중</div>
+              <span style="position:absolute;top:-6px;left:50%;transform:translateX(-50%);padding:2px 6px;background:#F9A8D4;color:#fff;border-radius:99px;font:700 8px/1 var(--font-mono);white-space:nowrap;">최대8천원</span>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);margin-top:4px;">배짱할인</div>
+            </div>
+            <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;border-radius:14px;background:var(--sm-background-muted);display:grid;place-items:center;font-size:28px;">🍲</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">한식</div></div>
+            <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;border-radius:14px;background:var(--sm-background-muted);display:grid;place-items:center;font-size:28px;">🍵</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">찜·탕</div></div>
+            <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;border-radius:14px;background:var(--sm-background-muted);display:grid;place-items:center;font-size:28px;">🥤</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">카페·디저트</div></div>
+            <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;border-radius:14px;background:var(--sm-background-muted);display:grid;place-items:center;font-size:28px;">🌭</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">분식</div></div>
+            <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;border-radius:14px;background:var(--sm-background-muted);display:grid;place-items:center;font-size:28px;">🥡</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">중식</div></div>
+            <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;border-radius:14px;background:var(--sm-background-muted);display:grid;place-items:center;font-size:28px;">🍗</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">치킨</div></div>
+            <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;border-radius:14px;background:var(--sm-background-muted);display:grid;place-items:center;font-size:28px;">🍣</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">돈까스·회</div></div>
+            <div style="text-align:center;"><div style="width:56px;height:56px;margin:0 auto 6px;border-radius:14px;background:var(--sm-background-muted);display:grid;place-items:center;font-size:28px;">🥗</div><div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">한그릇</div></div>
+            <div style="text-align:center;position:relative;">
+              <span style="position:absolute;top:-6px;left:50%;transform:translateX(-50%);padding:2px 6px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:99px;font:700 8px/1 var(--font-mono);white-space:nowrap;">3천원딜</span>
+              <div style="width:56px;height:56px;margin:0 auto 6px;border-radius:14px;background:var(--sm-background-muted);display:grid;place-items:center;font-size:28px;">📍</div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">바로 픽업</div>
+            </div>
+          </div>
+
+          <!-- More CTA -->
+          <div style="padding:0 20px 16px;">
+            <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;background:var(--sm-background-muted);border-radius:12px;font:700 13px/1 var(--font-sans);color:var(--sm-content-primary);"><span>음식배달</span>에서 더보기 <svg class="ico ico-sm"><use href="#i-chevron-right"/></svg></div>
+          </div>
+
+          <!-- Brand row (generic partners) -->
+          <div style="overflow-x:auto;white-space:nowrap;padding:12px 16px 20px;">
+            <div style="display:inline-block;text-align:center;margin-right:14px;width:68px;white-space:normal;position:relative;">
+              <span style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);padding:2px 6px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:99px;font:700 8px/1 var(--font-sans);white-space:nowrap;">무료배달</span>
+              <div style="width:60px;height:60px;margin:4px auto 6px;border-radius:50%;background:#FBBF24;display:grid;place-items:center;color:#fff;font:800 12px/1 var(--font-sans);letter-spacing:-0.02em;">새벽<br>마트</div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">새벽마트</div>
+            </div>
+            <div style="display:inline-block;text-align:center;margin-right:14px;width:68px;white-space:normal;position:relative;">
+              <span style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);padding:2px 6px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:99px;font:700 8px/1 var(--font-sans);white-space:nowrap;">무료배달</span>
+              <div style="width:60px;height:60px;margin:4px auto 6px;border-radius:50%;background:#2563EB;display:grid;place-items:center;color:#fff;font:800 16px/1 var(--font-sans);letter-spacing:-0.02em;">24h</div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">24시편의점</div>
+            </div>
+            <div style="display:inline-block;text-align:center;margin-right:14px;width:68px;white-space:normal;position:relative;">
+              <span style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);padding:2px 6px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:99px;font:700 8px/1 var(--font-sans);white-space:nowrap;">무료배달</span>
+              <div style="width:60px;height:60px;margin:4px auto 6px;border-radius:50%;background:#7C3AED;display:grid;place-items:center;color:#fff;"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3 7h18l-2 11H5L3 7z"/><path d="M8 7V5a4 4 0 018 0v2"/></svg></div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">홈쇼핑</div>
+            </div>
+            <div style="display:inline-block;text-align:center;margin-right:14px;width:68px;white-space:normal;position:relative;">
+              <span style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);padding:2px 6px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:99px;font:700 8px/1 var(--font-sans);white-space:nowrap;">무료배달</span>
+              <div style="width:60px;height:60px;margin:4px auto 6px;border-radius:50%;background:#FDE68A;display:grid;place-items:center;color:#78350F;"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 9l7-5 7 5v11H5V9z"/><path d="M10 20v-5h4v5"/></svg></div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">대형마트</div>
+            </div>
+            <div style="display:inline-block;text-align:center;width:68px;white-space:normal;position:relative;">
+              <span style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);padding:2px 6px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:99px;font:700 8px/1 var(--font-sans);white-space:nowrap;">무료배달</span>
+              <div style="width:60px;height:60px;margin:4px auto 6px;border-radius:50%;background:#F59E0B;display:grid;place-items:center;color:#fff;"><svg class="ico"><use href="#i-cart-fill"/></svg></div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-primary);">생활마트</div>
+            </div>
+          </div>
+
+          <!-- Section -->
+          <div style="padding:10px 20px 6px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+              <div style="font:800 17px/1.2 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.02em;">금방 도착하는 인기 맛집</div>
+              <svg class="ico ico-sm" style="color:var(--sm-content-tertiary);"><use href="#i-info"/></svg>
+            </div>
+            <div style="font:500 12px/1.3 var(--font-sans);color:var(--sm-content-secondary);">최근 주문·리뷰 데이터로 검증된 가게</div>
+          </div>
+          <div style="padding:14px 20px 100px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#FBBF24,#D97706);border-radius:14px;margin-bottom:8px;position:relative;">
+                <span style="position:absolute;top:8px;left:8px;padding:3px 8px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:99px;font:700 9px/1 var(--font-sans);">무료배달</span>
+              </div>
+              <div style="font:700 13px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">온담 한식당</div>
+              <div style="font:500 11px/1 var(--font-mono);color:var(--sm-content-secondary);">★ 4.8 · 25분</div>
+            </div>
+            <div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#86EFAC,#15803D);border-radius:14px;margin-bottom:8px;"></div>
+              <div style="font:700 13px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">그린볼 본점</div>
+              <div style="font:500 11px/1 var(--font-mono);color:var(--sm-content-secondary);">★ 4.9 · 20분</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-tabbar">
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-home-fill"/></svg>홈</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-cart"/></svg>장보기</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-heart"/></svg>찜</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-receipt"/></svg>주문내역</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>마이</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ==== Demo · Shopping Home ==== -->
+  <section class="demo-section" id="demo-shopping"
+           data-uses="tabs,badge,banner,tabbar,appbar,others,button,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-background-default,--sm-background-muted,--sm-border-subtle,--p-indigo-500">
+    <div class="demo-header">
+      <div class="demo-label">DEMO 12 · SHOPPING HOME</div>
+      <h2>쇼핑몰 홈</h2>
+      <p>브랜드 헤더 · 캐러셀 · 2행 아이콘 그리드 · 쿠폰 뱃지 상품 카드. 브랜드 색을 유일한 악센트로 삼아 정체성을 만듭니다.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone"><div class="demo-screen">
+        <!-- Branded purple header -->
+        <div style="background:var(--sm-interactive-brand-default);color:#fff;">
+          <div class="demo-statusbar" style="background:transparent;color:#fff;"><span>9:41</span><span class="icons">● ● ●●</span></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 16px 12px;">
+            <div style="display:flex;align-items:center;gap:6px;font:800 22px/1 var(--font-sans);letter-spacing:-0.035em;">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M2.5 3.5h2.5l2.1 11.2a1.5 1.5 0 001.5 1.3h8.4a1.5 1.5 0 001.5-1.1L20 7H6.5"/><circle cx="9.5" cy="19.5" r="1.5"/><circle cx="17.5" cy="19.5" r="1.5"/></svg>
+              Mart
+            </div>
+            <div style="flex:1;display:flex;background:rgba(0,0,0,0.25);border-radius:99px;padding:3px;">
+              <div style="flex:1;padding:7px 0;text-align:center;background:#fff;color:var(--sm-interactive-brand-default);border-radius:99px;font:700 12px/1 var(--font-sans);">식품</div>
+              <div style="flex:1;padding:7px 0;text-align:center;color:rgba(255,255,255,0.9);font:500 12px/1 var(--font-sans);">뷰티</div>
+            </div>
+            <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-bell"/></svg></div>
+            <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-cart"/></svg></div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div style="position:relative;display:flex;align-items:center;gap:22px;padding:14px 20px 12px;overflow-x:auto;white-space:nowrap;border-bottom:1px solid var(--sm-border-subtle);">
+          <div style="font:800 14px/1 var(--font-sans);color:var(--sm-content-primary);position:relative;white-space:nowrap;">추천<span style="position:absolute;bottom:-14px;left:0;right:0;height:2px;background:var(--sm-interactive-brand-default);"></span></div>
+          <div style="font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);white-space:nowrap;">베스트</div>
+          <div style="font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);white-space:nowrap;">단독</div>
+          <div style="font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);white-space:nowrap;">멤버스</div>
+          <div style="font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);white-space:nowrap;">세일</div>
+          <div style="font:500 14px/1 var(--font-sans);color:var(--sm-content-tertiary);white-space:nowrap;">패션</div>
+          <div style="position:absolute;top:6px;right:14px;padding:6px 10px;background:var(--sm-content-primary);color:#fff;border-radius:12px;font:500 10px/1.3 var(--font-sans);white-space:nowrap;">지금 가입하면<br>첫 구매는 무료배송!</div>
+        </div>
+
+        <!-- Hero banner (.banner.banner-hero) -->
+        <div style="padding:14px 20px 0;">
+          <div class="banner banner-hero" style="background:#E9E4F3;padding:18px 0 18px 18px;min-height:auto;border-radius:14px;">
+            <div class="banner-content">
+              <div class="banner-eyebrow" style="font:800 18px/1.2 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.025em;opacity:1;">단 7일 최대 33%</div>
+              <h3 class="banner-title" style="color:var(--sm-interactive-brand-default);font:800 24px/1.1 var(--font-sans);letter-spacing:-0.03em;margin-top:2px;">이달의 굿프라이스</h3>
+              <div class="banner-subtitle" style="margin-top:8px;">장보기 필수템 · 화제의 신상 외</div>
+              <div style="margin-top:auto;padding-top:16px;font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);font-variant-numeric:tabular-nums;">04.20 – 04.27</div>
+            </div>
+            <div class="banner-image" style="width:100px;height:auto;align-self:stretch;background:#F7D794;border-radius:0 14px 14px 0;"></div>
+            <div class="banner-indicator"><span>⏸</span> 01 / 28 <span style="opacity:0.5;">|</span> 전체보기 ›</div>
+          </div>
+        </div>
+
+        <!-- Icon grid 2 rows -->
+        <div style="padding:20px 16px 8px;display:grid;grid-template-columns:repeat(6,1fr);gap:16px 4px;">
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#FEE2E2;display:grid;place-items:center;font-size:22px;">🛒</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">자주산상품</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:var(--sm-interactive-brand-subtle);display:grid;place-items:center;font:800 11px/1.1 var(--font-sans);color:var(--sm-content-brand);letter-spacing:-0.02em;">단독<br>SALE</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">단독특가</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#DBEAFE;display:grid;place-items:center;color:#2563EB;font:800 18px/1 var(--font-mono);">%</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">최저가도전</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#D1FAE5;display:grid;place-items:center;color:#059669;font:800 18px/1 var(--font-mono);">%↓</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">멤버스특가</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#FEF3C7;display:grid;place-items:center;font-size:22px;">👗</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">패션</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#FEE2E2;display:grid;place-items:center;font-size:22px;">💡</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">홈&리빙</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#DBEAFE;display:grid;place-items:center;font-size:22px;">💰</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">프리미엄</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#F3F4F6;display:grid;place-items:center;color:#111827;font:800 9px/1.1 var(--font-mono);">SHOW<br>CASE</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">4월신상품</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#EDE9FE;display:grid;place-items:center;color:#6B21A8;font:800 16px/1 var(--font-mono);">P</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">매일혜택</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#D1FAE5;display:grid;place-items:center;font-size:22px;">🍀</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">행운출첵</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#FEE2E2;display:grid;place-items:center;font-size:22px;">⚖</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">다이어트</div></div>
+          <div style="text-align:center;"><div style="width:48px;height:48px;margin:0 auto 6px;border-radius:14px;background:#EDE9FE;display:grid;place-items:center;font-size:22px;">📅</div><div style="font:500 10px/1.1 var(--font-sans);color:var(--sm-content-primary);">이벤트</div></div>
+        </div>
+
+        <!-- Pagination dots -->
+        <div style="display:flex;justify-content:center;gap:4px;padding:4px 0 16px;">
+          <span style="width:12px;height:4px;border-radius:99px;background:var(--sm-content-primary);"></span>
+          <span style="width:4px;height:4px;border-radius:99px;background:var(--sm-border-default);"></span>
+        </div>
+
+        <!-- Section -->
+        <div style="padding:10px 20px 0;display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div style="font:800 17px/1.2 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.025em;">🛒 지금 가장 많이 담는 특가</div>
+            <div style="font:500 12px/1.3 var(--font-sans);color:var(--sm-content-tertiary);margin-top:4px;">꼭 담아야 할 추천 특가템 최대 60% OFF</div>
+          </div>
+          <div style="font:600 12px/1 var(--font-sans);color:var(--sm-content-tertiary);white-space:nowrap;cursor:pointer;">전체보기 ›</div>
+        </div>
+
+        <!-- Product cards -->
+        <div style="padding:16px 20px 100px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+          <div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,#FED7AA,#FB923C);border-radius:12px;margin-bottom:8px;position:relative;">
+              <span style="position:absolute;top:8px;left:8px;padding:3px 7px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:4px;font:700 9px/1 var(--font-mono);">+20%쿠폰</span>
+            </div>
+          </div>
+          <div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,#FECACA,#F87171);border-radius:12px;margin-bottom:8px;position:relative;">
+              <span style="position:absolute;top:8px;left:8px;padding:3px 7px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:4px;font:700 9px/1 var(--font-mono);">+15%쿠폰</span>
+            </div>
+          </div>
+          <div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,#86EFAC,#16A34A);border-radius:12px;margin-bottom:8px;position:relative;">
+              <span style="position:absolute;top:8px;left:8px;padding:3px 7px;background:#0EA5E9;color:#fff;border-radius:4px;font:700 9px/1 var(--font-mono);">멤버스특가</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-tabbar">
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-home-fill"/></svg>홈</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-coffee"/></svg>라운지</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-menu"/></svg>카테고리</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-search"/></svg>검색</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>마이페이지</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ==== Demo · Social Meetup ==== -->
+  <section class="demo-section" id="demo-social"
+           data-uses="button,badge,tabbar,appbar,others,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-background-default,--sm-background-muted,--sm-background-subtle,--sm-border-subtle,--sm-status-error,--p-green-500">
+    <div class="demo-header">
+      <div class="demo-label">DEMO 13 · SOCIAL MEETUP</div>
+      <h2>소셜 모임</h2>
+      <p>풀블리드 히어로 · 이중 CTA · 카테고리 아이콘(HOT 뱃지) · 모임 카드. 커뮤니티의 열기를 첫 화면에서 느끼게 합니다.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone"><div class="demo-screen" style="background:var(--sm-background-muted);">
+        <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px 14px;background:var(--sm-background-default);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:32px;height:32px;border-radius:10px;background:var(--sm-interactive-brand-default);display:grid;place-items:center;color:#fff;"><svg class="ico ico-sm"><use href="#i-users-fill"/></svg></div>
+            <div style="font:900 22px/1 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.035em;">Meetup<span style="color:var(--sm-content-brand);">·</span></div>
+          </div>
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--sm-background-default);border:1px solid var(--sm-border-subtle);display:grid;place-items:center;cursor:pointer;position:relative;">
+            <svg class="ico"><use href="#i-bell"/></svg>
+            <span style="position:absolute;top:6px;right:6px;width:6px;height:6px;border-radius:50%;background:var(--sm-status-error);"></span>
+          </div>
+        </div>
+
+        <!-- Hero banner -->
+        <div style="position:relative;aspect-ratio:1.1/1;background:linear-gradient(180deg,#7C3AED 0%,#4C1D95 100%);overflow:hidden;">
+          <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,0.15),transparent 55%);"></div>
+          <!-- Simulated crowd -->
+          <div style="position:absolute;bottom:0;left:0;right:0;height:60%;display:flex;align-items:flex-end;justify-content:space-around;">
+            <div style="width:32px;height:72px;background:linear-gradient(180deg,#111,#000);border-radius:14px 14px 0 0;opacity:0.85;"></div>
+            <div style="width:36px;height:92px;background:linear-gradient(180deg,#F59E0B,#78350F);border-radius:14px 14px 0 0;opacity:0.85;"></div>
+            <div style="width:34px;height:80px;background:linear-gradient(180deg,#111,#1F2937);border-radius:14px 14px 0 0;opacity:0.85;"></div>
+            <div style="width:38px;height:100px;background:linear-gradient(180deg,#DC2626,#7F1D1D);border-radius:14px 14px 0 0;opacity:0.85;"></div>
+            <div style="width:32px;height:74px;background:linear-gradient(180deg,#1F2937,#000);border-radius:14px 14px 0 0;opacity:0.85;"></div>
+            <div style="width:36px;height:88px;background:linear-gradient(180deg,#DB2777,#500724);border-radius:14px 14px 0 0;opacity:0.85;"></div>
+            <div style="width:34px;height:82px;background:linear-gradient(180deg,#4F46E5,#1E3A8A);border-radius:14px 14px 0 0;opacity:0.85;"></div>
+          </div>
+          <!-- Overlay text -->
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(0deg,rgba(0,0,0,0.7),transparent);color:#fff;">
+            <div style="font:800 20px/1.3 var(--font-sans);letter-spacing:-0.02em;margin-bottom:6px;">음악은 이렇게 즐기는 거야</div>
+            <div style="font:500 13px/1 var(--font-sans);display:flex;align-items:center;gap:4px;">모임 구경하기 <svg class="ico ico-sm"><use href="#i-arrow-right"/></svg></div>
+          </div>
+          <div style="position:absolute;top:16px;right:16px;padding:4px 10px;background:rgba(0,0,0,0.45);border-radius:99px;color:#fff;font:700 10px/1 var(--font-mono);">2 / 4</div>
+        </div>
+
+        <!-- Dual CTA -->
+        <div style="background:var(--sm-background-default);padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <button style="padding:14px 0;background:var(--sm-interactive-brand-default);color:#fff;border:none;border-radius:12px;font:700 14px/1 var(--font-sans);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
+            <svg class="ico ico-sm"><use href="#i-plus"/></svg> 모임 만들기
+          </button>
+          <button style="padding:14px 0;background:var(--sm-background-default);color:var(--sm-content-primary);border:1px solid var(--sm-border-default);border-radius:12px;font:700 14px/1 var(--font-sans);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
+            <svg class="ico ico-sm"><use href="#i-search"/></svg> 모임 찾기
+          </button>
+        </div>
+
+        <!-- Category section -->
+        <div style="margin:8px 16px;padding:20px 16px;background:var(--sm-background-default);border-radius:16px;">
+          <div style="font:800 15px/1.2 var(--font-sans);color:var(--sm-content-primary);margin-bottom:16px;">많이 찾는 카테고리</div>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
+            <div style="text-align:center;position:relative;">
+              <span style="position:absolute;top:-4px;left:50%;transform:translate(-10%,0);padding:2px 6px;background:var(--sm-status-error);color:#fff;border-radius:4px;font:800 8px/1 var(--font-mono);z-index:1;">HOT</span>
+              <div style="width:48px;height:48px;margin:0 auto 6px;display:grid;place-items:center;font-size:26px;">🍽️</div>
+              <div style="font:600 11px/1 var(--font-sans);color:var(--sm-content-primary);">다이닝</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;margin:0 auto 6px;display:grid;place-items:center;font-size:26px;">👥</div>
+              <div style="font:600 11px/1 var(--font-sans);color:var(--sm-content-primary);">소셜</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;margin:0 auto 6px;display:grid;place-items:center;font-size:26px;">🗺️</div>
+              <div style="font:600 11px/1 var(--font-sans);color:var(--sm-content-primary);">여행</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;margin:0 auto 6px;display:grid;place-items:center;font-size:26px;">👟</div>
+              <div style="font:600 11px/1 var(--font-sans);color:var(--sm-content-primary);">걷기/러닝</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;margin:0 auto 6px;display:grid;place-items:center;font-size:26px;">🎬</div>
+              <div style="font:600 11px/1 var(--font-sans);color:var(--sm-content-primary);">영화/공연</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nearby meetups -->
+        <div style="margin:0 16px 100px;padding:20px 16px;background:var(--sm-background-default);border-radius:16px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <div style="font:800 15px/1.2 var(--font-sans);color:var(--sm-content-primary);">가까운 동네 모임</div>
+            <div style="padding:4px 10px;background:var(--sm-content-primary);color:#fff;border-radius:99px;font:600 10px/1 var(--font-sans);">수요일에 만나요 🙋‍♀️</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--sm-border-subtle);">
+            <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#DB2777,#831843);flex-shrink:0;"></div>
+            <div style="flex:1;">
+              <div style="font:700 13px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">와인 & 치즈 나이트</div>
+              <div style="font:500 11px/1.2 var(--font-sans);color:var(--sm-content-tertiary);">서울 성수동 · 8명 모집 · 수요일 저녁</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;padding:12px 0;">
+            <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#F59E0B,#B45309);flex-shrink:0;"></div>
+            <div style="flex:1;">
+              <div style="font:700 13px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">한강 야간 러닝 모임</div>
+              <div style="font:500 11px/1.2 var(--font-sans);color:var(--sm-content-tertiary);">서울 반포 · 12명 모집 · 금요일 밤</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-tabbar">
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-home"/></svg>홈</div>
+          <div class="m-tabbar-item" style="position:relative;"><svg class="ico"><use href="#i-chat"/></svg>채팅<span style="position:absolute;top:4px;right:20%;min-width:14px;height:14px;padding:0 3px;background:var(--sm-status-error);color:#fff;border-radius:99px;font:800 8px/1 var(--font-mono);display:grid;place-items:center;">1</span></div>
+          <div class="m-tabbar-item active"><div style="width:32px;height:32px;border-radius:50%;background:var(--sm-interactive-brand-default);color:#fff;display:grid;place-items:center;"><svg class="ico ico-sm"><use href="#i-users-fill"/></svg></div>모임</div>
+          <div class="m-tabbar-item"><div style="width:20px;height:20px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font:800 10px/1 var(--font-mono);">%</div>핫딜</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-more-h"/></svg>더보기</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ==== Demo · Banking ==== -->
+  <section class="demo-section" id="demo-banking"
+           data-uses="tabs,control,button,badge,others,tabbar,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-content-brand,--sm-interactive-brand-default,--sm-interactive-brand-subtle,--sm-background-default,--sm-background-muted,--sm-surface-default,--sm-border-subtle,--sm-border-default,--sm-status-success,--p-indigo-500">
+    <div class="demo-header">
+      <div class="demo-label">DEMO 14 · BANKING HOME</div>
+      <h2>뱅킹 홈</h2>
+      <p>접근성 토글 · 지점 · 큰 사용자 이름 · 자사/타사 세그먼트 · 계좌 카드(잔액·페이지네이션·액션) · 즐겨찾기 그리드. 돈은 정확히, 동작은 최단 경로로.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone"><div class="demo-screen" style="background:var(--sm-background-muted);">
+        <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
+
+        <!-- Top bar: accessibility toggle (left) + icons (right) -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 20px 14px;">
+          <div style="display:inline-flex;align-items:center;padding:3px;background:var(--sm-background-default);border:1px solid var(--sm-border-subtle);border-radius:99px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.03);cursor:pointer;">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--sm-background-default);border:1px solid var(--sm-border-subtle);box-shadow:0 1px 2px rgba(0,0,0,0.06);"></div>
+            <span style="padding:0 14px 0 8px;font:600 12px/1 var(--font-sans);color:var(--sm-content-secondary);">큰글</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px;color:var(--sm-content-primary);">
+            <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-bell"/></svg></div>
+            <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-search"/></svg></div>
+            <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-menu"/></svg></div>
+          </div>
+        </div>
+
+        <!-- Branch + benefit pill -->
+        <div style="padding:0 20px 6px;display:flex;align-items:center;gap:8px;">
+          <div style="font:600 13px/1.2 var(--font-sans);color:var(--sm-content-brand);">강남지점</div>
+          <span style="padding:4px 10px;background:var(--sm-interactive-brand-default);color:#fff;border-radius:99px;font:700 11px/1 var(--font-sans);cursor:pointer;">혜택보기</span>
+        </div>
+
+        <!-- User name (large) -->
+        <div style="padding:6px 20px 16px;display:flex;align-items:center;gap:6px;cursor:pointer;">
+          <div style="font:800 28px/1.15 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.03em;">김도훈 님</div>
+          <svg class="ico" style="color:var(--sm-content-tertiary);"><use href="#i-chevron-right"/></svg>
+        </div>
+
+        <!-- Segment tabs: 자사 / 타사 -->
+        <div style="padding:0 20px 18px;display:flex;gap:22px;">
+          <div style="font:800 17px/1 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.02em;cursor:pointer;">UIUX-DH은행</div>
+          <div style="font:500 17px/1 var(--font-sans);color:var(--sm-content-tertiary);letter-spacing:-0.02em;cursor:pointer;">다른 금융</div>
+        </div>
+
+        <!-- Account card -->
+        <div style="margin:0 16px 12px;background:var(--sm-background-default);border-radius:20px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+          <div style="padding:20px 20px 18px;">
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <div style="width:40px;height:40px;border-radius:12px;background:var(--sm-interactive-brand-default);color:#fff;display:grid;place-items:center;font:800 13px/1 var(--font-sans);letter-spacing:-0.02em;flex-shrink:0;">DH</div>
+              <div style="flex:1;min-width:0;">
+                <div style="font:700 15px/1.2 var(--font-sans);color:var(--sm-content-primary);">김도훈 개인통장</div>
+                <div style="display:flex;align-items:center;gap:4px;margin-top:4px;">
+                  <span style="font:500 11px/1.2 var(--font-sans);color:var(--sm-content-tertiary);">UIUX-DH은행 302-0913-6488-91</span>
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" style="color:var(--sm-content-tertiary);cursor:pointer;flex-shrink:0;"><rect x="7" y="7" width="12" height="14" rx="2"/><path d="M5 17V5a2 2 0 0 1 2-2h10"/></svg>
+                </div>
+              </div>
+              <div style="cursor:pointer;display:grid;place-items:center;color:var(--sm-content-tertiary);padding:4px;"><svg class="ico ico-sm"><use href="#i-more-v"/></svg></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:26px 0 20px;">
+              <div style="font:800 34px/1 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.025em;font-variant-numeric:tabular-nums;">3,842,150</div>
+              <div style="font:700 22px/1 var(--font-sans);color:var(--sm-content-primary);">원</div>
+              <div style="cursor:pointer;padding:6px;display:grid;place-items:center;color:var(--sm-content-tertiary);"><svg class="ico ico-sm"><use href="#i-clock"/></svg></div>
+            </div>
+          </div>
+          <div style="display:flex;border-top:1px solid var(--sm-border-subtle);">
+            <div style="flex:1;padding:14px 0;text-align:center;font:700 14px/1 var(--font-sans);color:var(--sm-content-primary);cursor:pointer;border-right:1px solid var(--sm-border-subtle);">거래내역</div>
+            <div style="flex:1;padding:14px 0;text-align:center;font:700 14px/1 var(--font-sans);color:var(--sm-content-primary);cursor:pointer;">이체</div>
+          </div>
+        </div>
+
+        <!-- Pagination dots + add card -->
+        <div style="display:flex;justify-content:center;align-items:center;gap:6px;padding:4px 0 18px;">
+          <span style="width:16px;height:5px;border-radius:99px;background:var(--sm-content-primary);"></span>
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--sm-border-default);"></span>
+          <div style="width:20px;height:20px;border-radius:50%;background:var(--sm-background-default);border:1px solid var(--sm-border-default);display:grid;place-items:center;color:var(--sm-content-tertiary);cursor:pointer;margin-left:4px;"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+
+        <!-- Favorites card -->
+        <div style="margin:0 16px 100px;background:var(--sm-background-default);border-radius:20px;padding:22px 20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <div style="font:800 17px/1.2 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.02em;">즐겨찾기</div>
+            <div style="cursor:pointer;display:grid;place-items:center;color:var(--sm-content-tertiary);"><svg class="ico ico-sm"><use href="#i-settings"/></svg></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px 8px;">
+            <div style="text-align:center;cursor:pointer;">
+              <div style="width:58px;height:58px;margin:0 auto 10px;border-radius:16px;background:#DCFCE7;display:grid;place-items:center;">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>
+              </div>
+              <div style="font:600 12px/1.25 var(--font-sans);color:var(--sm-content-primary);">전체계좌조회</div>
+            </div>
+            <div style="text-align:center;cursor:pointer;">
+              <div style="width:58px;height:58px;margin:0 auto 10px;border-radius:16px;background:#DBEAFE;display:grid;place-items:center;">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><text x="12" y="14" text-anchor="middle" fill="#2563EB" stroke="none" font="800 9px sans-serif" style="font:800 9px sans-serif;">₩</text></svg>
+              </div>
+              <div style="font:600 12px/1.25 var(--font-sans);color:var(--sm-content-primary);">모바일<br>ATM출금</div>
+            </div>
+            <div style="text-align:center;cursor:pointer;">
+              <div style="width:58px;height:58px;margin:0 auto 10px;border-radius:16px;background:#FEE2E2;display:grid;place-items:center;">
+                <svg viewBox="0 0 24 24" width="26" height="22" fill="none" stroke="#DC2626" stroke-width="1.8" stroke-linejoin="round"><path d="M3 6l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/><text x="12" y="16" text-anchor="middle" fill="#DC2626" stroke="none" style="font:800 7px sans-serif;letter-spacing:0.05em;">TAX</text></svg>
+              </div>
+              <div style="font:600 12px/1.25 var(--font-sans);color:var(--sm-content-primary);">공과금납부</div>
+            </div>
+            <div style="text-align:center;cursor:pointer;">
+              <div style="width:58px;height:58px;margin:0 auto 10px;border-radius:16px;background:#FEF3C7;display:grid;place-items:center;">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#D97706" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 8V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/><path d="M3 14h18"/></svg>
+              </div>
+              <div style="font:600 12px/1.25 var(--font-sans);color:var(--sm-content-primary);">해외결제</div>
+            </div>
+            <div style="text-align:center;cursor:pointer;">
+              <div style="width:58px;height:58px;margin:0 auto 10px;border-radius:16px;background:#FCE7F3;display:grid;place-items:center;">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#DB2777" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M8 8a2 2 0 0 1 2-4h.5a2 2 0 0 1 1.5.8L12 8l-.5-3.2A2 2 0 0 1 13 4h.5A2 2 0 0 1 16 8"/></svg>
+              </div>
+              <div style="font:600 12px/1.25 var(--font-sans);color:var(--sm-content-primary);">이벤트</div>
+            </div>
+            <div style="text-align:center;cursor:pointer;">
+              <div style="width:58px;height:58px;margin:0 auto 10px;border-radius:16px;border:1.5px dashed var(--sm-border-default);display:grid;place-items:center;color:var(--sm-content-tertiary);background:var(--sm-background-muted);">
+                <svg class="ico ico-sm"><use href="#i-plus"/></svg>
+              </div>
+              <div style="font:600 12px/1.25 var(--font-sans);color:var(--sm-content-tertiary);">메뉴추가</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-tabbar">
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-home-fill"/></svg>홈</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-chart"/></svg>마이데이터</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-cart"/></svg>금융상품몰</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-chat"/></svg>상담톡</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ==== Demo · Map ==== -->
+  <section class="demo-section" id="demo-map"
+           data-uses="textfield,chip,badge,button,sheet,others,tabbar,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-content-brand,--sm-background-default,--sm-background-muted,--sm-surface-default,--sm-border-subtle,--sm-border-default,--sm-interactive-brand-default,--sm-status-error,--p-indigo-500,--p-red-500">
+    <div class="demo-header">
+      <div class="demo-label">DEMO 15 · MAP DISCOVERY</div>
+      <h2>지도 탐색</h2>
+      <p>풀블리드 지도 · 일체형 검색(장소+날짜+인원+장바구니) · 필터 칩 · 카운트 핀 + 가격 툴팁 · 목록 토글 · 현위치 FAB · 하단 시트 · 탭바. 지도가 주인공일 때, 컨트롤은 공중에 떠 있습니다.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone"><div class="demo-screen" style="background:#E8EEF2;position:relative;">
+        <!-- Map background -->
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(circle at 20% 30%, #C7D7E0 0%, transparent 18%),
+          radial-gradient(circle at 75% 45%, #B6CBD5 0%, transparent 22%),
+          radial-gradient(circle at 40% 70%, #D9E4EB 0%, transparent 20%),
+          linear-gradient(180deg,#E8EEF2,#D9E4EB);"></div>
+        <!-- Simulated roads -->
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.55;" viewBox="0 0 375 812" preserveAspectRatio="none">
+          <path d="M0 300 Q 140 270 200 330 T 375 350" stroke="#A8BCC4" stroke-width="8" fill="none"/>
+          <path d="M0 300 Q 140 270 200 330 T 375 350" stroke="#EEF3F6" stroke-width="5" fill="none"/>
+          <path d="M80 0 Q 110 200 60 400 T 120 812" stroke="#A8BCC4" stroke-width="6" fill="none"/>
+          <path d="M80 0 Q 110 200 60 400 T 120 812" stroke="#EEF3F6" stroke-width="3" fill="none"/>
+          <path d="M300 0 L 260 300 L 320 500 L 280 812" stroke="#A8BCC4" stroke-width="4" fill="none"/>
+          <path d="M300 0 L 260 300 L 320 500 L 280 812" stroke="#EEF3F6" stroke-width="2" fill="none"/>
+          <path d="M0 580 L 180 540 L 375 580" stroke="#A8BCC4" stroke-width="4" fill="none"/>
+          <path d="M0 580 L 180 540 L 375 580" stroke="#EEF3F6" stroke-width="2" fill="none"/>
+        </svg>
+        <!-- Park/green area -->
+        <div style="position:absolute;top:420px;left:20px;width:120px;height:80px;background:#C5DDC8;border-radius:40%;opacity:0.7;"></div>
+        <!-- Labels -->
+        <div style="position:absolute;top:200px;left:50%;transform:translateX(-50%);font:600 11px/1 var(--font-sans);color:var(--sm-content-tertiary);opacity:0.6;">감삼역</div>
+        <div style="position:absolute;top:460px;left:22%;font:600 10px/1 var(--font-sans);color:#4A8B57;opacity:0.7;">수변공원</div>
+
+        <!-- Status bar overlay -->
+        <div class="demo-statusbar" style="background:transparent;position:absolute;top:0;left:0;right:0;z-index:6;"><span>9:41</span><span class="icons">● ● ●●</span></div>
+
+        <!-- Integrated top search bar: 검색 + 날짜 + 장바구니 -->
+        <div style="position:absolute;top:62px;left:16px;right:16px;z-index:5;">
+          <div style="display:flex;align-items:center;gap:0;padding:6px;background:var(--sm-background-default);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.12);">
+            <div style="flex:1;display:flex;align-items:center;gap:8px;padding:8px 10px;min-width:0;">
+              <svg class="ico ico-sm" style="color:var(--sm-content-tertiary);flex-shrink:0;"><use href="#i-search"/></svg>
+              <div style="flex:1;font:500 13px/1 var(--font-sans);color:var(--sm-content-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">장소, 지명 검색</div>
+            </div>
+            <div style="width:1px;height:20px;background:var(--sm-border-subtle);"></div>
+            <div style="padding:8px 10px;font:600 11px/1.3 var(--font-sans);color:var(--sm-content-primary);white-space:nowrap;cursor:pointer;">04.22~23<br><span style="font:500 10px/1 var(--font-sans);color:var(--sm-content-tertiary);">게스트 2명</span></div>
+            <div style="width:1px;height:20px;background:var(--sm-border-subtle);"></div>
+            <div style="padding:0 10px;cursor:pointer;display:grid;place-items:center;color:var(--sm-content-primary);position:relative;">
+              <svg class="ico ico-sm"><use href="#i-cart"/></svg>
+            </div>
+          </div>
+
+          <!-- Filter pills -->
+          <div style="margin-top:12px;display:flex;align-items:center;gap:6px;overflow-x:auto;white-space:nowrap;">
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:8px 14px;background:var(--sm-background-default);color:var(--sm-content-primary);border:1px solid var(--sm-border-default);border-radius:99px;font:700 12px/1 var(--font-sans);flex-shrink:0;cursor:pointer;">
+              <svg class="ico ico-sm"><use href="#i-home"/></svg> 숙소
+            </span>
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:8px 14px;background:var(--sm-background-default);color:var(--sm-content-primary);border:1px solid var(--sm-border-subtle);border-radius:99px;font:500 12px/1 var(--font-sans);flex-shrink:0;cursor:pointer;">
+              <svg class="ico ico-sm"><use href="#i-star"/></svg> 레저
+            </span>
+            <span style="margin-left:auto;padding:8px 12px;font:500 12px/1 var(--font-sans);color:var(--sm-content-tertiary);flex-shrink:0;cursor:pointer;">선택초기화</span>
+          </div>
+        </div>
+
+        <!-- Accommodation pins (red) with count badges -->
+        <div style="position:absolute;top:240px;left:32%;cursor:pointer;">
+          <div style="position:relative;width:44px;height:48px;filter:drop-shadow(0 6px 12px rgba(220,38,38,0.3));">
+            <svg viewBox="0 0 44 48" width="44" height="48" style="position:absolute;top:0;left:0;">
+              <path d="M22 0C10 0 2 8 2 18c0 13 20 30 20 30s20-17 20-30C42 8 34 0 22 0z" fill="var(--p-red-500)"/>
+            </svg>
+            <div style="position:absolute;top:8px;left:50%;transform:translateX(-50%);color:#fff;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1v-9.5z"/></svg>
+            </div>
+            <div style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 4px;border-radius:99px;background:#fff;border:1.5px solid var(--p-red-500);display:grid;place-items:center;color:var(--p-red-500);font:800 10px/1 var(--font-mono);">3</div>
+          </div>
+        </div>
+
+        <div style="position:absolute;top:340px;left:56%;cursor:pointer;">
+          <div style="position:relative;width:44px;height:48px;filter:drop-shadow(0 6px 12px rgba(220,38,38,0.3));">
+            <svg viewBox="0 0 44 48" width="44" height="48" style="position:absolute;top:0;left:0;">
+              <path d="M22 0C10 0 2 8 2 18c0 13 20 30 20 30s20-17 20-30C42 8 34 0 22 0z" fill="var(--p-red-500)"/>
+            </svg>
+            <div style="position:absolute;top:8px;left:50%;transform:translateX(-50%);color:#fff;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1v-9.5z"/></svg>
+            </div>
+            <div style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 4px;border-radius:99px;background:#fff;border:1.5px solid var(--p-red-500);display:grid;place-items:center;color:var(--p-red-500);font:800 10px/1 var(--font-mono);">2</div>
+          </div>
+        </div>
+
+        <div style="position:absolute;top:220px;left:72%;cursor:pointer;">
+          <div style="position:relative;width:44px;height:48px;filter:drop-shadow(0 6px 12px rgba(220,38,38,0.3));">
+            <svg viewBox="0 0 44 48" width="44" height="48" style="position:absolute;top:0;left:0;">
+              <path d="M22 0C10 0 2 8 2 18c0 13 20 30 20 30s20-17 20-30C42 8 34 0 22 0z" fill="var(--p-red-500)"/>
+            </svg>
+            <div style="position:absolute;top:8px;left:50%;transform:translateX(-50%);color:#fff;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1v-9.5z"/></svg>
+            </div>
+            <div style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 4px;border-radius:99px;background:#fff;border:1.5px solid var(--p-red-500);display:grid;place-items:center;color:var(--p-red-500);font:800 10px/1 var(--font-mono);">4</div>
+          </div>
+        </div>
+
+        <!-- Leisure pins (blue/indigo) -->
+        <div style="position:absolute;top:430px;left:15%;cursor:pointer;">
+          <div style="position:relative;width:38px;height:42px;filter:drop-shadow(0 6px 12px rgba(79,70,229,0.35));">
+            <svg viewBox="0 0 38 42" width="38" height="42" style="position:absolute;top:0;left:0;">
+              <path d="M19 0C9 0 2 6 2 15c0 11 17 27 17 27s17-16 17-27C36 6 29 0 19 0z" fill="var(--p-indigo-500)"/>
+            </svg>
+            <div style="position:absolute;top:7px;left:50%;transform:translateX(-50%);color:#fff;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2c3 3 4 6 4 8a4 4 0 11-8 0c0-2 1-5 4-8z"/><path d="M10 14l-2 8h8l-2-8"/></svg>
+            </div>
+            <div style="position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;padding:0 4px;border-radius:99px;background:#fff;border:1.5px solid var(--p-indigo-500);display:grid;place-items:center;color:var(--p-indigo-500);font:800 9px/1 var(--font-mono);">2</div>
+          </div>
+        </div>
+
+        <div style="position:absolute;top:520px;left:28%;cursor:pointer;">
+          <div style="position:relative;width:38px;height:42px;filter:drop-shadow(0 6px 12px rgba(79,70,229,0.35));">
+            <svg viewBox="0 0 38 42" width="38" height="42" style="position:absolute;top:0;left:0;">
+              <path d="M19 0C9 0 2 6 2 15c0 11 17 27 17 27s17-16 17-27C36 6 29 0 19 0z" fill="var(--p-indigo-500)"/>
+            </svg>
+            <div style="position:absolute;top:7px;left:50%;transform:translateX(-50%);color:#fff;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2c3 3 4 6 4 8a4 4 0 11-8 0c0-2 1-5 4-8z"/><path d="M10 14l-2 8h8l-2-8"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price tooltip (pointing to pin #3) -->
+        <div style="position:absolute;top:212px;left:38%;z-index:4;">
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--sm-background-default);border-radius:99px;box-shadow:0 8px 20px rgba(0,0,0,0.18);white-space:nowrap;position:relative;">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--p-red-500);color:#fff;display:grid;place-items:center;">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1v-9.5z"/></svg>
+            </div>
+            <div>
+              <div style="font:700 11px/1.1 var(--font-sans);color:var(--sm-content-primary);">본리동 호텔 나인</div>
+              <div style="font:800 12px/1 var(--font-mono);color:var(--p-red-500);margin-top:2px;font-variant-numeric:tabular-nums;">63,000원</div>
+            </div>
+            <div style="position:absolute;bottom:-5px;left:20px;width:10px;height:10px;background:var(--sm-background-default);transform:rotate(45deg);box-shadow:3px 3px 6px rgba(0,0,0,0.06);"></div>
+          </div>
+        </div>
+
+        <!-- Current location with halo pulse -->
+        <div style="position:absolute;top:500px;left:30%;">
+          <div style="width:72px;height:72px;border-radius:50%;background:rgba(79,70,229,0.12);display:grid;place-items:center;margin:-28px 0 0 -28px;">
+            <div style="width:44px;height:44px;border-radius:50%;background:rgba(79,70,229,0.18);display:grid;place-items:center;">
+              <div style="width:18px;height:18px;border-radius:50%;background:var(--p-indigo-500);border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.2);"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating list toggle button (centered) -->
+        <div style="position:absolute;bottom:182px;left:50%;transform:translateX(-50%);z-index:5;">
+          <div style="display:flex;align-items:center;gap:6px;padding:11px 20px;background:var(--sm-background-default);border-radius:99px;box-shadow:0 8px 20px rgba(0,0,0,0.18);cursor:pointer;">
+            <svg class="ico ico-sm"><use href="#i-menu"/></svg>
+            <span style="font:700 13px/1 var(--font-sans);color:var(--sm-content-primary);">목록</span>
+          </div>
+        </div>
+
+        <!-- My location FAB -->
+        <div style="position:absolute;right:16px;bottom:186px;z-index:5;">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--sm-background-default);box-shadow:0 8px 20px rgba(0,0,0,0.18);display:grid;place-items:center;color:var(--sm-content-primary);cursor:pointer;">
+            <svg class="ico ico-sm"><use href="#i-map-pin"/></svg>
+          </div>
+        </div>
+
+        <!-- Bottom sheet preview (single large card) -->
+        <div style="position:absolute;bottom:68px;left:0;right:0;background:var(--sm-background-default);border-top-left-radius:20px;border-top-right-radius:20px;box-shadow:0 -10px 30px rgba(0,0,0,0.1);z-index:4;">
+          <div style="width:40px;height:4px;border-radius:99px;background:var(--sm-border-default);margin:10px auto 12px;"></div>
+          <div style="padding:0 20px 16px;display:flex;align-items:center;gap:12px;">
+            <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#FCA5A5,#B91C1C);flex-shrink:0;position:relative;overflow:hidden;">
+              <div style="position:absolute;top:8px;left:10px;width:12px;height:8px;background:rgba(255,255,255,0.9);border-radius:1px;"></div>
+              <div style="position:absolute;top:22px;left:10px;width:20px;height:6px;background:rgba(255,255,255,0.6);border-radius:1px;"></div>
+              <div style="position:absolute;bottom:6px;left:10px;width:16px;height:4px;background:rgba(255,255,255,0.5);border-radius:1px;"></div>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+                <div style="font:700 14px/1.2 var(--font-sans);color:var(--sm-content-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">본리동 호텔 나인에비뉴</div>
+                <span style="padding:2px 6px;background:var(--sm-status-error-subtle,#FEE2E2);color:var(--sm-status-error);border-radius:4px;font:700 9px/1 var(--font-mono);flex-shrink:0;">★ 4.8</span>
+              </div>
+              <div style="font:500 11px/1.2 var(--font-sans);color:var(--sm-content-tertiary);margin-bottom:4px;">대구 달서구 · 도보 3분 · 조식 포함</div>
+              <div style="display:flex;align-items:baseline;gap:4px;">
+                <span style="font:800 16px/1 var(--font-sans);color:var(--sm-content-primary);font-variant-numeric:tabular-nums;">63,000</span>
+                <span style="font:500 11px/1 var(--font-sans);color:var(--sm-content-tertiary);">원 / 1박</span>
+              </div>
+            </div>
+            <div style="width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--sm-content-tertiary);cursor:pointer;flex-shrink:0;"><svg class="ico ico-sm"><use href="#i-heart"/></svg></div>
+          </div>
+        </div>
+
+        <div class="m-tabbar" style="z-index:6;">
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-menu"/></svg>카테고리</div>
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-map-pin"/></svg>내 주변</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-home"/></svg>홈</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-heart"/></svg>찜</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>마이</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ==== Demo · My Page ==== -->
+  <section class="demo-section" id="demo-mypage"
+           data-uses="avatar,list,button,badge,banner,tabbar,appbar,others,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-content-brand,--sm-interactive-brand-default,--sm-interactive-brand-subtle,--sm-background-default,--sm-background-muted,--sm-surface-default,--sm-border-subtle,--p-indigo-500,--p-indigo-700">
+    <div class="demo-header">
+      <div class="demo-label">DEMO 16 · MY PAGE</div>
+      <h2>마이페이지</h2>
+      <p>아바타 · 이름 · 통계 카드 · 메뉴 리스트. 개인 공간은 집중된 정보 계층 — 큰 것은 더 크게, 작은 것은 조용히.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone"><div class="demo-screen">
+        <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
+        <div class="m-topbar">
+          <h2>내 정보</h2>
+          <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-bell"/></svg></div>
+          <div style="cursor:pointer;display:grid;place-items:center;margin-left:12px;"><svg class="ico"><use href="#i-settings"/></svg></div>
+        </div>
+
+        <div style="padding:20px 20px 100px;">
+          <!-- Profile header -->
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;">
+            <div style="width:72px;height:72px;border-radius:50%;background:var(--p-indigo-500);color:#fff;display:grid;place-items:center;font:800 24px/1 var(--font-sans);letter-spacing:-0.02em;position:relative;">
+              DH
+              <div style="position:absolute;bottom:0;right:0;width:20px;height:20px;border-radius:50%;background:var(--p-green-500);border:3px solid var(--sm-background-default);"></div>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                <div style="font:800 18px/1.2 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.015em;">김도훈</div>
+                <span style="padding:2px 7px;background:var(--sm-interactive-brand-subtle);color:var(--sm-content-brand);border-radius:99px;font:700 9px/1 var(--font-mono);">PRO</span>
+              </div>
+              <div style="font:500 12px/1.3 var(--font-sans);color:var(--sm-content-tertiary);margin-bottom:8px;">ehgns335@naver.com</div>
+              <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:var(--sm-background-muted);border-radius:99px;font:600 11px/1 var(--font-sans);color:var(--sm-content-primary);cursor:pointer;">
+                <svg class="ico ico-sm"><use href="#i-edit"/></svg> 프로필 편집
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats row -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--sm-surface-default);border:1px solid var(--sm-border-subtle);border-radius:16px;margin-bottom:22px;">
+            <div style="padding:18px 0;text-align:center;border-right:1px solid var(--sm-border-subtle);cursor:pointer;">
+              <div style="font:800 20px/1 var(--font-sans);color:var(--sm-content-primary);margin-bottom:4px;">12</div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-tertiary);">주문</div>
+            </div>
+            <div style="padding:18px 0;text-align:center;border-right:1px solid var(--sm-border-subtle);cursor:pointer;">
+              <div style="font:800 20px/1 var(--font-sans);color:var(--sm-content-primary);margin-bottom:4px;">48</div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-tertiary);">찜</div>
+            </div>
+            <div style="padding:18px 0;text-align:center;cursor:pointer;">
+              <div style="font:800 20px/1 var(--font-sans);color:var(--sm-content-primary);margin-bottom:4px;">8</div>
+              <div style="font:500 11px/1 var(--font-sans);color:var(--sm-content-tertiary);">리뷰</div>
+            </div>
+          </div>
+
+          <!-- Membership banner (.banner component) -->
+          <div class="banner banner-compact" style="background:var(--sm-interactive-brand-default);color:#fff;margin-bottom:22px;cursor:pointer;">
+            <div class="banner-image" style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.18);">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3L8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+            </div>
+            <div class="banner-content">
+              <div class="banner-title" style="font:700 13px/1.2 var(--font-sans);">포인트 <span style="font-variant-numeric:tabular-nums;">1,240</span> P</div>
+              <div class="banner-subtitle" style="opacity:0.8;">다음 등급까지 <span style="font-variant-numeric:tabular-nums;">2,760</span> P</div>
+            </div>
+            <svg class="ico ico-sm" style="flex-shrink:0;"><use href="#i-chevron-right"/></svg>
+          </div>
+
+          <!-- Menu list -->
+          <div style="background:var(--sm-surface-default);border:1px solid var(--sm-border-subtle);border-radius:16px;overflow:hidden;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--sm-border-subtle);cursor:pointer;">
+              <svg class="ico" style="color:var(--sm-content-secondary);"><use href="#i-heart"/></svg>
+              <div style="flex:1;font:600 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">내 쿠폰</div>
+              <span style="padding:2px 8px;background:var(--sm-interactive-brand-subtle);color:var(--sm-content-brand);border-radius:99px;font:700 10px/1 var(--font-mono);">3</span>
+              <svg class="ico ico-sm" style="color:var(--sm-content-tertiary);"><use href="#i-chevron-right"/></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--sm-border-subtle);cursor:pointer;">
+              <svg class="ico" style="color:var(--sm-content-secondary);"><use href="#i-mail"/></svg>
+              <div style="flex:1;font:600 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">결제 수단</div>
+              <div style="font:500 12px/1 var(--font-sans);color:var(--sm-content-tertiary);">카드 2개</div>
+              <svg class="ico ico-sm" style="color:var(--sm-content-tertiary);"><use href="#i-chevron-right"/></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--sm-border-subtle);cursor:pointer;">
+              <svg class="ico" style="color:var(--sm-content-secondary);"><use href="#i-map-pin"/></svg>
+              <div style="flex:1;font:600 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">배송지 관리</div>
+              <svg class="ico ico-sm" style="color:var(--sm-content-tertiary);"><use href="#i-chevron-right"/></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px 18px;cursor:pointer;">
+              <svg class="ico" style="color:var(--sm-content-secondary);"><use href="#i-bell"/></svg>
+              <div style="flex:1;font:600 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">알림 설정</div>
+              <svg class="ico ico-sm" style="color:var(--sm-content-tertiary);"><use href="#i-chevron-right"/></svg>
+            </div>
+          </div>
+
+          <div style="background:var(--sm-surface-default);border:1px solid var(--sm-border-subtle);border-radius:16px;overflow:hidden;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--sm-border-subtle);cursor:pointer;">
+              <svg class="ico" style="color:var(--sm-content-secondary);"><use href="#i-info"/></svg>
+              <div style="flex:1;font:600 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">고객센터</div>
+              <svg class="ico ico-sm" style="color:var(--sm-content-tertiary);"><use href="#i-chevron-right"/></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px 18px;cursor:pointer;">
+              <svg class="ico" style="color:var(--sm-content-secondary);"><use href="#i-link"/></svg>
+              <div style="flex:1;font:600 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">약관 및 정책</div>
+              <svg class="ico ico-sm" style="color:var(--sm-content-tertiary);"><use href="#i-chevron-right"/></svg>
+            </div>
+          </div>
+
+          <div style="text-align:center;padding:12px 0;font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);letter-spacing:0.08em;">UIUX-DH · v0.4.0</div>
+        </div>
+
+        <div class="m-tabbar">
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-home"/></svg>홈</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-search"/></svg>탐색</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-heart"/></svg>찜</div>
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-user"/></svg>내 정보</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ==== Demo · Chat List ==== -->
+  <section class="demo-section" id="demo-chat"
+           data-uses="textfield,avatar,badge,list,button,tabbar,appbar,others,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-content-brand,--sm-interactive-brand-default,--sm-background-default,--sm-background-muted,--sm-border-subtle,--sm-status-error,--p-indigo-500,--p-green-500,--p-amber-500">
+    <div class="demo-header">
+      <div class="demo-label">DEMO 17 · CHAT LIST</div>
+      <h2>채팅 리스트</h2>
+      <p>검색 · 고정 대화방 · 아바타 + 이름 + 마지막 메시지 · 시간 · 안 읽음 뱃지. 밀도 높은 정보를 한 줄에 — 여백이 계층을 만듭니다.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone"><div class="demo-screen">
+        <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
+        <div class="m-topbar">
+          <h2>채팅</h2>
+          <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-search"/></svg></div>
+          <div style="cursor:pointer;display:grid;place-items:center;margin-left:12px;"><svg class="ico"><use href="#i-more-v"/></svg></div>
+        </div>
+
+        <!-- Search -->
+        <div style="padding:12px 20px 0;">
+          <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--sm-background-muted);border-radius:99px;">
+            <svg class="ico ico-sm" style="color:var(--sm-content-tertiary);"><use href="#i-search"/></svg>
+            <div style="flex:1;font:400 13px/1 var(--font-sans);color:var(--sm-content-tertiary);">이름, 대화 내용 검색</div>
+          </div>
+        </div>
+
+        <!-- Pinned header -->
+        <div style="padding:18px 20px 6px;display:flex;align-items:center;gap:6px;">
+          <svg class="ico ico-sm" style="color:var(--sm-content-tertiary);"><use href="#i-star-fill"/></svg>
+          <div style="font:700 11px/1 var(--font-mono);color:var(--sm-content-tertiary);letter-spacing:0.08em;text-transform:uppercase;">고정 · 2</div>
+        </div>
+
+        <!-- Pinned chats -->
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--p-indigo-500);color:#fff;display:grid;place-items:center;font:800 16px/1 var(--font-sans);flex-shrink:0;position:relative;">DH팀
+            <div style="position:absolute;bottom:0;right:0;width:14px;height:14px;border-radius:50%;background:var(--p-green-500);border:2px solid var(--sm-background-default);"></div>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:2px;">
+              <div style="font:700 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">디자인시스템 팀</div>
+              <span style="padding:1px 5px;background:var(--sm-background-muted);border-radius:4px;font:600 9px/1 var(--font-mono);color:var(--sm-content-tertiary);">4</span>
+              <div style="margin-left:auto;font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">오전 9:24</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="flex:1;font:500 13px/1.4 var(--font-sans);color:var(--sm-content-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">박솔: v0.4 릴리스 노트 확인 부탁드려요 👀</div>
+              <span style="min-width:20px;height:20px;padding:0 6px;background:var(--sm-status-error);color:#fff;border-radius:99px;font:800 10px/1 var(--font-mono);display:grid;place-items:center;flex-shrink:0;">3</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--p-amber-500);color:#fff;display:grid;place-items:center;font:800 16px/1 var(--font-sans);flex-shrink:0;">JK</div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:2px;">
+              <div style="font:700 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">장종근</div>
+              <div style="margin-left:auto;font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">오전 8:40</div>
+            </div>
+            <div style="font:500 13px/1.4 var(--font-sans);color:var(--sm-content-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">토큰 JSON 스크립트 머지했습니다</div>
+          </div>
+        </div>
+
+        <!-- Recent header -->
+        <div style="padding:16px 20px 6px;border-top:1px solid var(--sm-border-subtle);margin-top:4px;">
+          <div style="font:700 11px/1 var(--font-mono);color:var(--sm-content-tertiary);letter-spacing:0.08em;text-transform:uppercase;">최근 · 4</div>
+        </div>
+
+        <!-- Regular chats -->
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--p-green-500);color:#fff;display:grid;place-items:center;font:800 16px/1 var(--font-sans);flex-shrink:0;">SP</div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:2px;">
+              <div style="font:700 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">박솔</div>
+              <div style="margin-left:auto;font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">어제</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="flex:1;font:500 13px/1.4 var(--font-sans);color:var(--sm-content-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">내일 점심 같이 드실래요?</div>
+              <span style="min-width:16px;height:16px;padding:0 5px;background:var(--sm-status-error);color:#fff;border-radius:99px;font:800 9px/1 var(--font-mono);display:grid;place-items:center;flex-shrink:0;">1</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;opacity:0.7;">
+          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#60A5FA,#2563EB);color:#fff;display:grid;place-items:center;font-size:18px;flex-shrink:0;">📢</div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:2px;">
+              <div style="font:700 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">UIUX-DH 공지</div>
+              <div style="margin-left:auto;font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">04.20</div>
+            </div>
+            <div style="font:500 13px/1.4 var(--font-sans);color:var(--sm-content-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">v0.3.2 릴리스 · 아이콘 패키지 v1 공개</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;opacity:0.7;">
+          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#F472B6,#BE185D);color:#fff;display:grid;place-items:center;font:800 16px/1 var(--font-sans);flex-shrink:0;">MJ</div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:2px;">
+              <div style="font:700 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">민지</div>
+              <div style="margin-left:auto;font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">04.18</div>
+            </div>
+            <div style="font:500 13px/1.4 var(--font-sans);color:var(--sm-content-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">링크 공유 감사합니다!</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 20px 100px;cursor:pointer;opacity:0.7;">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--sm-background-muted);color:var(--sm-content-secondary);display:grid;place-items:center;font:800 16px/1 var(--font-sans);flex-shrink:0;">TH</div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:2px;">
+              <div style="font:700 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">태현</div>
+              <div style="margin-left:auto;font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">04.15</div>
+            </div>
+            <div style="font:500 13px/1.4 var(--font-sans);color:var(--sm-content-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">이따 봐요!</div>
+          </div>
+        </div>
+
+        <!-- FAB -->
+        <div style="position:absolute;bottom:92px;right:20px;width:56px;height:56px;border-radius:50%;background:var(--sm-interactive-brand-default);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(79,70,229,0.4);cursor:pointer;"><svg class="ico"><use href="#i-edit"/></svg></div>
+
+        <div class="m-tabbar">
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-home"/></svg>홈</div>
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-chat-fill"/></svg>채팅</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-search"/></svg>탐색</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>내 정보</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ==== Demo · Checkout Success ==== -->
+  <section class="demo-section" id="demo-checkout"
+           data-uses="button,others,list,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-interactive-brand-default,--sm-background-default,--sm-background-muted,--sm-surface-default,--sm-border-subtle,--sm-status-success,--sm-status-success-subtle,--p-green-500">
+    <div class="demo-header">
+      <div class="demo-label">DEMO 18 · CHECKOUT SUCCESS</div>
+      <h2>결제 완료</h2>
+      <p>성공 피드백 · 주문 요약 · 영수증. 성공 순간은 조용하게 축하하고 다음 행동으로 안내합니다. 불필요한 흥분은 신뢰를 깎습니다.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone"><div class="demo-screen">
+        <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
+        <div class="m-topbar" style="justify-content:flex-end;">
+          <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-close"/></svg></div>
+        </div>
+
+        <div style="padding:20px 20px 100px;">
+          <!-- Success icon -->
+          <div style="text-align:center;padding:16px 0 24px;">
+            <div style="width:88px;height:88px;margin:0 auto 20px;border-radius:50%;background:var(--sm-status-success-subtle);display:grid;place-items:center;position:relative;">
+              <div style="position:absolute;inset:0;border-radius:50%;border:2px solid var(--sm-status-success);opacity:0.25;transform:scale(1.15);"></div>
+              <svg class="ico" style="width:44px;height:44px;color:var(--sm-status-success);"><use href="#i-check"/></svg>
+            </div>
+            <div style="font:800 24px/1.25 var(--font-sans);color:var(--sm-content-primary);letter-spacing:-0.025em;margin-bottom:8px;">결제가 완료됐어요</div>
+            <div style="font:500 14px/1.55 var(--font-sans);color:var(--sm-content-secondary);">주문이 정상 접수됐어요. 예상 도착 시간은 <strong style="color:var(--sm-content-primary);">20-30분</strong>입니다.</div>
+          </div>
+
+          <!-- Order summary -->
+          <div style="background:var(--sm-surface-default);border:1px solid var(--sm-border-subtle);border-radius:16px;padding:18px;margin-bottom:12px;">
+            <div style="font:700 13px/1 var(--font-sans);color:var(--sm-content-primary);margin-bottom:14px;">주문 내역 · 3건</div>
+            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--sm-border-subtle);">
+              <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#FBBF24,#F59E0B);display:grid;place-items:center;font-size:18px;flex-shrink:0;">🍔</div>
+              <div style="flex:1;">
+                <div style="font:600 13px/1.3 var(--font-sans);color:var(--sm-content-primary);">쉑버거 세트</div>
+                <div style="font:500 11px/1.2 var(--font-mono);color:var(--sm-content-tertiary);">수량 2개</div>
+              </div>
+              <div style="font:700 14px/1 var(--font-mono);color:var(--sm-content-primary);">22,800원</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--sm-border-subtle);">
+              <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#FECACA,#EF4444);display:grid;place-items:center;font-size:18px;flex-shrink:0;">🍟</div>
+              <div style="flex:1;">
+                <div style="font:600 13px/1.3 var(--font-sans);color:var(--sm-content-primary);">치즈프라이</div>
+                <div style="font:500 11px/1.2 var(--font-mono);color:var(--sm-content-tertiary);">수량 1개</div>
+              </div>
+              <div style="font:700 14px/1 var(--font-mono);color:var(--sm-content-primary);">4,900원</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:10px 0 16px;">
+              <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#BFDBFE,#2563EB);display:grid;place-items:center;font-size:18px;flex-shrink:0;">🥤</div>
+              <div style="flex:1;">
+                <div style="font:600 13px/1.3 var(--font-sans);color:var(--sm-content-primary);">쉐이크 · 바닐라</div>
+                <div style="font:500 11px/1.2 var(--font-mono);color:var(--sm-content-tertiary);">수량 1개</div>
+              </div>
+              <div style="font:700 14px/1 var(--font-mono);color:var(--sm-content-primary);">5,500원</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-top:12px;border-top:1px solid var(--sm-border-subtle);">
+              <div style="font:600 13px/1 var(--font-sans);color:var(--sm-content-secondary);">상품 금액</div>
+              <div style="font:600 13px/1 var(--font-mono);color:var(--sm-content-secondary);">33,200원</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-top:6px;">
+              <div style="font:600 13px/1 var(--font-sans);color:var(--sm-content-secondary);">배달비</div>
+              <div style="font:600 13px/1 var(--font-mono);color:var(--sm-content-secondary);">2,500원</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-top:6px;">
+              <div style="font:600 13px/1 var(--font-sans);color:var(--sm-status-success);">쿠폰 할인</div>
+              <div style="font:600 13px/1 var(--font-mono);color:var(--sm-status-success);">-3,000원</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-top:12px;margin-top:12px;border-top:1px solid var(--sm-border-subtle);">
+              <div style="font:800 15px/1 var(--font-sans);color:var(--sm-content-primary);">결제 금액</div>
+              <div style="font:800 18px/1 var(--font-sans);color:var(--sm-content-primary);">32,700원</div>
+            </div>
+          </div>
+
+          <!-- Receipt info -->
+          <div style="background:var(--sm-background-muted);border-radius:14px;padding:16px;margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <div style="font:500 12px/1 var(--font-sans);color:var(--sm-content-tertiary);">주문번호</div>
+              <div style="font:600 12px/1 var(--font-mono);color:var(--sm-content-primary);">#UD-2026-042284</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <div style="font:500 12px/1 var(--font-sans);color:var(--sm-content-tertiary);">주문 일시</div>
+              <div style="font:600 12px/1 var(--font-mono);color:var(--sm-content-primary);">2026.04.22 09:41</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;">
+              <div style="font:500 12px/1 var(--font-sans);color:var(--sm-content-tertiary);">결제 수단</div>
+              <div style="font:600 12px/1 var(--font-sans);color:var(--sm-content-primary);">신한카드 1234</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky CTAs -->
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:12px 20px 24px;background:var(--sm-background-default);border-top:1px solid var(--sm-border-subtle);display:grid;grid-template-columns:1fr 1.2fr;gap:8px;">
+          <button class="m-btn-secondary" style="padding:13px;">영수증 보기</button>
+          <button class="m-btn-primary" style="padding:13px;">주문 내역으로</button>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ==== Demo · Notification Center ==== -->
+  <section class="demo-section" id="demo-notify"
+           data-uses="chip,badge,list,avatar,empty,tabbar,appbar,others,--sm-content-primary,--sm-content-secondary,--sm-content-tertiary,--sm-content-inverse,--sm-interactive-brand-default,--sm-interactive-brand-subtle,--sm-content-brand,--sm-background-default,--sm-background-muted,--sm-surface-default,--sm-border-subtle,--sm-status-error,--sm-status-success,--sm-status-info,--p-indigo-500,--p-amber-500,--p-green-500">
+    <div class="demo-header">
+      <div class="demo-label">DEMO 19 · NOTIFICATION CENTER</div>
+      <h2>알림 센터</h2>
+      <p>필터 칩 · 오늘/이전 그룹 · 타입 아이콘 · 안 읽음 도트. 시간 그룹으로 쌓아 과거를 조용히 밀어내고 오늘에 집중하게 합니다.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone"><div class="demo-screen">
+        <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
+        <div class="m-topbar">
+          <div class="m-back"><svg class="ico"><use href="#i-arrow-left"/></svg></div>
+          <h2>알림</h2>
+          <div class="m-action">모두 읽음</div>
+        </div>
+
+        <!-- Filter chips -->
+        <div style="overflow-x:auto;white-space:nowrap;padding:14px 16px 6px;">
+          <span style="display:inline-block;padding:8px 14px;background:var(--sm-content-primary);color:var(--sm-content-inverse);border-radius:99px;font:700 12px/1 var(--font-sans);margin-right:6px;">전체 7</span>
+          <span style="display:inline-block;padding:8px 14px;background:var(--sm-background-muted);color:var(--sm-content-primary);border-radius:99px;font:500 12px/1 var(--font-sans);margin-right:6px;">주문 3</span>
+          <span style="display:inline-block;padding:8px 14px;background:var(--sm-background-muted);color:var(--sm-content-primary);border-radius:99px;font:500 12px/1 var(--font-sans);margin-right:6px;">프로모션 2</span>
+          <span style="display:inline-block;padding:8px 14px;background:var(--sm-background-muted);color:var(--sm-content-primary);border-radius:99px;font:500 12px/1 var(--font-sans);">시스템 2</span>
+        </div>
+
+        <!-- Today group -->
+        <div style="padding:16px 20px 6px;">
+          <div style="font:700 11px/1 var(--font-mono);color:var(--sm-content-tertiary);letter-spacing:0.08em;text-transform:uppercase;">오늘 · 04.22</div>
+        </div>
+
+        <!-- Unread notification (with dot) -->
+        <div style="display:flex;gap:12px;padding:14px 20px;border-bottom:1px solid var(--sm-border-subtle);position:relative;">
+          <div style="position:absolute;left:8px;top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:var(--sm-interactive-brand-default);"></div>
+          <div style="width:40px;height:40px;border-radius:12px;background:var(--sm-interactive-brand-subtle);color:var(--sm-content-brand);display:grid;place-items:center;flex-shrink:0;"><svg class="ico"><use href="#i-check-circle"/></svg></div>
+          <div style="flex:1;min-width:0;">
+            <div style="font:700 13px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">주문이 배달 중입니다</div>
+            <div style="font:500 12px/1.45 var(--font-sans);color:var(--sm-content-secondary);margin-bottom:4px;">버거하우스 강남점 · 예상 도착 09:55</div>
+            <div style="font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">2분 전</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;padding:14px 20px;border-bottom:1px solid var(--sm-border-subtle);position:relative;">
+          <div style="position:absolute;left:8px;top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:var(--sm-interactive-brand-default);"></div>
+          <div style="width:40px;height:40px;border-radius:12px;background:#FEF3C7;color:#D97706;display:grid;place-items:center;flex-shrink:0;font-size:18px;">🎁</div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+              <div style="font:700 13px/1.3 var(--font-sans);color:var(--sm-content-primary);">쿠폰이 도착했어요</div>
+              <span style="padding:2px 6px;background:var(--sm-status-error);color:#fff;border-radius:4px;font:700 9px/1 var(--font-mono);">NEW</span>
+            </div>
+            <div style="font:500 12px/1.45 var(--font-sans);color:var(--sm-content-secondary);margin-bottom:4px;">첫 주문 5,000원 할인 쿠폰 · 오늘까지</div>
+            <div style="font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">오전 9:12</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;padding:14px 20px;border-bottom:1px solid var(--sm-border-subtle);">
+          <div style="width:40px;height:40px;border-radius:12px;background:var(--sm-background-muted);color:var(--sm-content-secondary);display:grid;place-items:center;flex-shrink:0;"><svg class="ico"><use href="#i-star-fill"/></svg></div>
+          <div style="flex:1;min-width:0;">
+            <div style="font:700 13px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">리뷰를 남겨주세요</div>
+            <div style="font:500 12px/1.45 var(--font-sans);color:var(--sm-content-secondary);margin-bottom:4px;">쉑버거 세트는 어떠셨나요?</div>
+            <div style="font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">오전 8:45</div>
+          </div>
+        </div>
+
+        <!-- Earlier group -->
+        <div style="padding:18px 20px 6px;">
+          <div style="font:700 11px/1 var(--font-mono);color:var(--sm-content-tertiary);letter-spacing:0.08em;text-transform:uppercase;">이전 7일</div>
+        </div>
+
+        <div style="display:flex;gap:12px;padding:14px 20px;border-bottom:1px solid var(--sm-border-subtle);opacity:0.7;">
+          <div style="width:40px;height:40px;border-radius:12px;background:#D1FAE5;color:var(--sm-status-success);display:grid;place-items:center;flex-shrink:0;"><svg class="ico"><use href="#i-check-circle"/></svg></div>
+          <div style="flex:1;min-width:0;">
+            <div style="font:600 13px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">배달이 완료됐어요</div>
+            <div style="font:500 12px/1.45 var(--font-sans);color:var(--sm-content-secondary);margin-bottom:4px;">리뷰는 언제나 환영이에요 🙌</div>
+            <div style="font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">04.21 오후 7:22</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;padding:14px 20px;border-bottom:1px solid var(--sm-border-subtle);opacity:0.7;">
+          <div style="width:40px;height:40px;border-radius:12px;background:var(--sm-background-muted);color:var(--sm-content-secondary);display:grid;place-items:center;flex-shrink:0;"><svg class="ico"><use href="#i-info"/></svg></div>
+          <div style="flex:1;min-width:0;">
+            <div style="font:600 13px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">시스템 업데이트 안내</div>
+            <div style="font:500 12px/1.45 var(--font-sans);color:var(--sm-content-secondary);margin-bottom:4px;">v0.4.0 · 실제 사용 데모 10종이 추가됐어요</div>
+            <div style="font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">04.20 오전 11:00</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;padding:14px 20px;opacity:0.7;">
+          <div style="width:40px;height:40px;border-radius:12px;background:#FEF3C7;color:var(--p-amber-500);display:grid;place-items:center;flex-shrink:0;"><svg class="ico"><use href="#i-alert"/></svg></div>
+          <div style="flex:1;min-width:0;">
+            <div style="font:600 13px/1.3 var(--font-sans);color:var(--sm-content-primary);margin-bottom:2px;">비밀번호를 바꾼 지 90일이 지났어요</div>
+            <div style="font:500 12px/1.45 var(--font-sans);color:var(--sm-content-secondary);margin-bottom:4px;">더 안전한 이용을 위해 변경을 권장해요</div>
+            <div style="font:500 11px/1 var(--font-mono);color:var(--sm-content-tertiary);">04.18 오후 3:10</div>
+          </div>
+        </div>
+
+        <div style="padding:32px 20px 100px;text-align:center;font:500 12px/1.6 var(--font-sans);color:var(--sm-content-tertiary);">
+          7일보다 오래된 알림은<br>자동으로 정리돼요
+        </div>
+
+        <div class="m-tabbar">
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-home"/></svg>홈</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-search"/></svg>탐색</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-heart"/></svg>찜</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>내 정보</div>
         </div>
       </div></div>
     </div>

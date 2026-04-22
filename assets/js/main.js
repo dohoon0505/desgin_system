@@ -97,6 +97,7 @@ const CATEGORIES = {
       { id:'progress',  ico:'▰', title:'Progress · Slider',        desc:'진행률 · 범위 선택' },
       { id:'tabs',      ico:'⧉', title:'Tabs · Segment',           desc:'콘텐츠 전환 · 모드 선택' },
       { id:'others',    ico:'▤', title:'Card',                     desc:'카드 컨테이너 · 조합 패턴' },
+      { id:'banner',    ico:'▥', title:'Banner',                   desc:'이미지+텍스트 프로모션 · 6변형' },
     ]
   },
   'overlays': {
@@ -129,17 +130,26 @@ const CATEGORIES = {
   },
   'demo': {
     title: 'Part 07 · 실제 사용 데모',
-    desc: '디자인시스템만으로 만들 수 있는 실제 서비스 화면들. 스플래시부터 To-do List까지, 같은 토큰·같은 컴포넌트로 어떻게 다른 맥락을 빚어내는지.',
+    desc: '디자인시스템만으로 만들 수 있는 실제 서비스 화면들. 스플래시부터 결제 완료까지, 같은 토큰·같은 컴포넌트로 어떻게 다른 맥락을 빚어내는지.',
     items: [
       { id:'demo-splash',    ico:'🚀', title:'Splash',       desc:'앱이 켜지는 1.5초 · 브랜드 인각' },
       { id:'demo-login',     ico:'🔑', title:'로그인',        desc:'소셜 로그인 · 이메일/패스워드' },
       { id:'demo-signup',    ico:'✍', title:'회원가입',      desc:'단계 표시 · 약관 동의 · 필수 검증' },
       { id:'demo-community', ico:'💬', title:'커뮤니티',      desc:'피드 · 카드 · 아바타 · FAB' },
-      { id:'demo-delivery',  ico:'🍔', title:'배달',          desc:'카테고리 그리드 · 가게 리스트' },
       { id:'demo-store',     ico:'🛍', title:'스토어',        desc:'상품 그리드 · 할인 뱃지 · 장바구니' },
       { id:'demo-pricing',   ico:'💎', title:'요금제',        desc:'Segment · 플랜 카드 · Sticky CTA' },
       { id:'demo-calendar',  ico:'📅', title:'달력',          desc:'월 그리드 · 이벤트 도트 · 일정 상세' },
       { id:'demo-todo',      ico:'✓',  title:'To-do List',    desc:'진행률 · 우선순위 · 체크박스' },
+      { id:'demo-booking',   ico:'🍽', title:'맛집 예약',      desc:'위치 필터 · 섹션별 BEST · 가격대 탭' },
+      { id:'demo-foodorder', ico:'🛵', title:'배달',          desc:'쿠폰 배너 · 5-way 탭 · 카테고리 그리드 · 무료배달 파트너' },
+      { id:'demo-shopping',  ico:'🛒', title:'쇼핑몰 홈',      desc:'브랜드 헤더 · 캐러셀 · 쿠폰 뱃지 상품' },
+      { id:'demo-social',    ico:'👥', title:'소셜 모임',      desc:'히어로 배너 · 이중 CTA · 모임 카드' },
+      { id:'demo-banking',   ico:'💳', title:'뱅킹 홈',        desc:'계좌 카드 · 퀵 액션 · 거래 내역' },
+      { id:'demo-map',       ico:'📍', title:'지도 탐색',      desc:'검색 오버레이 · POI 핀 · 바텀 시트' },
+      { id:'demo-mypage',    ico:'👤', title:'마이페이지',     desc:'아바타 · 통계 · 메뉴 리스트' },
+      { id:'demo-chat',      ico:'💭', title:'채팅 리스트',    desc:'대화방 · 안 읽음 뱃지 · 검색' },
+      { id:'demo-checkout',  ico:'✅', title:'결제 완료',      desc:'성공 피드백 · 주문 요약 · 영수증' },
+      { id:'demo-notify',    ico:'🔔', title:'알림 센터',      desc:'그룹 리스트 · 타입 아이콘 · 읽음 표시' },
     ]
   },
 };
@@ -151,11 +161,11 @@ const HOME = {
   items: [
     { id:'getting-started', ico:'✦', title:'시작하기',              desc:'원칙 · 토큰 · 네이밍 · 정책 · UX Writing' },
     { id:'foundations',     ico:'◐', title:'Foundations',           desc:'Color · Typography · Sizing · Radius · Motion' },
-    { id:'components',      ico:'▢', title:'Components',            desc:'기본 컴포넌트 14종' },
+    { id:'components',      ico:'▢', title:'Components',            desc:'기본 컴포넌트 15종' },
     { id:'overlays',        ico:'◫', title:'Overlays · Navigation', desc:'Dialog · Sheet · Popover · App Bar · Tab Bar · Drawer' },
     { id:'states',          ico:'▨', title:'States',                desc:'Skeleton · Empty State' },
     { id:'density',         ico:'⊞', title:'Density',               desc:'Data Table · Accordion · Tree' },
-    { id:'demo',            ico:'◉', title:'실제 사용 데모',         desc:'9개 모바일 화면 데모' },
+    { id:'demo',            ico:'◉', title:'실제 사용 데모',         desc:'18개 모바일 화면 데모' },
     { id:'changelog',       ico:'⎌', title:'Release & Governance',  desc:'버전 기록 · 거버넌스' },
   ]
 };
@@ -299,6 +309,55 @@ document.querySelectorAll('.sidebar-group > .sidebar-nav > li > a.sidebar-link:n
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeSidebar();
 });
+
+/* ============ DEMO DEPENDENCY MATRIX ============
+   Each demo section declares its design-system dependencies via `data-uses`.
+   On load, we:
+   1. Build a matrix: which component/token → which demos use it.
+   2. Validate referenced CSS variables (--sm-*, --p-*, --cm-*) exist at runtime.
+   3. Expose `window.demoMatrix` for introspection / future governance.
+
+   ⚠ When a component or token is modified, `demoMatrix.byComponent[<name>]`
+   tells you exactly which demos must be re-verified.
+*/
+function buildDemoMatrix() {
+  const sections = document.querySelectorAll('.demo-section[data-uses]');
+  const byDemo = {};
+  const byComponent = {};
+  const byToken = {};
+  const missingTokens = [];
+  const rootStyles = getComputedStyle(document.documentElement);
+
+  sections.forEach(sec => {
+    const id = sec.id;
+    const raw = (sec.getAttribute('data-uses') || '').trim();
+    if (!raw) return;
+    const parts = raw.split(',').map(s => s.trim()).filter(Boolean);
+    const comps = [];
+    const toks = [];
+    parts.forEach(part => {
+      if (part.startsWith('--')) {
+        toks.push(part);
+        if (!rootStyles.getPropertyValue(part).trim()) {
+          missingTokens.push({ demo: id, token: part });
+        }
+        (byToken[part] = byToken[part] || []).push(id);
+      } else {
+        comps.push(part);
+        (byComponent[part] = byComponent[part] || []).push(id);
+      }
+    });
+    byDemo[id] = { components: comps, tokens: toks };
+  });
+
+  const matrix = { byDemo, byComponent, byToken, missingTokens };
+  window.demoMatrix = matrix;
+  if (missingTokens.length) {
+    console.warn('[demoMatrix] Referenced CSS tokens not found at runtime:', missingTokens);
+  }
+  return matrix;
+}
+window.addEventListener('DOMContentLoaded', buildDemoMatrix);
 
 /* ============ DEMO: Calendar grid generation ============ */
 function renderCalendarGrid() {

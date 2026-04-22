@@ -103,9 +103,13 @@
   /* Signal (강조, 프로모션) */
   --sm-signal-highlight: var(--p-amber-400);
 
-  /* ─────────── TYPOGRAPHY ─────────── */
+  /* ─────────── TYPOGRAPHY ───────────
+     v0.4.1: --font-mono is now Pretendard (previously JetBrains Mono).
+     The alias is kept for semantic intent (numeric/metadata labels with
+     tabular figures); callers should pair with `font-variant-numeric: tabular-nums`
+     when monospaced digits are needed. */
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 
   /* Type tokens — Display */
   --text-display-lg: 700 56px/1.1 var(--font-sans);
@@ -1155,7 +1159,7 @@ footer {
 
   /* Typography */
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
 
   /* Sizing */
   --size-50: 2px; --size-100: 4px; --size-150: 6px; --size-200: 8px;
@@ -2109,8 +2113,175 @@ h2.section-title {
 }
 
 /* ================================================================
-   COMPONENT: CHECKBOX / RADIO / TOGGLE
+   COMPONENT: BANNER (promotional image + text — since v0.4.6)
+   ----------------------------------------------------------------
+   원칙 — 두-색 그라데이션으로 채우지 않는다 (v0.3 정책).
+   구성 — 솔리드 배경 또는 단일 이미지 배경 + 좌측 텍스트 + 우측 일러스트.
    ================================================================ */
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--size-500);
+  padding: var(--cm-banner-pad-y, var(--size-700)) var(--cm-banner-pad-x, var(--size-600));
+  background: var(--cm-banner-bg, var(--sm-interactive-brand-subtle));
+  color: var(--cm-banner-fg, var(--sm-content-primary));
+  border-radius: var(--cm-banner-radius, var(--radius-lg));
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 136px;
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+.banner:hover { transform: translateY(-1px); }
+
+.banner-content {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: 4px;
+  position: relative;
+  z-index: 1;
+}
+.banner-eyebrow {
+  font: 500 13px/1.3 var(--font-sans);
+  color: currentColor;
+  opacity: 0.78;
+  display: flex; align-items: center; gap: 4px;
+  margin-bottom: 4px;
+}
+.banner-eyebrow .banner-accent {
+  color: var(--cm-banner-accent, var(--sm-content-brand));
+  font-weight: 700;
+  opacity: 1;
+}
+.banner-title {
+  font: 800 22px/1.25 var(--font-sans);
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: inherit;
+}
+.banner-subtitle {
+  font: 500 13px/1.5 var(--font-sans);
+  color: inherit;
+  opacity: 0.72;
+  margin-top: 4px;
+}
+.banner-image {
+  flex-shrink: 0;
+  width: 112px; height: 112px;
+  display: grid; place-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Pagination indicator (e.g., "2/10 | 모두 보기") */
+.banner-indicator {
+  position: absolute;
+  bottom: 12px; right: 14px;
+  padding: 5px 12px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  border-radius: 99px;
+  font: 600 10px/1 var(--font-sans);
+  display: inline-flex; align-items: center; gap: 6px;
+  z-index: 2;
+  letter-spacing: 0.02em;
+}
+
+/* Promotional ribbon (top-left) */
+.banner-ribbon {
+  position: absolute;
+  top: 12px; left: -28px;
+  padding: 5px 32px;
+  background: var(--sm-content-brand);
+  color: #fff;
+  font: 700 10px/1.2 var(--font-sans);
+  transform: rotate(-32deg);
+  transform-origin: center;
+  z-index: 3;
+  letter-spacing: 0.02em;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Inline call-to-action chip */
+.banner-cta {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: var(--size-300);
+  padding: 7px 14px;
+  background: var(--sm-content-primary);
+  color: var(--sm-content-inverse);
+  border-radius: 99px;
+  font: 700 12px/1 var(--font-sans);
+  width: fit-content;
+}
+
+/* ── Size variants ── */
+.banner.banner-hero {
+  min-height: 180px;
+  padding: var(--size-800) var(--size-700);
+}
+.banner.banner-hero .banner-title {
+  font: 800 clamp(22px, 3vw, 30px)/1.18 var(--font-sans);
+  letter-spacing: -0.03em;
+}
+.banner.banner-hero .banner-image {
+  width: 140px; height: 140px;
+}
+.banner.banner-compact {
+  min-height: 76px;
+  padding: var(--size-400) var(--size-500);
+  gap: var(--size-400);
+}
+.banner.banner-compact .banner-title {
+  font: 700 15px/1.3 var(--font-sans);
+  letter-spacing: -0.015em;
+}
+.banner.banner-compact .banner-eyebrow {
+  font: 500 11px/1.2 var(--font-sans);
+  margin-bottom: 2px;
+}
+.banner.banner-compact .banner-image {
+  width: 56px; height: 56px;
+}
+
+/* ── Color variants (explicit backgrounds instead of gradient) ── */
+.banner.banner-dark {
+  background: #1F2937;
+  color: #fff;
+}
+.banner.banner-warm {
+  background: #FEF3C7;
+  color: var(--sm-content-primary);
+}
+.banner.banner-cool {
+  background: #DBEAFE;
+  color: var(--sm-content-primary);
+}
+.banner.banner-rose {
+  background: #FCE7F3;
+  color: var(--sm-content-primary);
+}
+.banner.banner-mint {
+  background: #D1FAE5;
+  color: var(--sm-content-primary);
+}
+
+/* ── Full-image overlay variant (image-heavy, text on gradient overlay) ──
+   이 variant의 linear-gradient는 이미지 위 텍스트 가독성을 위한
+   투명도 오버레이이며, 브랜드 모멘트 외 "장식용 두-색 그라데이션" 금지
+   정책의 예외에 해당합니다(한 방향 투명 오버레이). */
+.banner.banner-overlay {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  min-height: 160px;
+}
+.banner.banner-overlay::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0) 100%);
+  z-index: 0;
+}
 .checkbox {
   display: inline-flex; align-items: center; gap: var(--size-300);
   cursor: pointer;
@@ -2562,7 +2733,7 @@ footer {
   --sm-status-info-subtle: var(--p-blue-100);
 
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
 
   --size-50: 2px; --size-100: 4px; --size-150: 6px; --size-200: 8px;
   --size-300: 12px; --size-400: 16px; --size-500: 20px; --size-600: 24px;
@@ -3107,9 +3278,26 @@ body.spa-mode .demo-section.is-route-active {
   height: 100%;
   overflow-y: auto;
   background: var(--sm-background-default);
-  position: relative;
+  /* v0.4.3: `position: relative` 제거 — .m-tabbar / FAB / sticky CTA 등이
+     스크롤 컨테이너 밖 .demo-phone을 containing block으로 써 실제 앱처럼
+     하단에 고정됩니다. demo-map처럼 내부 절대 배치가 필요한 경우
+     인라인 style="position:relative;"로 opt-in 합니다. */
 }
-.demo-screen::-webkit-scrollbar { width: 0; }
+/* v0.4.4: 실제 사용 데모는 네이티브 앱처럼 스크롤바를 완전히 숨깁니다.
+   .demo-screen과 그 내부 모든 스크롤 컨테이너(가로 캐러셀·태그 스트립 등) 포함.
+   Firefox(scrollbar-width), 구 Edge/IE(-ms-overflow-style), Webkit(::-webkit-scrollbar)
+   세 가지 엔진 모두 커버. 스크롤 동작 자체는 그대로 유지(마우스 휠·터치). */
+.demo-screen,
+.demo-screen * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.demo-screen::-webkit-scrollbar,
+.demo-screen *::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
 .demo-statusbar {
   height: 50px;
   display: flex; align-items: center; justify-content: space-between;
@@ -4316,11 +4504,8 @@ footer {
 
 /* -------- UNIFIED OVERRIDES -------- */
 
-/* Per-glyph font fallback: when JetBrains Mono lacks a character (e.g. Korean),
-   fall through to Pretendard so mono labels keep consistent metrics. */
-:root {
-  --font-mono: "JetBrains Mono", "Pretendard Variable", Pretendard, ui-monospace, "SF Mono", Menlo, monospace;
-}
+/* v0.4.1: Per-glyph fallback block removed — --font-mono now equals --font-sans
+   (both Pretendard), so Korean/Latin glyphs share consistent metrics by default. */
 
 /* Inline code inside release-note prose: subtle, aligned to body metrics. */
 .change-entry li code {
