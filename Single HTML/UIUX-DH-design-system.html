@@ -2894,6 +2894,66 @@ body {
 }
 .sidebar-theme-btn:hover { border-color: var(--sm-border-strong); }
 
+/* ============ ICON SYSTEM (UIUX-DH Icon Package v1) ============ */
+/* Scoped to <svg class="ico"> so existing <span class="ico"> (sidebar/tabbar emoji slots) is unaffected */
+svg.ico {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  color: inherit;
+  fill: currentColor;
+  stroke: currentColor;
+}
+svg.ico-sm { width: 16px; height: 16px; }
+svg.ico-md { width: 20px; height: 20px; }
+svg.ico-lg { width: 28px; height: 28px; }
+svg.ico-xl { width: 40px; height: 40px; }
+
+/* Icon preview grid (for Asset · Icon section) */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: var(--size-200);
+  margin-top: var(--size-400);
+}
+.icon-cell {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  padding: var(--size-400) var(--size-200);
+  background: var(--sm-surface-default);
+  border: 1px solid var(--sm-border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--sm-content-primary);
+  transition: all var(--motion-fast) var(--ease-standard);
+}
+.icon-cell:hover {
+  border-color: var(--sm-border-default);
+  background: var(--sm-background-muted);
+  transform: translateY(-1px);
+}
+.icon-cell .ico {
+  color: var(--sm-content-primary);
+}
+.icon-cell .icon-label {
+  font: 500 10px/1 var(--font-mono);
+  color: var(--sm-content-tertiary);
+  letter-spacing: -0.02em;
+  word-break: break-all;
+  text-align: center;
+}
+
+/* Icon category labels */
+.icon-cat-label {
+  font: 600 11px/1 var(--font-mono);
+  color: var(--sm-content-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: var(--size-600) 0 var(--size-200);
+}
+.icon-cat-label:first-child { margin-top: 0; }
+
 /* ============ SPA MODE ============ */
 /* Hide all routable sections by default — router reveals them */
 body.spa-mode .hero,
@@ -3146,12 +3206,12 @@ body.spa-mode .demo-section.is-route-active {
 .m-topbar .m-back {
   width: 32px; height: 32px;
   display: grid; place-items: center;
-  margin-left: -8px; margin-right: 8px;
+  margin-left: -8px; margin-right: 4px;
   border-radius: 8px;
-  font-size: 20px;
   color: var(--sm-content-primary);
   cursor: pointer;
 }
+.m-topbar .m-back svg.ico { width: 22px; height: 22px; }
 .m-topbar h2 {
   font: 700 17px/1.2 var(--font-sans);
   margin: 0; flex: 1;
@@ -3837,9 +3897,31 @@ h2.section-title {
   transition: background var(--motion-fast) var(--ease-standard);
 }
 .appbar .icon-btn:hover { background: var(--sm-background-muted); }
-.appbar .title { flex: 1; font: 700 17px/1.3 var(--font-sans); letter-spacing: -0.015em; }
+.appbar .title { flex: 1; font: 700 17px/1.3 var(--font-sans); letter-spacing: -0.015em; color: var(--sm-content-primary); }
+.appbar .title.title-leading { text-align: left; padding-left: 4px; }
 .appbar-center { text-align: center; }
 .appbar-center .title { text-align: center; }
+
+/* Text button inside appbar (action on right) */
+.appbar .text-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  font: 600 14px/1 var(--font-sans);
+  cursor: pointer;
+  color: var(--sm-content-secondary);
+  border-radius: var(--radius-sm);
+  transition: background var(--motion-fast) var(--ease-standard),
+              color var(--motion-fast) var(--ease-standard);
+}
+.appbar .text-btn:hover { background: var(--sm-background-muted); }
+.appbar .text-btn.text-btn-brand { color: var(--sm-content-brand); font-weight: 700; }
+.appbar .text-btn.text-btn-brand:hover { background: var(--sm-interactive-brand-subtle); }
+.appbar .text-btn:disabled {
+  color: var(--sm-content-disabled);
+  cursor: not-allowed;
+  background: transparent;
+}
 .appbar-large {
   flex-direction: column; align-items: flex-start;
   gap: 0;
@@ -4321,6 +4403,238 @@ footer {
 </style>
 </head>
 <body data-theme="light">
+
+<!-- ============ ICON SPRITE (UIUX-DH Icon Package v1) ============
+     24×24 viewBox · 1.7 stroke · round linecap/linejoin
+     Use: <svg class="ico"><use href="#i-name"/></svg>
+     Active state: use #i-name-fill variant for solid fills.
+     All colors come from currentColor — set via CSS `color`. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <!-- ===== Navigation (Tab Bar) — outline + fill pairs ===== -->
+    <!-- Home -->
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1v-9.5z"/>
+    </symbol>
+    <symbol id="i-home-fill" viewBox="0 0 24 24">
+      <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1v-9.5z" fill="currentColor"/>
+    </symbol>
+
+    <!-- Calendar (D-day) -->
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.25" y="5" width="17.5" height="16" rx="2.5"/>
+      <path d="M3.25 10.5h17.5M8 3v4M16 3v4"/>
+      <circle cx="8" cy="14.5" r=".9" fill="currentColor" stroke="none"/>
+      <circle cx="12" cy="14.5" r=".9" fill="currentColor" stroke="none"/>
+      <circle cx="16" cy="14.5" r=".9" fill="currentColor" stroke="none"/>
+      <circle cx="8" cy="17.8" r=".9" fill="currentColor" stroke="none"/>
+      <circle cx="12" cy="17.8" r=".9" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="i-calendar-fill" viewBox="0 0 24 24">
+      <path d="M5 4h14a2 2 0 012 2v13a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z" fill="currentColor"/>
+      <path d="M8 2.5v3M16 2.5v3M3 10.5h18" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+      <circle cx="8" cy="15" r=".9" fill="var(--sm-background-default)"/>
+      <circle cx="12" cy="15" r=".9" fill="var(--sm-background-default)"/>
+      <circle cx="16" cy="15" r=".9" fill="var(--sm-background-default)"/>
+      <circle cx="8" cy="18" r=".9" fill="var(--sm-background-default)"/>
+      <circle cx="12" cy="18" r=".9" fill="var(--sm-background-default)"/>
+    </symbol>
+
+    <!-- Diary (theater masks) -->
+    <symbol id="i-diary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round">
+      <path d="M6 6c0-1.1.9-2 2-2h5c1.1 0 2 .9 2 2v4.5c0 2.5-2 4.5-4.5 4.5S6 13 6 10.5V6z"/>
+      <path d="M18 9c0-1.1-.9-2-2-2h-.5c1.5.8 2.5 2.3 2.5 4v4c0 2.5-2 4.5-4.5 4.5-1.3 0-2.5-.5-3.3-1.4.6.3 1.3.4 2 .4 2.5 0 4.5-2 4.5-4.5V9z" fill="currentColor" fill-opacity=".2"/>
+      <circle cx="9.2" cy="8.5" r=".8" fill="currentColor" stroke="none"/>
+      <circle cx="12" cy="8.5" r=".8" fill="currentColor" stroke="none"/>
+      <path d="M9 11c.3.6 1 1 2 1s1.7-.4 2-1" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-diary-fill" viewBox="0 0 24 24">
+      <path d="M6 6c0-1.1.9-2 2-2h5c1.1 0 2 .9 2 2v4.5c0 2.5-2 4.5-4.5 4.5S6 13 6 10.5V6z" fill="currentColor"/>
+      <path d="M16 7h-1.5c.8.4 1.5 1.3 1.5 2.3V14c0 2.5-2 4.5-4.5 4.5-.9 0-1.8-.3-2.5-.7.7 1.3 2 2.2 3.5 2.2 2.2 0 4-1.8 4-4V9c0-.8-.2-1.5-.5-2z" fill="currentColor"/>
+      <circle cx="9.2" cy="8.5" r=".9" fill="var(--sm-background-default)"/>
+      <circle cx="12" cy="8.5" r=".9" fill="var(--sm-background-default)"/>
+      <path d="M9 11c.4.6 1.1 1 2 1s1.6-.4 2-1" stroke="var(--sm-background-default)" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+    </symbol>
+
+    <!-- Shopping cart (Store) -->
+    <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M2.5 3.5h2.5l2.1 11.2a1.5 1.5 0 001.5 1.3h8.4a1.5 1.5 0 001.5-1.1L20 7H6.5"/>
+      <circle cx="9.5" cy="19.5" r="1.5"/>
+      <circle cx="17.5" cy="19.5" r="1.5"/>
+    </symbol>
+    <symbol id="i-cart-fill" viewBox="0 0 24 24">
+      <path d="M2 3h3.3a1 1 0 01.98.8L6.7 6H21a1 1 0 01.97 1.25l-2.1 8.3a2 2 0 01-1.94 1.5H8.5a2 2 0 01-1.96-1.64L4.46 5H2a1 1 0 010-2z" fill="currentColor"/>
+      <circle cx="9.5" cy="20" r="1.8" fill="currentColor"/>
+      <circle cx="17.5" cy="20" r="1.8" fill="currentColor"/>
+    </symbol>
+
+    <!-- User (My Page) -->
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="8" r="4"/>
+      <path d="M4 21v-.5c0-3.6 3.6-6.5 8-6.5s8 2.9 8 6.5V21"/>
+    </symbol>
+    <symbol id="i-user-fill" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4.3" fill="currentColor"/>
+      <path d="M12 13c-4.4 0-8 2.9-8 6.5V21h16v-1.5c0-3.6-3.6-6.5-8-6.5z" fill="currentColor"/>
+    </symbol>
+
+    <!-- ===== Action / Navigation UI ===== -->
+    <!-- Arrow left (back) -->
+    <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </symbol>
+    <!-- Arrow right -->
+    <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <!-- Chevron left -->
+    <symbol id="i-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </symbol>
+    <!-- Chevron right -->
+    <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18l6-6-6-6"/>
+    </symbol>
+    <!-- Chevron down -->
+    <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 9l6 6 6-6"/>
+    </symbol>
+    <!-- Chevron up -->
+    <symbol id="i-chevron-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </symbol>
+    <!-- Close (X) -->
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </symbol>
+    <!-- Check -->
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6L9 17l-5-5"/>
+    </symbol>
+    <!-- Plus -->
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M5 12h14"/>
+    </symbol>
+    <!-- Minus -->
+    <symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14"/>
+    </symbol>
+    <!-- More horizontal (⋯) -->
+    <symbol id="i-more-h" viewBox="0 0 24 24" fill="currentColor">
+      <circle cx="5" cy="12" r="1.8"/>
+      <circle cx="12" cy="12" r="1.8"/>
+      <circle cx="19" cy="12" r="1.8"/>
+    </symbol>
+    <!-- More vertical (⋮) -->
+    <symbol id="i-more-v" viewBox="0 0 24 24" fill="currentColor">
+      <circle cx="12" cy="5" r="1.8"/>
+      <circle cx="12" cy="12" r="1.8"/>
+      <circle cx="12" cy="19" r="1.8"/>
+    </symbol>
+
+    <!-- ===== Common UI ===== -->
+    <!-- Search -->
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="M21 21l-4.3-4.3"/>
+    </symbol>
+    <!-- Bell (notifications) -->
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/>
+    </symbol>
+    <!-- Heart -->
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+    </symbol>
+    <symbol id="i-heart-fill" viewBox="0 0 24 24">
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" fill="currentColor"/>
+    </symbol>
+    <!-- Settings (gear) -->
+    <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33h0a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51h0a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82v0a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+    </symbol>
+    <!-- Edit (pencil) -->
+    <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 3a2.85 2.83 0 014 4L7.5 20.5 2 22l1.5-5.5z"/>
+    </symbol>
+    <!-- Trash -->
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+    </symbol>
+    <!-- Share -->
+    <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
+    </symbol>
+    <!-- Filter -->
+    <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 3H2l8 9.5V19l4 2v-8.5L22 3z"/>
+    </symbol>
+    <!-- Link -->
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+    </symbol>
+    <!-- Eye -->
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+      <circle cx="12" cy="12" r="3"/>
+    </symbol>
+    <!-- Eye off -->
+    <symbol id="i-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17.94 17.94A10.94 10.94 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24M1 1l22 22"/>
+    </symbol>
+    <!-- Menu (hamburger) -->
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6h18M3 12h18M3 18h18"/>
+    </symbol>
+
+    <!-- ===== Status ===== -->
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 16v-4M12 8h.01"/>
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/>
+    </symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+      <path d="M22 4L12 14.01l-3-3"/>
+    </symbol>
+    <symbol id="i-x-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M15 9l-6 6M9 9l6 6"/>
+    </symbol>
+
+    <!-- ===== Misc ===== -->
+    <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+      <circle cx="12" cy="13" r="4"/>
+    </symbol>
+    <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <path d="M21 15l-5-5L5 21"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 6v6l4 2"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <path d="M22 6l-10 7L2 6"/>
+    </symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </symbol>
+    <symbol id="i-star-fill" viewBox="0 0 24 24">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
 
 <!-- ============ SIDEBAR TOGGLE (mobile) ============ -->
 <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="네비게이션 열기">
@@ -5511,37 +5825,109 @@ footer {
     <div class="section-head">
       <div>
         <div class="section-meta"><span class="num">01</span><span>·</span><span>ASSET</span></div>
-        <h2 class="section-title">Asset & Icon</h2>
+        <h2 class="section-title">Asset & Icon · UIUX-DH Icon Package v1</h2>
       </div>
       <p class="section-desc">
-        아이콘은 의미 전달의 최소 단위입니다. 24px 그리드 · 1.5px stroke · 둥근 선 끝(<code>stroke-linecap: round</code>)이 기본값입니다. 일러스트는 컬러 필 기반으로, 톤을 다크 모드에서도 유지합니다.
+        SVG 심볼 스프라이트 기반 아이콘 패키지. <strong>24×24 viewBox · 1.7 stroke · round linecap/linejoin</strong>이 기본값이며, Tab Bar 활성 상태 등 강조가 필요한 곳에는 <code>-fill</code> 변형을 사용합니다. <strong>모든 색은 <code>currentColor</code></strong> — CSS의 <code>color</code>만 바꾸면 자동으로 테마를 따릅니다. 이모지는 <strong>금지</strong>이며 반드시 이 패키지의 심볼을 사용합니다.
       </p>
     </div>
 
     <div class="variant-block">
-      <div class="variant-label">Icon · 24px grid</div>
+      <div class="variant-label">Usage</div>
+      <div class="stage stack" style="align-items:flex-start;">
+        <pre style="font:500 12px/1.6 var(--font-mono);background:var(--sm-surface-sunken);color:var(--sm-content-primary);padding:16px 20px;border-radius:8px;border:1px solid var(--sm-border-subtle);overflow-x:auto;width:100%;box-sizing:border-box;margin:0;">&lt;svg class="ico"&gt;&lt;use href="#i-home"/&gt;&lt;/svg&gt;               <span style="color:var(--sm-content-tertiary);">// default 24px outline</span>
+&lt;svg class="ico ico-sm"&gt;&lt;use href="#i-home"/&gt;&lt;/svg&gt;        <span style="color:var(--sm-content-tertiary);">// 16px</span>
+&lt;svg class="ico ico-lg"&gt;&lt;use href="#i-home-fill"/&gt;&lt;/svg&gt;   <span style="color:var(--sm-content-tertiary);">// 28px filled (active state)</span>
+&lt;span style="color: var(--sm-status-error);"&gt;
+  &lt;svg class="ico"&gt;&lt;use href="#i-heart-fill"/&gt;&lt;/svg&gt;        <span style="color:var(--sm-content-tertiary);">// takes parent color</span>
+&lt;/span&gt;</pre>
+      </div>
+    </div>
+
+    <div class="variant-block">
+      <div class="variant-label">Navigation · Tab Bar set (outline + fill 쌍)</div>
+      <div class="variant-sub">각 아이콘은 <code>outline</code>과 <code>-fill</code> 변형을 가집니다. 비활성 탭은 outline, 활성 탭은 fill.</div>
       <div class="stage tight">
-        <div class="asset-grid">
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="label">home</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="label">search</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="label">bell</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="label">heart</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="label">message</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="label">settings</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="label">user</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 9l4.5-5h9L21 9"/><line x1="9" y1="13" x2="15" y2="13"/></svg><span class="label">wallet</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 8 17 13"/><polyline points="7 19 12 14 17 19"/></svg><span class="label">chevron</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="label">check</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span class="label">close</span></div>
-          <div class="asset-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span class="label">plus</span></div>
+        <div class="icon-grid">
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-calendar"/></svg><span class="icon-label">i-calendar</span></div>
+          <div class="icon-cell" style="background:var(--sm-interactive-brand-subtle);color:var(--sm-content-brand);"><svg class="ico ico-lg"><use href="#i-calendar-fill"/></svg><span class="icon-label" style="color:var(--sm-content-brand);">i-calendar-fill</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-diary"/></svg><span class="icon-label">i-diary</span></div>
+          <div class="icon-cell" style="background:var(--sm-interactive-brand-subtle);color:var(--sm-content-brand);"><svg class="ico ico-lg"><use href="#i-diary-fill"/></svg><span class="icon-label" style="color:var(--sm-content-brand);">i-diary-fill</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-home"/></svg><span class="icon-label">i-home</span></div>
+          <div class="icon-cell" style="background:var(--sm-interactive-brand-subtle);color:var(--sm-content-brand);"><svg class="ico ico-lg"><use href="#i-home-fill"/></svg><span class="icon-label" style="color:var(--sm-content-brand);">i-home-fill</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-cart"/></svg><span class="icon-label">i-cart</span></div>
+          <div class="icon-cell" style="background:var(--sm-interactive-brand-subtle);color:var(--sm-content-brand);"><svg class="ico ico-lg"><use href="#i-cart-fill"/></svg><span class="icon-label" style="color:var(--sm-content-brand);">i-cart-fill</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-user"/></svg><span class="icon-label">i-user</span></div>
+          <div class="icon-cell" style="background:var(--sm-interactive-brand-subtle);color:var(--sm-content-brand);"><svg class="ico ico-lg"><use href="#i-user-fill"/></svg><span class="icon-label" style="color:var(--sm-content-brand);">i-user-fill</span></div>
         </div>
       </div>
-      <div class="token-ref">
-        <code>stroke-width: 1.5px</code>
+    </div>
+
+    <div class="variant-block">
+      <div class="variant-label">Action · 내비게이션 · UI 컨트롤</div>
+      <div class="stage tight">
+        <div class="icon-grid">
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-arrow-left"/></svg><span class="icon-label">i-arrow-left</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-arrow-right"/></svg><span class="icon-label">i-arrow-right</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-chevron-left"/></svg><span class="icon-label">i-chevron-left</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-chevron-right"/></svg><span class="icon-label">i-chevron-right</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-chevron-down"/></svg><span class="icon-label">i-chevron-down</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-chevron-up"/></svg><span class="icon-label">i-chevron-up</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-close"/></svg><span class="icon-label">i-close</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-check"/></svg><span class="icon-label">i-check</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-plus"/></svg><span class="icon-label">i-plus</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-minus"/></svg><span class="icon-label">i-minus</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-more-h"/></svg><span class="icon-label">i-more-h</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-more-v"/></svg><span class="icon-label">i-more-v</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-menu"/></svg><span class="icon-label">i-menu</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="variant-block">
+      <div class="variant-label">Common · 도구 · 커뮤니케이션</div>
+      <div class="stage tight">
+        <div class="icon-grid">
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-search"/></svg><span class="icon-label">i-search</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-bell"/></svg><span class="icon-label">i-bell</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-heart"/></svg><span class="icon-label">i-heart</span></div>
+          <div class="icon-cell" style="color:var(--sm-status-error);"><svg class="ico ico-lg"><use href="#i-heart-fill"/></svg><span class="icon-label" style="color:var(--sm-status-error);">i-heart-fill</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-star"/></svg><span class="icon-label">i-star</span></div>
+          <div class="icon-cell" style="color:var(--sm-signal-highlight);"><svg class="ico ico-lg"><use href="#i-star-fill"/></svg><span class="icon-label" style="color:var(--sm-signal-highlight);">i-star-fill</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-settings"/></svg><span class="icon-label">i-settings</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-edit"/></svg><span class="icon-label">i-edit</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-trash"/></svg><span class="icon-label">i-trash</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-share"/></svg><span class="icon-label">i-share</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-filter"/></svg><span class="icon-label">i-filter</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-link"/></svg><span class="icon-label">i-link</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-eye"/></svg><span class="icon-label">i-eye</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-eye-off"/></svg><span class="icon-label">i-eye-off</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-mail"/></svg><span class="icon-label">i-mail</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-clock"/></svg><span class="icon-label">i-clock</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-map-pin"/></svg><span class="icon-label">i-map-pin</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-camera"/></svg><span class="icon-label">i-camera</span></div>
+          <div class="icon-cell"><svg class="ico ico-lg"><use href="#i-image"/></svg><span class="icon-label">i-image</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="variant-block">
+      <div class="variant-label">Status · 의미 전달</div>
+      <div class="stage tight">
+        <div class="icon-grid">
+          <div class="icon-cell" style="color:var(--sm-status-info);"><svg class="ico ico-lg"><use href="#i-info"/></svg><span class="icon-label" style="color:var(--sm-status-info);">i-info</span></div>
+          <div class="icon-cell" style="color:var(--sm-status-warning);"><svg class="ico ico-lg"><use href="#i-alert"/></svg><span class="icon-label" style="color:var(--sm-status-warning);">i-alert</span></div>
+          <div class="icon-cell" style="color:var(--sm-status-success);"><svg class="ico ico-lg"><use href="#i-check-circle"/></svg><span class="icon-label" style="color:var(--sm-status-success);">i-check-circle</span></div>
+          <div class="icon-cell" style="color:var(--sm-status-error);"><svg class="ico ico-lg"><use href="#i-x-circle"/></svg><span class="icon-label" style="color:var(--sm-status-error);">i-x-circle</span></div>
+        </div>
+      </div>
+      <div class="token-ref" style="margin-top:20px;">
+        <code>viewBox: 0 0 24 24</code>
+        <code>stroke-width: 1.7</code>
         <code>linecap: round</code>
         <code>linejoin: round</code>
         <code>color: currentColor</code>
-        <code>grid: 24×24</code>
+        <code>⚠ 이모지 사용 금지 · 반드시 심볼 사용</code>
       </div>
     </div>
 
@@ -6774,32 +7160,71 @@ footer {
         <h2 class="section-title">Top App Bar</h2>
       </div>
       <p class="section-desc">
-        화면의 제목과 주요 액션이 모이는 곳. 뒤로가기는 항상 왼쪽 첫 번째, 주요 액션은 오른쪽 마지막.
+        화면의 제목과 주요 액션이 모이는 곳. 뒤로가기(<code>i-arrow-left</code>)는 왼쪽 첫 번째, 닫기(<code>i-close</code>) 또는 보조 액션은 오른쪽 마지막. 제목 정렬과 액션 타입에 따라 5가지 변형이 있습니다.
       </p>
     </div>
 
     <div class="variant-block">
-      <div class="variant-label">Standard · with back</div>
-      <div class="stage stack" style="gap: var(--size-400);">
+      <div class="variant-label">5가지 변형 · 같은 높이(56px), 같은 패딩</div>
+      <div class="stage stack" style="gap: 0;">
+
+        <!-- 1. Center title · back + more -->
+        <div class="appbar appbar-center">
+          <button class="icon-btn" aria-label="뒤로">
+            <svg class="ico"><use href="#i-arrow-left"/></svg>
+          </button>
+          <div class="title">헤더 타이틀</div>
+          <button class="icon-btn" aria-label="더 보기">
+            <svg class="ico"><use href="#i-more-h"/></svg>
+          </button>
+        </div>
+
+        <!-- 2. Left title · back + more -->
         <div class="appbar">
           <button class="icon-btn" aria-label="뒤로">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+            <svg class="ico"><use href="#i-arrow-left"/></svg>
           </button>
-          <div class="title">설정</div>
-          <button class="icon-btn" aria-label="검색">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <div class="title">헤더 타이틀</div>
+          <button class="icon-btn" aria-label="더 보기">
+            <svg class="ico"><use href="#i-more-h"/></svg>
           </button>
         </div>
-        <div class="appbar appbar-center">
+
+        <!-- 3. Left title · back + text action (next) -->
+        <div class="appbar">
+          <button class="icon-btn" aria-label="뒤로">
+            <svg class="ico"><use href="#i-arrow-left"/></svg>
+          </button>
+          <div class="title">헤더 타이틀</div>
+          <button class="text-btn text-btn-brand" aria-label="다음 단계로">다음</button>
+        </div>
+
+        <!-- 4. Left title · no back · close (x) -->
+        <div class="appbar">
+          <div class="title title-leading">헤더 타이틀</div>
           <button class="icon-btn" aria-label="닫기">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-          </button>
-          <div class="title">계좌 추가</div>
-          <button class="icon-btn" aria-label="도움말">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+            <svg class="ico"><use href="#i-close"/></svg>
           </button>
         </div>
+
+        <!-- 5. Left title · no back · text action (next) -->
+        <div class="appbar" style="border-bottom:none;">
+          <div class="title title-leading">헤더 타이틀</div>
+          <button class="text-btn text-btn-brand" aria-label="다음 단계로">다음</button>
+        </div>
+
       </div>
+    </div>
+
+    <div class="callout" style="margin-top:16px;">
+      <strong>사용 기준</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;font:400 13px/1.65 var(--font-sans);color:var(--sm-content-secondary);">
+        <li><strong>Center</strong>: 서브 화면에서 제목을 명확히 강조 · 액션이 모두 아이콘일 때</li>
+        <li><strong>Left · back + more</strong>: 상세 화면의 기본 형태</li>
+        <li><strong>Left · back + action</strong>: 멀티 스텝 플로우(회원가입·주문 등)에서 "다음" 단계 유도</li>
+        <li><strong>Left · close</strong>: 모달형 화면(전체 화면 다이얼로그)에서 닫기가 주된 탈출구</li>
+        <li><strong>Left · action only</strong>: 모달형 화면에서 완료/다음을 강조 · 취소는 뒤로가기가 아닌 닫기로</li>
+      </ul>
     </div>
 
     <div class="variant-block">
@@ -6810,10 +7235,10 @@ footer {
           <div class="row-1">
             <div class="spacer"></div>
             <button class="icon-btn" aria-label="알림">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+              <svg class="ico"><use href="#i-bell"/></svg>
             </button>
             <button class="icon-btn" aria-label="프로필">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <svg class="ico"><use href="#i-user"/></svg>
             </button>
           </div>
           <div class="large-title">홈</div>
@@ -6832,47 +7257,65 @@ footer {
         <h2 class="section-title">Tab Bar</h2>
       </div>
       <p class="section-desc">
-        앱 전체의 최상위 이동 수단. 탭은 3~5개, 항상 같은 위치, 항상 같은 순서. 가운데 탭을 다른 모양으로 강조하는 것도 흔한 패턴입니다.
+        앱 전체의 최상위 이동 수단. 탭은 3~5개, 항상 같은 위치, 항상 같은 순서. 비활성은 <code>outline</code> 아이콘 + <code>--sm-content-tertiary</code>, 활성은 <code>fill</code> 아이콘 + <code>--sm-content-brand</code>. 라벨과 아이콘이 같은 톤으로 움직입니다.
       </p>
     </div>
 
     <div class="variant-block">
-      <div class="variant-label">Bottom tab · standard</div>
-      <div class="stage stack">
-        <div class="tabbar">
-          <div class="tabbar-item active">
-            <span class="tab-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-6 9 6v12a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-            </span>
-            홈
-          </div>
-          <div class="tabbar-item">
-            <span class="tab-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </span>
-            탐색
-          </div>
-          <div class="tabbar-item">
-            <span class="tab-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-            </span>
-            보관함
-          </div>
-          <div class="tabbar-item">
-            <span class="tab-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            </span>
-            <span class="badge-mini"></span>
-            메시지
-          </div>
-          <div class="tabbar-item">
-            <span class="tab-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </span>
-            내 정보
-          </div>
+      <div class="variant-label">5-item active-state matrix · 한 번에 하나의 탭만 활성</div>
+      <div class="stage stack" style="gap:12px;">
+
+        <!-- Row 1: 홈 active -->
+        <div class="tabbar" style="width:100%;max-width:480px;">
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-calendar"/></svg></span>디데이</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-diary"/></svg></span>다이어리</div>
+          <div class="tabbar-item active"><span class="tab-icon"><svg class="ico"><use href="#i-home-fill"/></svg></span>홈</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-cart"/></svg></span>스토어</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-user"/></svg></span>마이페이지</div>
         </div>
+
+        <!-- Row 2: 디데이 active -->
+        <div class="tabbar" style="width:100%;max-width:480px;">
+          <div class="tabbar-item active"><span class="tab-icon"><svg class="ico"><use href="#i-calendar-fill"/></svg></span>디데이</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-diary"/></svg></span>다이어리</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-home"/></svg></span>홈</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-cart"/></svg></span>스토어</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-user"/></svg></span>마이페이지</div>
+        </div>
+
+        <!-- Row 3: 다이어리 active -->
+        <div class="tabbar" style="width:100%;max-width:480px;">
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-calendar"/></svg></span>디데이</div>
+          <div class="tabbar-item active"><span class="tab-icon"><svg class="ico"><use href="#i-diary-fill"/></svg></span>다이어리</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-home"/></svg></span>홈</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-cart"/></svg></span>스토어</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-user"/></svg></span>마이페이지</div>
+        </div>
+
+        <!-- Row 4: 스토어 active -->
+        <div class="tabbar" style="width:100%;max-width:480px;">
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-calendar"/></svg></span>디데이</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-diary"/></svg></span>다이어리</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-home"/></svg></span>홈</div>
+          <div class="tabbar-item active"><span class="tab-icon"><svg class="ico"><use href="#i-cart-fill"/></svg></span>스토어</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-user"/></svg></span>마이페이지</div>
+        </div>
+
+        <!-- Row 5: 마이페이지 active -->
+        <div class="tabbar" style="width:100%;max-width:480px;">
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-calendar"/></svg></span>디데이</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-diary"/></svg></span>다이어리</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-home"/></svg></span>홈</div>
+          <div class="tabbar-item"><span class="tab-icon"><svg class="ico"><use href="#i-cart"/></svg></span>스토어</div>
+          <div class="tabbar-item active"><span class="tab-icon"><svg class="ico"><use href="#i-user-fill"/></svg></span>마이페이지</div>
+        </div>
+
       </div>
+    </div>
+
+    <div class="callout" style="margin-top:16px;">
+      <strong>토큰</strong>
+      <code>--cm-tabbar-bg → var(--sm-background-default)</code> · <code>--cm-tabbar-border → var(--sm-border-subtle)</code> · <code>--cm-tabbar-content → var(--sm-content-tertiary)</code> · <code>--cm-tabbar-content-active → var(--sm-content-brand)</code>. 활성 아이콘은 반드시 <code>-fill</code> 변형을 사용하며, 비활성은 <code>outline</code>을 유지합니다.
     </div>
   </section>
 
@@ -7285,7 +7728,7 @@ footer {
           <span>9:41</span><span class="icons">● ● ●●</span>
         </div>
         <div class="m-topbar">
-          <div class="m-back">‹</div>
+          <div class="m-back"><svg class="ico"><use href="#i-arrow-left"/></svg></div>
           <h2></h2>
         </div>
         <div class="m-body">
@@ -7335,7 +7778,7 @@ footer {
       <div class="demo-phone"><div class="demo-screen">
         <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
         <div class="m-topbar">
-          <div class="m-back">‹</div>
+          <div class="m-back"><svg class="ico"><use href="#i-arrow-left"/></svg></div>
           <h2>회원가입</h2>
           <div class="m-action" style="color:var(--sm-content-tertiary);">2 / 4</div>
         </div>
@@ -7397,8 +7840,8 @@ footer {
         <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
         <div class="m-topbar" style="gap:8px;">
           <h2>커뮤니티</h2>
-          <div style="font-size:18px;cursor:pointer;">🔍</div>
-          <div style="font-size:18px;margin-left:8px;cursor:pointer;">🔔</div>
+          <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-search"/></svg></div>
+          <div style="margin-left:8px;cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-bell"/></svg></div>
         </div>
 
         <!-- Category chips -->
@@ -7462,14 +7905,14 @@ footer {
         </div>
 
         <!-- FAB -->
-        <div style="position:absolute;bottom:92px;right:20px;width:56px;height:56px;border-radius:50%;background:var(--sm-interactive-brand-default);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:300;box-shadow:0 8px 24px rgba(79,70,229,0.4);cursor:pointer;">+</div>
+        <div style="position:absolute;bottom:92px;right:20px;width:56px;height:56px;border-radius:50%;background:var(--sm-interactive-brand-default);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(79,70,229,0.4);cursor:pointer;"><svg class="ico"><use href="#i-plus"/></svg></div>
 
         <!-- Bottom Tab Bar -->
         <div class="m-tabbar">
-          <div class="m-tabbar-item"><span class="ico">🏠</span>홈</div>
-          <div class="m-tabbar-item active"><span class="ico">💬</span>커뮤니티</div>
-          <div class="m-tabbar-item"><span class="ico">🔍</span>탐색</div>
-          <div class="m-tabbar-item"><span class="ico">👤</span>내 정보</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-home"/></svg>홈</div>
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-diary-fill"/></svg>커뮤니티</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-search"/></svg>탐색</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>내 정보</div>
         </div>
       </div></div>
     </div>
@@ -7487,13 +7930,13 @@ footer {
         <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
         <div class="m-topbar" style="gap:8px;">
           <div style="display:flex;align-items:center;gap:6px;flex:1;cursor:pointer;">
-            <span style="font-size:18px;">📍</span>
+            <svg class="ico"><use href="#i-map-pin"/></svg>
             <div>
               <div style="font:700 14px/1.2 var(--font-sans);color:var(--sm-content-primary);">서울 강남구 테헤란로 ⌄</div>
               <div style="font:400 10px/1.2 var(--font-sans);color:var(--sm-content-tertiary);margin-top:1px;">기본 배달지</div>
             </div>
           </div>
-          <div style="font-size:20px;cursor:pointer;">🛒</div>
+          <div style="cursor:pointer;display:grid;place-items:center;position:relative;"><svg class="ico"><use href="#i-cart"/></svg></div>
         </div>
 
         <!-- Banner -->
@@ -7552,10 +7995,10 @@ footer {
         </div>
 
         <div class="m-tabbar">
-          <div class="m-tabbar-item active"><span class="ico">🏠</span>홈</div>
-          <div class="m-tabbar-item"><span class="ico">🔍</span>검색</div>
-          <div class="m-tabbar-item"><span class="ico">📋</span>주문</div>
-          <div class="m-tabbar-item"><span class="ico">👤</span>내 정보</div>
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-home-fill"/></svg>홈</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-search"/></svg>검색</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-calendar"/></svg>주문</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>내 정보</div>
         </div>
       </div></div>
     </div>
@@ -7635,10 +8078,10 @@ footer {
         </div>
 
         <div class="m-tabbar">
-          <div class="m-tabbar-item"><span class="ico">🏠</span>홈</div>
-          <div class="m-tabbar-item active"><span class="ico">🛍</span>스토어</div>
-          <div class="m-tabbar-item"><span class="ico">❤</span>찜</div>
-          <div class="m-tabbar-item"><span class="ico">👤</span>내 정보</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-home"/></svg>홈</div>
+          <div class="m-tabbar-item active"><svg class="ico"><use href="#i-cart-fill"/></svg>스토어</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-heart"/></svg>찜</div>
+          <div class="m-tabbar-item"><svg class="ico"><use href="#i-user"/></svg>내 정보</div>
         </div>
       </div></div>
     </div>
@@ -7655,7 +8098,7 @@ footer {
       <div class="demo-phone"><div class="demo-screen">
         <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
         <div class="m-topbar">
-          <div class="m-back">‹</div>
+          <div class="m-back"><svg class="ico"><use href="#i-arrow-left"/></svg></div>
           <h2>요금제</h2>
         </div>
 
@@ -7729,7 +8172,7 @@ footer {
       <div class="demo-phone"><div class="demo-screen">
         <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
         <div class="m-topbar">
-          <div class="m-back">‹</div>
+          <div class="m-back"><svg class="ico"><use href="#i-arrow-left"/></svg></div>
           <h2>2026년 4월</h2>
           <div class="m-action">오늘</div>
         </div>
@@ -7755,7 +8198,7 @@ footer {
               <div style="font:700 17px/1.2 var(--font-sans);color:var(--sm-content-primary);">4월 22일 수요일</div>
               <div style="font:400 11px/1.2 var(--font-sans);color:var(--sm-content-tertiary);margin-top:2px;">오늘 · 3개 일정</div>
             </div>
-            <div style="width:36px;height:36px;border-radius:50%;background:var(--sm-interactive-brand-default);color:#fff;display:grid;place-items:center;font-size:20px;font-weight:300;cursor:pointer;">+</div>
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--sm-interactive-brand-default);color:#fff;display:grid;place-items:center;cursor:pointer;"><svg class="ico ico-sm"><use href="#i-plus"/></svg></div>
           </div>
 
           <div style="display:flex;gap:12px;padding:14px;background:var(--sm-surface-default);border:1px solid var(--sm-border-subtle);border-radius:12px;margin-bottom:8px;">
@@ -7796,7 +8239,7 @@ footer {
         <div class="demo-statusbar"><span>9:41</span><span class="icons">● ● ●●</span></div>
         <div class="m-topbar">
           <h2>할 일</h2>
-          <div style="font-size:20px;cursor:pointer;">⚙</div>
+          <div style="cursor:pointer;display:grid;place-items:center;"><svg class="ico"><use href="#i-settings"/></svg></div>
         </div>
 
         <div class="m-body" style="padding-bottom:100px;">

@@ -1,0 +1,24 @@
+{
+  "name": "desgin_system",
+  "version": "1.0.0",
+  "description": "> 토큰부터 문장까지. 모바일 중심의 통합 디자인시스템. > 현재 버전 **v0.3.0** · 최초 릴리스 2026.04.21 · 최근 업데이트 2026.04.22",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dohoon0505/desgin_system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dohoon0505/desgin_system/issues"
+  },
+  "homepage": "https://github.com/dohoon0505/desgin_system#readme"
+}

@@ -2885,6 +2885,66 @@ body {
 }
 .sidebar-theme-btn:hover { border-color: var(--sm-border-strong); }
 
+/* ============ ICON SYSTEM (UIUX-DH Icon Package v1) ============ */
+/* Scoped to <svg class="ico"> so existing <span class="ico"> (sidebar/tabbar emoji slots) is unaffected */
+svg.ico {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  color: inherit;
+  fill: currentColor;
+  stroke: currentColor;
+}
+svg.ico-sm { width: 16px; height: 16px; }
+svg.ico-md { width: 20px; height: 20px; }
+svg.ico-lg { width: 28px; height: 28px; }
+svg.ico-xl { width: 40px; height: 40px; }
+
+/* Icon preview grid (for Asset · Icon section) */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: var(--size-200);
+  margin-top: var(--size-400);
+}
+.icon-cell {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  padding: var(--size-400) var(--size-200);
+  background: var(--sm-surface-default);
+  border: 1px solid var(--sm-border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--sm-content-primary);
+  transition: all var(--motion-fast) var(--ease-standard);
+}
+.icon-cell:hover {
+  border-color: var(--sm-border-default);
+  background: var(--sm-background-muted);
+  transform: translateY(-1px);
+}
+.icon-cell .ico {
+  color: var(--sm-content-primary);
+}
+.icon-cell .icon-label {
+  font: 500 10px/1 var(--font-mono);
+  color: var(--sm-content-tertiary);
+  letter-spacing: -0.02em;
+  word-break: break-all;
+  text-align: center;
+}
+
+/* Icon category labels */
+.icon-cat-label {
+  font: 600 11px/1 var(--font-mono);
+  color: var(--sm-content-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: var(--size-600) 0 var(--size-200);
+}
+.icon-cat-label:first-child { margin-top: 0; }
+
 /* ============ SPA MODE ============ */
 /* Hide all routable sections by default — router reveals them */
 body.spa-mode .hero,
@@ -3137,12 +3197,12 @@ body.spa-mode .demo-section.is-route-active {
 .m-topbar .m-back {
   width: 32px; height: 32px;
   display: grid; place-items: center;
-  margin-left: -8px; margin-right: 8px;
+  margin-left: -8px; margin-right: 4px;
   border-radius: 8px;
-  font-size: 20px;
   color: var(--sm-content-primary);
   cursor: pointer;
 }
+.m-topbar .m-back svg.ico { width: 22px; height: 22px; }
 .m-topbar h2 {
   font: 700 17px/1.2 var(--font-sans);
   margin: 0; flex: 1;
@@ -3828,9 +3888,31 @@ h2.section-title {
   transition: background var(--motion-fast) var(--ease-standard);
 }
 .appbar .icon-btn:hover { background: var(--sm-background-muted); }
-.appbar .title { flex: 1; font: 700 17px/1.3 var(--font-sans); letter-spacing: -0.015em; }
+.appbar .title { flex: 1; font: 700 17px/1.3 var(--font-sans); letter-spacing: -0.015em; color: var(--sm-content-primary); }
+.appbar .title.title-leading { text-align: left; padding-left: 4px; }
 .appbar-center { text-align: center; }
 .appbar-center .title { text-align: center; }
+
+/* Text button inside appbar (action on right) */
+.appbar .text-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  font: 600 14px/1 var(--font-sans);
+  cursor: pointer;
+  color: var(--sm-content-secondary);
+  border-radius: var(--radius-sm);
+  transition: background var(--motion-fast) var(--ease-standard),
+              color var(--motion-fast) var(--ease-standard);
+}
+.appbar .text-btn:hover { background: var(--sm-background-muted); }
+.appbar .text-btn.text-btn-brand { color: var(--sm-content-brand); font-weight: 700; }
+.appbar .text-btn.text-btn-brand:hover { background: var(--sm-interactive-brand-subtle); }
+.appbar .text-btn:disabled {
+  color: var(--sm-content-disabled);
+  cursor: not-allowed;
+  background: transparent;
+}
 .appbar-large {
   flex-direction: column; align-items: flex-start;
   gap: 0;
