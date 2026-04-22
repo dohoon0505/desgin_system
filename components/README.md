@@ -1,6 +1,6 @@
 # Components
 
-UIUX-DH 컴포넌트 24종. 모두 [토큰](../tokens/)을 참조하며, Light/Dark 테마를 횡단합니다.
+UIUX-DH 컴포넌트 25종. 모두 [토큰](../tokens/)을 참조하며, Light/Dark 테마를 횡단합니다.
 
 ## 카테고리별 인덱스
 
@@ -22,6 +22,7 @@ UIUX-DH 컴포넌트 24종. 모두 [토큰](../tokens/)을 참조하며, Light/D
 | Progress · Slider | [progress-slider.md](progress-slider.md) | Bar / Segment / Slider |
 | Tabs · Segment | [tabs-segment.md](tabs-segment.md) | 콘텐츠 전환 vs 뷰 전환 |
 | Card | [card.md](card.md) | 모든 것을 담는 그릇 |
+| Banner | [banner.md](banner.md) | 이미지+텍스트 프로모션 (두-색 그라데이션 금지) |
 
 ### Part 5 · Overlays & Navigation (v0.3.0~)
 

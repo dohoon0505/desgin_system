@@ -1,8 +1,8 @@
 {
   "$meta": {
     "name": "Typography Tokens",
-    "description": "Pretendard Variable 한 벌로 모든 위계를 구성합니다. 한국어의 시각 밀도를 고려해 line-height를 넉넉히, tracking은 크기에 따라 조정됩니다.",
-    "version": "0.3.0",
+    "description": "Pretendard Variable 한 벌로 모든 위계를 구성합니다. 한국어의 시각 밀도를 고려해 line-height를 넉넉히, tracking은 크기에 따라 조정됩니다. v0.4.1부터 mono 패밀리도 Pretendard로 통합되어, 숫자/메타 라벨이 한국어와 같은 메트릭을 공유합니다.",
+    "version": "0.4.1",
     "sourceHtml": "UIUX-DH-design-system.html#L115-L138"
   },
   "families": {
@@ -13,8 +13,9 @@
     },
     "mono": {
       "css": "--font-mono",
-      "value": "\"JetBrains Mono\", ui-monospace, \"SF Mono\", Menlo, monospace",
-      "use": "코드, 라벨, 메타 정보"
+      "value": "\"Pretendard Variable\", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
+      "use": "라벨·메타·숫자 강조 — v0.4.1부터 Pretendard로 통합. 등폭 숫자가 필요하면 `font-variant-numeric: tabular-nums` 병용.",
+      "note": "변수 이름(--font-mono)은 의미적 역할(라벨/메타) 표시를 위해 유지됩니다. 물리적 폰트는 --font-sans와 동일합니다."
     }
   },
   "scale": {
