@@ -1,5 +1,6 @@
 ---
 component: Accordion · Tree
+canonical: "accordion-tree.schema.json"
 category: Density
 since: 0.3.0
 version: 0.3.0

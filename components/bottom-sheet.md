@@ -1,5 +1,6 @@
 ---
 component: Bottom Sheet
+canonical: "bottom-sheet.schema.json"
 category: Overlays
 since: 0.3.0
 version: 0.3.0

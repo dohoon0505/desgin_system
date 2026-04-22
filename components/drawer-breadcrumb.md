@@ -1,5 +1,6 @@
 ---
 component: Drawer · Breadcrumb
+canonical: "drawer-breadcrumb.schema.json"
 category: Navigation
 since: 0.3.0
 version: 0.3.0

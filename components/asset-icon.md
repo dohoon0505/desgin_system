@@ -1,5 +1,6 @@
 ---
 component: Asset · Icon
+canonical: "asset-icon.schema.json"
 category: Components
 since: 0.2.0
 version: 0.3.2

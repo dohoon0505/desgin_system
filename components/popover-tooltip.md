@@ -1,5 +1,6 @@
 ---
 component: Popover · Tooltip
+canonical: "popover-tooltip.schema.json"
 category: Overlays
 since: 0.3.0
 version: 0.3.0

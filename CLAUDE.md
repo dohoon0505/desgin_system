@@ -9,7 +9,7 @@
 
 - **이름**: UIUX-DH · Unified Design System
 - **형태**: 모바일 중심 디자인시스템의 단일 진실의 출처
-- **현재 버전**: v0.5.0-dev (2026.04.22)
+- **현재 버전**: v0.5.0 (2026.04.22)
 - **범위**: Foundations(토큰/원칙) + Policy(그라데이션) + UX Writing(7원칙) + Components(25종) + 실제 사용 데모(18종)
 - **핵심 철학 (v0.5 신규)**: *"디자인시스템은 제품, 팀은 고객"* (Toss) → *"AI도 고객"*. JSON canonical + MD 보조.
 

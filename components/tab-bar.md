@@ -1,5 +1,6 @@
 ---
 component: Tab Bar
+canonical: "tab-bar.schema.json"
 category: Navigation
 since: 0.3.0
 version: 0.3.2

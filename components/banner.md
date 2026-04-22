@@ -1,5 +1,6 @@
 ---
 component: Banner
+canonical: "banner.schema.json"
 category: Components
 since: 0.4.6
 version: 0.4.6

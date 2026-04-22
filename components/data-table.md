@@ -1,5 +1,6 @@
 ---
 component: Data Table
+canonical: "data-table.schema.json"
 category: Density
 since: 0.3.0
 version: 0.3.0
