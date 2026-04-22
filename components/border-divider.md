@@ -2,80 +2,76 @@
 component: Border · Divider
 canonical: "border-divider.schema.json"
 category: Components
-since: 0.2.0
-version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L4991-L5058
+version: 0.2.0
+sourceHtml: "index.html#border"
+generated: true
 ---
 
 # Border · Divider
 
-> 경계는 **정보의 틀**입니다. 네 가지 강도의 경계선과 세 가지 구분선 패턴이 콘텐츠의 계층을 나눕니다.
+> Border는 요소의 경계(4강도), Divider는 섹션 구분선(3패턴).
 
-## Border · 4 intensities
+> ⚙️ 이 문서는 [`border-divider.schema.json`](border-divider.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs border`.
 
-| Token | 강도 | 사용처 |
+## 언제 사용하나 (Use when)
+
+- 영역 경계
+- 섹션 분리
+- 대체 인풋 구분 (OR)
+
+## 언제 쓰지 않나 (Don't use when)
+
+- 시각적 충분한 공백으로 분리 가능하면 생략
+
+## 변형 (Variants)
+
+| ID | Label | Description |
 | --- | --- | --- |
-| `--sm-border-subtle` | 가장 약함 | 기본 카드, 분리된 콘텐츠 블록 |
-| `--sm-border-default` | 보통 | 입력 필드 rest |
-| `--sm-border-strong` | 강함 | 강조 영역, high contrast UI |
-| `--sm-border-brand` | 브랜드 | 선택 상태 |
-| `--sm-border-focus` | 브랜드 포커스 | 활성 입력 (focus ring) |
-| `--sm-status-error` | 에러 | 유효성 실패 입력 |
+| `border-subtle` | Border · Subtle |  |
+| `border-default` | Border · Default |  |
+| `border-strong` | Border · Strong |  |
+| `border-brand` | Border · Brand |  |
+| `divider-solid` | Divider · Solid |  |
+| `divider-dashed` | Divider · Dashed |  |
+| `divider-with-label` | Divider · With label |  |
 
-## Divider · horizontal 패턴
+### HTML Snippets
 
-### Default (subtle line)
+**Divider · Solid**
 
-```
-─────────────────────
-```
-
-- `height: 1px`
-- `background: var(--sm-border-subtle)`
-
-### Strong (섹션 경계)
-
-대화 섹션·그룹 사이.
-
-```
-═════════════════════
+```html
+<hr class="divider">
 ```
 
-- `background: var(--sm-border-default)`
+**Divider · Dashed**
 
-### Dashed (비고정)
-
-임시 영역, 플레이스홀더.
-
-```
-- - - - - - - - - - -
+```html
+<hr class="divider divider-dashed">
 ```
 
-### Section (레이블 포함)
+**Divider · With label**
 
-```
-───── OR ─────
-```
-
-좌우 라인 + 중앙 텍스트. 로그인 화면의 "또는" 구분 등에 사용.
-
-## Divider · vertical
-
-수평 리스트의 요소 간 구분.
-
-```
-전체 │ 진행 중 │ 완료 │ 보관
+```html
+<div class="m-divider">또는</div>
 ```
 
-- `width: 1px`
-- `height: 12~16px`
-- 색은 `border-subtle`
+## 상태 (States)
 
-## 토큰
+`rest`
 
-위의 `--sm-border-*` 시맨틱 토큰을 그대로 사용. 별도 컴포넌트 토큰 없음.
+## 토큰 (Component Tokens)
 
-## 접근성
+| 역할 | CSS 변수 |
+| --- | --- |
+| color | `--sm-border-{strength}` |
+| width | `1px` |
 
-- Divider는 `role="separator"` + (수직인 경우) `aria-orientation="vertical"`.
-- 의미 없는 장식 라인은 CSS로만 그리고 DOM에 포함하지 않음.
+## 사용 데모
+
+`demo-login` · `demo-signup` · `demo-pricing` · `demo-store`
+
+수정 시 `window.demoMatrix.byComponent['border']` 로 영향 데모 전수 조회 가능.
+
+---
+
+**See also**: [index.html#border](../index.html#border) · [border-divider.schema.json](border-divider.schema.json) · [AGENTS.md](../AGENTS.md)

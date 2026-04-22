@@ -1,69 +1,99 @@
 ---
 component: Data Table
 canonical: "data-table.schema.json"
-category: Density
-since: 0.3.0
+category: Components
 version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L6316-L6373
+sourceHtml: "index.html#table"
+generated: true
 ---
 
 # Data Table
 
-> 많은 정보를 빠르게 비교할 때. **숫자 컬럼은 오른쪽 정렬 · 탭 고정 폭**, 텍스트 컬럼은 왼쪽 정렬. 정렬 가능한 컬럼은 표시로 알려줍니다.
+> 정렬 가능한 행·열 구조로 많은 데이터를 비교. 상태 칩·진행률·뱃지·액션을 셀에 임베드.
 
-## 구조
+> ⚙️ 이 문서는 [`data-table.schema.json`](data-table.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs table`.
 
-```
-┌──────────────┬──────────┬──────┬──────┬───────┐
-│ 프로젝트 ▲    │ 담당자    │ 상태  │ 진행률│ 마감  │
-├──────────────┼──────────┼──────┼──────┼───────┤
-│ Design System│ [DH] DH  │[진행중]│ 72% │ 04.28 │
-│ Onboarding   │ [JK] JK  │ [완료]│100% │ 04.20 │
-│ Payment v2   │ [SP] SP  │[검토중]│ 45% │ 04.22 │
-│ Motion Lib   │ [ML] ML  │ [대기]│  0% │ 05.15 │
-└──────────────┴──────────┴──────┴──────┴───────┘
-```
+## 언제 사용하나 (Use when)
 
-## 규칙
+- 숫자·상태 비교
+- 관리 도구 (대시보드)
+- 긴 항목 리스트
 
-- **정렬 가능한 컬럼**은 헤더에 정렬 표시(▲/▼). 현재 정렬 중인 컬럼 강조.
-- **텍스트 컬럼**: 왼쪽 정렬.
-- **숫자/날짜 컬럼**: 오른쪽 정렬 + `tabular-nums` (자릿수 맞춤 고정폭).
-- **상태 컬럼**: 칩 또는 tonal pill로 시각화 (badge와 유사).
-- **마감이 임박/지남**: 날짜를 `--sm-status-error` 색 + bold.
+## 언제 쓰지 않나 (Don't use when)
 
-## Row 상호작용
+- 모바일 좁은 화면 → 카드 리스트로 전환
+- 2-3개 항목 → List Item
+- 시각화가 주목적 → Chart
 
-- Hover: `--sm-background-muted` 배경
-- 전체 행 클릭 가능하면 전체를 focusable 영역으로
-- Row actions: 우측 끝에 `⋯` 메뉴 버튼
+## 변형 (Variants)
 
-## 토큰
-
-```
---cm-table-head-bg        → var(--sm-background-subtle)
---cm-table-head-content   → var(--sm-content-secondary)
---cm-table-row-border     → var(--sm-border-subtle)
---cm-table-row-bg-hover   → var(--sm-background-muted)
---cm-table-cell-content   → var(--sm-content-primary)
-```
-
-## 밀도 (Density)
-
-| Density | Row height | 사용처 |
+| ID | Label | Description |
 | --- | --- | --- |
-| Comfortable | 56px | 기본 |
-| Compact | 44px | 데이터 집약 화면 (대시보드) |
-| Relaxed | 72px | 리딩 우선 |
+| `basic` | Basic |  |
+| `sortable` | Sortable | 컬럼 헤더 클릭 시 정렬. aria-sort로 상태 표시 |
+| `selectable-rows` | Selectable Rows | 체크박스로 행 다중 선택 |
+| `sticky-header` | Sticky Header | 스크롤 시 헤더 고정 |
+| `density` | Density variants | compact / default / comfortable (행 높이) |
 
-## 접근성
+### HTML Snippets
 
-- `<table>` 시맨틱 요소 사용. `<thead>` / `<tbody>` 구분.
-- 정렬 가능 컬럼: `<th aria-sort="ascending | descending | none">`.
-- 긴 테이블은 `<caption>`으로 표의 목적 설명.
-- 모바일: 좌우 스크롤 허용하되, 첫 컬럼 고정(sticky) 권장.
+**Basic**
 
-## 반응형
+```html
+<table class="table">
+  <thead><tr><th>이름</th><th>상태</th><th>진행</th></tr></thead>
+  <tbody><tr><td>프로젝트 A</td><td><span class="badge badge-success">완료</span></td><td><div class="progress"><div class="progress-fill" style="width:80%;"></div></div></td></tr></tbody>
+</table>
+```
 
-- 모바일(< 640px): 가로 스크롤 또는 **카드 뷰 전환**
-- 컬럼 수가 많으면 우선순위에 따라 일부 컬럼 숨김 허용
+**Sortable**
+
+```html
+<th aria-sort="ascending">이름 ↑</th>
+```
+
+**Selectable Rows**
+
+```html
+<tr class="is-selected">...</tr>
+```
+
+**Sticky Header**
+
+```html
+<table class="table table-sticky">...</table>
+```
+
+## 상태 (States)
+
+`rest` · `hover-row` · `selected-row` · `sorted`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| headerBg | `--sm-background-muted` |
+| headerFg | `--sm-content-secondary` |
+| rowBorder | `--sm-border-subtle` |
+| rowHover | `--sm-background-subtle` |
+| selectedBg | `--sm-interactive-brand-subtle` |
+| cellPadX | `var(--size-500)` |
+| cellPadY | `12px (compact) / 16px / 20px` |
+
+## 접근성 (Accessibility)
+
+- **Role**: table (native HTML table)
+- **Keyboard**: `Tab (포커스 이동)` · `Arrow (셀 간 이동 — optional)`
+- **ARIA notes**:
+  - 정렬: aria-sort="ascending|descending|none"
+  - 선택 행: aria-selected=true
+  - 캡션: <caption> 또는 aria-labelledby
+
+## UX Writing 규칙
+
+- 컬럼명 짧게 (이름, 상태, 진행)
+- 숫자는 tabular-nums
+
+---
+
+**See also**: [index.html#table](../index.html#table) · [data-table.schema.json](data-table.schema.json) · [AGENTS.md](../AGENTS.md)

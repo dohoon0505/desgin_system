@@ -1,74 +1,91 @@
 ---
 component: Skeleton Loader
 canonical: "skeleton-loader.schema.json"
-category: States
-since: 0.3.0
+category: Components
 version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L6197-L6235
+sourceHtml: "index.html#skeleton"
+generated: true
 ---
 
 # Skeleton Loader
 
-> 로딩 중에 "텅 빈 화면"이 아니라 **"곧 채워질 그림자"**를 보여줍니다. 사용자는 기다리는 동안에도 맥락을 유지합니다.
+> 500ms 이상의 로딩 동안 실제 콘텐츠의 그림자를 미리 보여줌. shimmer 애니메이션으로 '곧 채워진다'는 신호.
 
-## 언제 사용하나
+> ⚙️ 이 문서는 [`skeleton-loader.schema.json`](skeleton-loader.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs skeleton`.
 
-- 네트워크 로딩 중 (**500ms 이상 지연**이 예상될 때)
-- 리스트·카드 초기 로드
-- 페이지 진입 직후의 비어 있는 구조
+## 언제 사용하나 (Use when)
 
-## 언제 쓰지 않나
+- 500ms 이상 예상되는 로딩
+- 레이아웃 시프트 방지
 
-- 로딩이 **300ms 미만**일 것으로 예상 → 즉시 콘텐츠
-- 정확한 진행률을 보여야 함 → [Progress](progress-slider.md)
-- 사용자의 명시적 액션 대기 → Spinner / 작은 로더
+## 언제 쓰지 않나 (Don't use when)
 
-## 핵심 규칙
+- 500ms 미만 → 아무것도 표시하지 않음
+- 이미 데이터가 있을 때 refresh → 리프레시 인디케이터만
+- 에러 상태 → Empty State
 
-**Skeleton은 실제 콘텐츠의 구조를 따라야 합니다.**
+## 변형 (Variants)
 
-카드가 3줄 텍스트라면 스켈레톤도 3줄. 실제보다 복잡하거나 단순하면 **레이아웃이 튑니다**.
+| ID | Label | Description |
+| --- | --- | --- |
+| `text-line` | Text Line |  |
+| `avatar` | Avatar |  |
+| `thumbnail` | Thumbnail |  |
+| `card` | Card | 카드 전체 (avatar + 2 lines + thumb) |
+| `list-row` | List Row | leading + title + sub |
 
-## 구조 예시
+### HTML Snippets
 
-```
-┌──────────────────────────┐
-│ ⬤  ▭▭▭▭▭▭▭              │   ← circle 아바타 + 제목 라인
-│    ▭▭▭▭                  │   ← 메타 라인
-│                          │
-│ ▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭    │   ← 본문 1
-│ ▭▭▭▭▭▭▭▭▭▭▭▭▭        │   ← 본문 2
-│ ▭▭▭▭▭▭▭▭▭            │   ← 본문 3
-└──────────────────────────┘
-```
+**Text Line**
 
-- 원형: `circle` (아바타 자리)
-- 직사각형: 라인 높이에 맞춤 (텍스트는 10~16px, 제목은 14~18px)
-- 큰 사각: 이미지 자리 (`radius-md`)
-
-## 토큰
-
-```
---cm-skeleton-bg      → var(--sm-background-muted)
---cm-skeleton-shimmer → linear-gradient(
-                          90deg,
-                          transparent,
-                          var(--sm-background-default) 50%,
-                          transparent
-                        )
---cm-skeleton-radius  → var(--radius-sm)
+```html
+<div class="skeleton skeleton-text"></div>
 ```
 
-## 모션
+**Avatar**
 
-쉬머(shimmer) 애니메이션 — 좌→우 이동 그라데이션. **예외적으로 허용되는 장식 애니메이션** (로딩 상태 표시가 목적이므로).
+```html
+<div class="skeleton skeleton-avatar"></div>
+```
 
-- 주기: 1.5s
-- 무한 반복 (`animation-iteration-count: infinite`)
-- `prefers-reduced-motion: reduce`에서는 정적 회색으로 표시
+**Thumbnail**
 
-## 접근성
+```html
+<div class="skeleton skeleton-thumb"></div>
+```
 
-- `role="status"` + `aria-busy="true"`.
-- 스크린리더에는 "콘텐츠를 불러오고 있어요" 같은 `aria-label`.
-- 로딩 완료 시 skeleton 제거 후 실제 콘텐츠로 교체 → `aria-busy="false"`.
+**Card**
+
+```html
+<div class="skeleton-card">...</div>
+```
+
+## 상태 (States)
+
+`loading`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| bg | `--sm-background-muted` |
+| shimmer | `linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent)` |
+| radius | `--radius-sm (text), 50% (avatar)` |
+| duration | `1.4s` |
+| easing | `ease-in-out infinite` |
+
+## 접근성 (Accessibility)
+
+- **Role**: status
+- **ARIA notes**:
+  - 부모 컨테이너에 aria-busy=true, aria-live=polite
+  - 스크린리더에 '로딩 중' 텍스트 제공 (시각 숨김)
+  - prefers-reduced-motion 시 shimmer 애니메이션 제거
+
+## UX Writing 규칙
+
+- 텍스트 없음 (시각적 신호만)
+
+---
+
+**See also**: [index.html#skeleton](../index.html#skeleton) · [skeleton-loader.schema.json](skeleton-loader.schema.json) · [AGENTS.md](../AGENTS.md)

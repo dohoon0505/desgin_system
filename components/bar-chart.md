@@ -2,76 +2,55 @@
 component: Bar Chart
 canonical: "bar-chart.schema.json"
 category: Components
-since: 0.2.0
-version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L4901-L4986
+version: 0.2.0
+sourceHtml: "index.html#chart"
+generated: true
 ---
 
 # Bar Chart
 
-> 데이터는 주인공입니다. 차트 자체는 최소화하고, **값과 위계**가 두드러지게 합니다.
+> 데이터 시각화. vertical / horizontal / stacked 3타입.
 
-## 세 가지 기본형
+> ⚙️ 이 문서는 [`bar-chart.schema.json`](bar-chart.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs chart`.
 
-### Vertical · time series
+## 언제 사용하나 (Use when)
 
-시간에 따른 변화. 강조하고 싶은 값(예: 이번 달)은 브랜드 컬러로 높입니다.
+- 수치 비교
+- 시간 추이
+- 구성 비율
 
-```
-                ▉
-            ▉   ▉
-        ▉   ▉   ▉
-    ▉   ▉   ▉   ▉   ▉
-▉   ▉   ▉   ▉   ▉   ▉   ▉
-Jan Feb Mar Apr May Jun Jul
-```
+## 언제 쓰지 않나 (Don't use when)
 
-- 과거: `interactive-brand-subtle`
-- 현재/강조: `interactive-brand-default`
+- 카테고리 3개 이하 → 단순 리스트
+- 연속 데이터 → Line Chart
 
-### Horizontal · ranking
+## 변형 (Variants)
 
-카테고리 간 비교. **값이 큰 순서로 정렬**해 상위 항목이 먼저 보이게 합니다.
+| ID | Label | Description |
+| --- | --- | --- |
+| `vertical` | Vertical | 시간 비교 (월/주/일) |
+| `horizontal` | Horizontal | 카테고리 비교 (라벨 긴 경우) |
+| `stacked` | Stacked | 구성 비율 + 전체량 |
 
-```
-식비  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   ₩482K
-교통  ▓▓▓▓▓▓▓▓▓           ₩318K
-쇼핑  ▓▓▓▓▓▓▓             ₩221K
-문화  ▓▓▓▓▓               ₩142K
-의료  ▓▓▓                 ₩67K
-```
+## 상태 (States)
 
-### Stacked · composition
+`rest` · `hover (단일 bar 강조)` · `loading`
 
-전체를 구성하는 부분의 비율. **한 줄에 담아** 여백을 아낍니다.
+## 토큰 (Component Tokens)
 
-```
-예산 배분 · 이번 달              ₩1,230,000
-┌─────────┬─────┬────┬─────┐
-│식비 42% │교통 │쇼핑│기타 │
-└─────────┴─────┴────┴─────┘
-```
+| 역할 | CSS 변수 |
+| --- | --- |
+| primary | `--sm-interactive-brand-default` |
+| secondary | `--sm-background-muted` |
+| gridline | `--sm-border-subtle` |
+| label | `--sm-content-tertiary` |
 
-세그먼트 컬러는 같은 `indigo` 스케일에서 500 → 200으로 단계적 사용 (같은 색상군, 명도만 다름).
+## 접근성 (Accessibility)
 
-## 토큰
+- **ARIA notes**:
+  - 복합 차트는 table 대체 제공 권장 (aria-describedby → 데이터 표)
+  - 색상에만 의존하지 말 것 — 텍스트·패턴 병용
 
-```
---cm-chart-bar-default → var(--sm-interactive-brand-subtle)
---cm-chart-bar-active  → var(--sm-interactive-brand-default)
---cm-chart-axis        → var(--sm-content-tertiary)
---cm-chart-grid        → var(--sm-border-subtle)
-```
+---
 
-## 접근성
-
-- 차트는 SVG + `<title>` / `<desc>`로 스크린리더 설명.
-- 데이터 테이블 `<table>`을 **대체 시각 표현**으로 함께 제공.
-- 색만으로 범례를 구분하지 않음 — 라벨·패턴 병용.
-- motion 애니메이션은 `prefers-reduced-motion` 존중.
-
-## 스타일 원칙
-
-- 격자선 최소화 (또는 제거)
-- 축은 필요한 최소 정보만 (첫/끝 값만 표시 등)
-- 숫자는 항상 `font-variant-numeric: tabular-nums` (자릿수 정렬)
+**See also**: [index.html#chart](../index.html#chart) · [bar-chart.schema.json](bar-chart.schema.json) · [AGENTS.md](../AGENTS.md)

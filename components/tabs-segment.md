@@ -2,67 +2,115 @@
 component: Tabs · Segment
 canonical: "tabs-segment.schema.json"
 category: Components
-since: 0.2.0
-version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L5701-L5738
+version: 0.2.0
+sourceHtml: "index.html#tabs"
+generated: true
 ---
 
 # Tabs · Segment
 
-> 두 컴포넌트는 **역할이 다릅니다.**
+> Tabs는 콘텐츠 전환 (패널 교체), Segment는 뷰 전환 (같은 데이터의 다른 표시).
 
-| | Tabs | Segment |
+> ⚙️ 이 문서는 [`tabs-segment.schema.json`](tabs-segment.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs tabs`.
+
+## 언제 사용하나 (Use when)
+
+- Tabs: 여러 콘텐츠 영역 전환
+- Segment: 같은 데이터의 뷰 전환 (리스트/카드, 월간/연간)
+
+## 언제 쓰지 않나 (Don't use when)
+
+- 4개 초과 세그먼트 → Tabs 또는 Select
+- 페이지 전환 → Top App Bar 또는 Drawer
+
+## 변형 (Variants)
+
+| ID | Label | Description |
 | --- | --- | --- |
-| 용도 | 서로 다른 콘텐츠 전환 | 같은 데이터의 다른 시각 |
-| 개수 | 2~5개 권장 | 2~4개 권장 |
-| 시각 | 인라인 언더라인 | 그룹된 pill |
-| 예시 | "개요 / 활동 / 설정" | "일간 / 주간 / 월간" |
+| `tabs-underline` | Tabs · Underline | 가장 흔한 탭. 하단 밑줄로 활성 표시 |
+| `tabs-pill` | Tabs · Pill | 칩 형태 탭 |
+| `segment-2` | Segment · 2 | 이원 선택 (월간/연간) |
+| `segment-3` | Segment · 3 |  |
+| `text-switch` | Text Switch | 밑줄·박스 없는 굵기만 차이 (헤더형) |
 
-## Tabs · content section
+### HTML Snippets
 
-동일한 레벨의 서로 다른 콘텐츠 영역을 전환. 하단에 컨텐츠가 렌더링됩니다.
+**Tabs · Underline**
 
-```
-┌─────────────────────────────┐
-│ 개요   활동   설정   보관함    │
-│ ────                          │
-├─────────────────────────────┤
-│ (선택된 탭의 콘텐츠)           │
-└─────────────────────────────┘
-```
-
-- 활성 탭: 하단 2px 브랜드 라인 + `content-primary` 색
-- 비활성: `content-secondary` 색, 라인 없음
-
-## Segment · view switcher
-
-**같은 데이터**의 다른 보기. 차트 viewing 단위, 정렬 방식 등.
-
-```
-┌───────────────────────────┐
-│ [일간] 주간  월간  연간     │
-└───────────────────────────┘
+```html
+<div class="tabs-underline">
+  <div class="tab is-active">전체</div>
+  <div class="tab">진행</div>
+  <div class="tab">완료</div>
+</div>
 ```
 
-- 배경은 `background-muted` (pill 그룹)
-- 활성 segment: `background-default` + `elevation-1` (떠 있는 느낌)
+**Tabs · Pill**
 
-## 토큰
-
-```
-/* Tabs */
---cm-tabs-content-default → var(--sm-content-secondary)
---cm-tabs-content-active  → var(--sm-content-primary)
---cm-tabs-line-active     → var(--sm-interactive-brand-default)
-
-/* Segment */
---cm-segment-bg         → var(--sm-background-muted)
---cm-segment-item-bg-active → var(--sm-background-default)
---cm-segment-content-active → var(--sm-content-primary)
+```html
+<div class="tabs-pill">
+  <span class="tab-pill is-active">전체 5</span>
+  <span class="tab-pill">진행 2</span>
+</div>
 ```
 
-## 접근성
+**Segment · 2**
 
-- Tabs: `role="tablist"` + 각 탭 `role="tab"` + 콘텐츠 `role="tabpanel"`, 화살표 키로 이동.
-- Segment: `role="radiogroup"` (단일 선택이므로) + 각 segment `role="radio"`.
-- 활성 상태는 `aria-selected="true"` 또는 `aria-checked="true"`.
+```html
+<div class="segment">
+  <div class="seg">월간</div>
+  <div class="seg is-active">연간</div>
+</div>
+```
+
+**Segment · 3**
+
+```html
+<div class="segment">...</div>
+```
+
+**Text Switch**
+
+```html
+<div class="text-switch">
+  <div class="ts-item is-active">자사은행</div>
+  <div class="ts-item">다른 금융</div>
+</div>
+```
+
+## 상태 (States)
+
+`rest` · `hover` · `active` · `focus` · `disabled`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| activeFg | `--sm-content-primary` |
+| inactiveFg | `--sm-content-tertiary` |
+| underline | `--sm-interactive-brand-default` |
+| segmentBg | `--sm-background-muted` |
+| segmentActive | `--sm-background-default` |
+| segmentShadow | `0 1px 3px rgba(0,0,0,0.06)` |
+
+## 접근성 (Accessibility)
+
+- **Role**: tablist + tab + tabpanel (Tabs), radiogroup + radio (Segment)
+- **Keyboard**: `Arrow Left/Right` · `Home/End` · `Tab (패널로 포커스 이동)`
+- **ARIA notes**:
+  - aria-selected, aria-controls=panelId, panel의 role=tabpanel
+
+## UX Writing 규칙
+
+- 짧은 명사 (전체, 진행, 완료)
+- 숫자 병기 가능 (전체 5, 진행 2)
+
+## 사용 데모
+
+`demo-signup` · `demo-pricing` · `demo-store` · `demo-todo` · `demo-booking` · `demo-foodorder` · `demo-shopping` · `demo-banking`
+
+수정 시 `window.demoMatrix.byComponent['tabs']` 로 영향 데모 전수 조회 가능.
+
+---
+
+**See also**: [index.html#tabs](../index.html#tabs) · [tabs-segment.schema.json](tabs-segment.schema.json) · [AGENTS.md](../AGENTS.md)

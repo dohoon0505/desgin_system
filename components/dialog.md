@@ -1,103 +1,109 @@
 ---
 component: Dialog
 canonical: "dialog.schema.json"
-category: Overlays
-since: 0.3.0
+category: Components
 version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L5836-L5897
+sourceHtml: "index.html#dialog"
+generated: true
 ---
 
 # Dialog
 
-> Dialog는 사용자의 선택을 **강제로 멈추게** 합니다. 결정 없이는 되돌아갈 수 없어야 할 때만 씁니다. 남용하면 신뢰를 잃습니다.
+> 사용자의 선택을 강제로 멈추게 함. 결정 없이는 되돌아갈 수 없어야 할 때만 사용. 남용하면 신뢰를 잃음.
 
-## 언제 사용하나
+> ⚙️ 이 문서는 [`dialog.schema.json`](dialog.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs dialog`.
 
-- **파괴적 액션 확인** — 삭제, 결제, 되돌릴 수 없는 변경
-- **저장되지 않은 작업 경고** — 나가기 전 확인
-- **시스템 완료 알림** — 송금 성공 같은 중요한 완료
+## 언제 사용하나 (Use when)
 
-## 언제 쓰지 않나
+- 되돌릴 수 없는 액션 확인
+- 필수 입력 강요
+- 중요한 시스템 알림
 
-- 단순 알림 → [Toast](alert-toast.md)
-- 모바일의 선택지 제공 → [Bottom Sheet](bottom-sheet.md)
-- 정보 열람 → Card 또는 별도 페이지
+## 언제 쓰지 않나 (Don't use when)
 
-## 변형
+- 잠시 나타나는 알림 → Toast
+- 상세 정보 표시 → Bottom Sheet 또는 별도 페이지
+- 광고·프로모션 → Banner
 
-### Confirm · destructive
+## 변형 (Variants)
 
-```
-┌───────────────────────────────┐
-│ 삭제한 프로젝트는 복구할 수 없어요 │
-│                               │
-│ '디자인시스템 v0.3' 프로젝트와 포함된│
-│ 12개의 파일이 함께 삭제돼요.      │
-│                               │
-│         [닫기]   [삭제하기]    │
-└───────────────────────────────┘
-```
-
-- **왼쪽 = 안전한 액션** ("닫기")
-- **오른쪽 = 위험한 액션** (`btn-danger` "삭제하기")
-
-### Success · completion
-
-```
-┌────────────────────────────┐
-│           [✓]               │
-│                            │
-│  송금을 완료했어요           │
-│  김디자이너 님에게 320,000원│
-│  을 보냈어요.               │
-│                            │
-│         [확인]              │
-└────────────────────────────┘
-```
-
-- 상단 원형 아이콘 (`--sm-status-success` 배경)
-- 단일 버튼 full-width
-
-### Warning · attention required
-
-```
-┌────────────────────────────┐
-│           [!]               │
-│                            │
-│  저장하지 않고 나갈까요?     │
-│  작성한 내용이 사라져요.     │
-│                            │
-│     [나가기]  [저장하기]    │
-└────────────────────────────┘
-```
-
-- 상단 원형 아이콘 (`--sm-status-warning` 배경)
-
-## 토큰
-
-```
---cm-dialog-surface  → var(--sm-surface-default)
---cm-dialog-overlay  → rgba(0, 0, 0, 0.5)
---cm-dialog-radius   → var(--radius-xl)
---cm-dialog-shadow   → var(--elevation-4)
---cm-dialog-max-width: 360px
-```
-
-## 접근성
-
-- `role="dialog"` + `aria-modal="true"`.
-- `aria-labelledby`로 제목과 연결.
-- 열릴 때 **첫 focusable 요소**로 포커스 이동, 닫힐 때 **트리거 요소**로 복귀.
-- `ESC` 키로 닫기 지원 (단, 데이터 유실 위험이 있으면 확인 후 닫기).
-- 배경 스크롤 잠금.
-
-## UX Writing
-
-제목은 **결과나 질문**으로. "주의!" 같은 감탄사로 시작하지 않습니다.
-
-| 컴포넌트 | ❌ | ✅ |
+| ID | Label | Description |
 | --- | --- | --- |
-| 왼쪽 버튼 | 취소 | 닫기 |
-| 오른쪽 버튼 | 확인 · OK | 삭제하기 · 나가기 · 저장하기 |
+| `confirm` | Confirm | 일반 확인/취소 |
+| `destructive` | Destructive | 되돌릴 수 없는 액션. 위험한 액션은 오른쪽. |
+| `alert` | Alert (one action) | 단일 액션 (확인만) |
 
-'취소'는 지금까지 한 작업이 취소될까 봐 사용자가 망설입니다. 자세히: [../docs/05-ux-writing.md](../docs/05-ux-writing.md).
+### HTML Snippets
+
+**Confirm**
+
+```html
+<div class="dialog">
+  <h4>변경 사항을 저장할까요?</h4>
+  <p>저장하지 않고 나가면 작업이 사라져요.</p>
+  <div class="dialog-actions">
+    <button class="btn btn-secondary">취소</button>
+    <button class="btn btn-primary">저장</button>
+  </div>
+</div>
+```
+
+**Destructive**
+
+```html
+<div class="dialog">
+  <h4>삭제한 프로젝트는 복구할 수 없어요</h4>
+  <p>'v0.3' 프로젝트와 포함된 12개 파일이 함께 삭제돼요.</p>
+  <div class="dialog-actions">
+    <button class="btn btn-secondary">닫기</button>
+    <button class="btn btn-danger">삭제하기</button>
+  </div>
+</div>
+```
+
+**Alert (one action)**
+
+```html
+<div class="dialog">
+  <h4>네트워크에 연결할 수 없어요</h4>
+  <p>Wi-Fi 또는 모바일 데이터를 확인해주세요.</p>
+  <div class="dialog-actions">
+    <button class="btn btn-primary btn-full">확인</button>
+  </div>
+</div>
+```
+
+## 상태 (States)
+
+`closed` · `opening` · `open` · `closing`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| bg | `--sm-background-default` |
+| scrim | `--sm-background-overlay` |
+| radius | `--radius-xl` |
+| elevation | `--elevation-5` |
+| padding | `var(--size-700)` |
+
+## 접근성 (Accessibility)
+
+- **Role**: dialog
+- **Keyboard**: `Esc (닫기)` · `Tab (포커스 트랩)`
+- **ARIA notes**:
+  - aria-modal=true
+  - aria-labelledby=titleId
+  - 열릴 때 제목 또는 첫 포커스 가능 요소로 초기 포커스
+  - 닫힐 때 원래 트리거로 포커스 복귀
+  - scrim 클릭 시 닫힘 여부는 옵션 (destructive는 false 권장)
+
+## UX Writing 규칙
+
+- 제목은 질문이나 결과 (변경 사항을 저장할까요? / 삭제한 프로젝트는 복구할 수 없어요)
+- 버튼은 동사 (저장, 삭제, 계속) — 'OK' 금지
+- destructive의 버튼: '예'/'아니요' 대신 구체적 결과 (삭제하기, 취소)
+
+---
+
+**See also**: [index.html#dialog](../index.html#dialog) · [dialog.schema.json](dialog.schema.json) · [AGENTS.md](../AGENTS.md)

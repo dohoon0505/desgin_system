@@ -2,64 +2,138 @@
 component: Badge
 canonical: "badge.schema.json"
 category: Components
-since: 0.2.0
-version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L4829-L4896
+version: 0.2.0
+sourceHtml: "index.html#badge"
+generated: true
 ---
 
 # Badge
 
-> 작지만 강한 시각 신호. 상태 · 카테고리 · 숫자 알림을 전달합니다. 한 화면에 많이 쓰이면 신호의 가치를 잃습니다.
+> 상태·카테고리·숫자 알림을 짧게 표시하는 작은 라벨.
 
-## 언제 사용하나
+> ⚙️ 이 문서는 [`badge.schema.json`](badge.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs badge`.
 
-- 상태 표시 (진행 중, 완료, 실패)
+## 언제 사용하나 (Use when)
+
+- 상태 표시
+- 알림 카운트
 - 카테고리 태그
-- 알림 개수 (9 이상은 `99+`로 상한)
-- 신규·Hot·Pro 같은 짧은 강조
+- NEW·HOT 강조
 
-## 언제 쓰지 않나
+## 언제 쓰지 않나 (Don't use when)
 
-- 상호작용이 필요한 경우 → [Chip](chip.md)
-- 긴 설명이 필요한 경우 → [Alert](alert-toast.md)
+- 상호작용 필요 시 Chip 사용
+- 긴 텍스트 (2단어 이상)
 
-## 변형
+## 변형 (Variants)
 
-### Status · tonal
+| ID | Label | Description |
+| --- | --- | --- |
+| `brand` | Brand |  |
+| `success` | Success |  |
+| `warning` | Warning |  |
+| `error` | Error |  |
+| `info` | Info |  |
+| `neutral` | Neutral |  |
+| `solid` | Solid | 솔리드 배경 강조 |
+| `count` | Count | 숫자 카운트, 원형 |
+| `dot` | Dot | 상태 인디케이터 (텍스트 없음) |
 
-배경이 subtle한 페일 톤. 가독성 좋고 주변을 방해하지 않습니다.
+### HTML Snippets
 
-- `badge-default` — 중립
-- `badge-brand` — 신규·강조
-- `badge-success` — 완료
-- `badge-warning` — 주의
-- `badge-error` — 실패
-- `badge-info` — 정보
+**Brand**
 
-### Solid · emphasis
-
-꽉 찬 배경. 눈에 더 띕니다.
-
-- `badge-solid-brand` — 브랜드 솔리드
-- `badge-solid-dark` — 딥톤 (예: "PRO")
-- `badge-outline` — 테두리만 (예: "BETA")
-
-### Notification · numeric & dot
-
-아이콘 버튼에 붙는 우측 상단 표시.
-
-- **숫자 뱃지**: `9` 이상일 때 `99+`로 상한.
-- **도트 뱃지**: 정확한 개수가 중요하지 않을 때.
-
-## 토큰
-
-```
---cm-badge-notif-bg  → var(--sm-status-error)
---cm-badge-brand-bg  → var(--sm-interactive-brand-subtle)
---cm-badge-content   → var(--sm-content-brand)
+```html
+<span class="badge badge-brand">NEW</span>
 ```
 
-## 접근성
+**Success**
 
-- 숫자 뱃지는 `aria-label="<count>개의 새로운 알림"` 같은 설명 포함.
-- 색만으로 상태를 구분하지 않습니다 — 아이콘 또는 텍스트와 병용.
+```html
+<span class="badge badge-success">완료</span>
+```
+
+**Warning**
+
+```html
+<span class="badge badge-warning">대기</span>
+```
+
+**Error**
+
+```html
+<span class="badge badge-error">오류</span>
+```
+
+**Info**
+
+```html
+<span class="badge badge-info">안내</span>
+```
+
+**Neutral**
+
+```html
+<span class="badge badge-neutral">기본</span>
+```
+
+**Solid**
+
+```html
+<span class="badge badge-solid">SALE</span>
+```
+
+**Count**
+
+```html
+<span class="badge badge-count">3</span>
+```
+
+**Dot**
+
+```html
+<span class="badge badge-dot"></span>
+```
+
+## 크기 (Sizes)
+
+| ID | 값 |
+| --- | --- |
+| `badge-sm` | height: `18`, fontSize: `9` |
+| `badge-md` | height: `20`, fontSize: `10` |
+| `badge-lg` | height: `24`, fontSize: `11` |
+
+## 상태 (States)
+
+`rest`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| bg | `--cm-badge-{variant}-bg` |
+| fg | `--cm-badge-{variant}-fg` |
+| radius | `--cm-badge-radius` |
+
+## 접근성 (Accessibility)
+
+- **Role**: status (상태 알림) 또는 일반 span
+- **ARIA notes**:
+  - 동적 카운트 업데이트 시 aria-live=polite 부모 요소 권장
+  - dot은 시각 정보만 — 의미 정보는 텍스트로 중복 제공 (예: '새 알림 3개')
+
+## UX Writing 규칙
+
+- 1-3 글자 권장
+- 대문자 모노 또는 숫자
+- 동적 수치는 tabular-nums
+
+## 사용 데모
+
+`demo-community` · `demo-store` · `demo-todo` · `demo-booking` · `demo-foodorder` · `demo-shopping` · `demo-social` · `demo-banking` · `demo-mypage` · `demo-chat` · `demo-notify`
+
+수정 시 `window.demoMatrix.byComponent['badge']` 로 영향 데모 전수 조회 가능.
+
+---
+
+**See also**: [index.html#badge](../index.html#badge) · [badge.schema.json](badge.schema.json) · [AGENTS.md](../AGENTS.md)

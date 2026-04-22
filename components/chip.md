@@ -2,71 +2,111 @@
 component: Chip
 canonical: "chip.schema.json"
 category: Components
-since: 0.2.0
-version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L5145-L5255
+version: 0.2.0
+sourceHtml: "index.html#chip"
+generated: true
 ---
 
 # Chip
 
-> 가볍고 빠른 선택 단위. 필터 · 카테고리 · 태그 · 선택 상태. 버튼보다 작고, 뱃지보다 상호작용이 많습니다.
+> 필터·카테고리·태그를 토글·제거 가능한 작은 상호작용 요소. Badge와 달리 상호작용 가능.
 
-## 언제 사용하나
+> ⚙️ 이 문서는 [`chip.schema.json`](chip.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs chip`.
 
-- 필터 (여러 개 동시 선택 가능)
-- 카테고리 선택 (단일 / 다중)
-- 적용된 조건을 표시 (제거 가능)
-- 상태 표시 with dot
-- 사람 멘션 (아바타 포함)
+## 언제 사용하나 (Use when)
 
-## 언제 쓰지 않나
+- 필터 선택
+- 태그 입력
+- 카테고리 표시
 
-- 주요 액션 → [Button](button.md)
-- 순수 정보 표시만 → [Badge](badge.md)
+## 언제 쓰지 않나 (Don't use when)
 
-## 변형
+- 단순 상태 표시 → Badge
+- 주요 액션 → Button
 
-### Filter · category
+## 변형 (Variants)
 
-기본 칩. 선택 시 브랜드 tonal 배경, 테두리 강조.
+| ID | Label | Description |
+| --- | --- | --- |
+| `filter` | Filter | 토글 가능한 필터 |
+| `filter-active` | Filter · Active | 선택된 상태 |
+| `removable` | Removable | X 버튼 포함, 제거 가능 |
+| `with-avatar` | With Avatar | 좌측 아바타 + 이름 |
+| `with-icon` | With Icon | 좌측 아이콘 |
 
-### Tonal · soft emphasis
+### HTML Snippets
 
-배경이 brand subtle, 선택 시 더 진함. 카테고리 시각 그룹에 적합.
+**Filter**
 
-### Removable · filter chip
-
-`X` 아이콘 탭 시 즉시 제거. 적용된 조건을 한눈에 보여줍니다.
-
-### Dot · status indicator
-
-- 초록 — 온라인
-- 호박 — 자리비움
-- 빨강 — 방해금지
-- 그레이 — 오프라인
-
-### Avatar chip · mention
-
-이니셜 2자 아바타 + 이름. 팀 멘션·협업자 표시.
-
-## 크기
-
-- `chip-sm` — Small
-- `chip` (default) — Medium
-- `chip-lg` — Large
-
-## 토큰
-
-```
---cm-chip-bg           → var(--sm-background-muted)
---cm-chip-bg-selected  → var(--sm-interactive-brand-subtle)
---cm-chip-border       → var(--sm-border-subtle)
---cm-chip-content      → var(--sm-content-secondary)
---cm-chip-content-sel  → var(--sm-content-brand)
+```html
+<span class="chip chip-filter">디자인</span>
 ```
 
-## 접근성
+**Filter · Active**
 
-- 선택 상태는 `aria-pressed="true"`.
-- 제거 버튼은 별도 focus-target, `aria-label="제거"` 포함.
-- 도트만으로 상태를 구분하지 않고 텍스트 병용 ("온라인" 등).
+```html
+<span class="chip chip-filter is-active">디자인</span>
+```
+
+**Removable**
+
+```html
+<span class="chip chip-removable">UX <button class="chip-remove">×</button></span>
+```
+
+**With Avatar**
+
+```html
+<span class="chip chip-avatar"><span class="avatar sz-xs">DH</span>김도훈</span>
+```
+
+**With Icon**
+
+```html
+<span class="chip"><svg class="ico ico-sm"><use href="#i-filter"/></svg> 필터</span>
+```
+
+## 크기 (Sizes)
+
+| ID | 값 |
+| --- | --- |
+| `chip-sm` | height: `24`, fontSize: `11` |
+| `chip-md` | height: `28`, fontSize: `12` |
+| `chip-lg` | height: `32`, fontSize: `13` |
+
+## 상태 (States)
+
+`rest` · `hover` · `active` · `focus` · `disabled`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| bg | `--sm-background-muted` |
+| fg | `--sm-content-primary` |
+| activeBg | `--sm-interactive-brand-default` |
+| activeFg | `--sm-content-onBrand` |
+| radius | `--radius-full` |
+
+## 접근성 (Accessibility)
+
+- **Role**: button (토글) 또는 listitem (필터 그룹 내)
+- **Keyboard**: `Enter` · `Space` · `Delete (제거 시)`
+- **ARIA notes**:
+  - 토글: aria-pressed
+  - 제거 버튼은 별도 aria-label (예: '제거: UX')
+
+## UX Writing 규칙
+
+- 1-2 단어
+- 대문자 지양 (태그는 자연어)
+
+## 사용 데모
+
+`demo-community` · `demo-todo` · `demo-booking` · `demo-map` · `demo-notify`
+
+수정 시 `window.demoMatrix.byComponent['chip']` 로 영향 데모 전수 조회 가능.
+
+---
+
+**See also**: [index.html#chip](../index.html#chip) · [chip.schema.json](chip.schema.json) · [AGENTS.md](../AGENTS.md)

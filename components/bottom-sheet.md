@@ -1,75 +1,108 @@
 ---
 component: Bottom Sheet
 canonical: "bottom-sheet.schema.json"
-category: Overlays
-since: 0.3.0
+category: Components
 version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L5902-L5958
+sourceHtml: "index.html#sheet"
+generated: true
 ---
 
 # Bottom Sheet
 
-> 모바일에서 가장 **자연스러운 오버레이**. 아래에서 올라오고, 엄지로 닫기 편합니다. Dialog보다 가볍고, Drawer보다 맥락적입니다.
+> 모바일에서 Dialog 대체. 하단에서 슬라이드업. 드래그로 크기 조절 가능 (modal/non-modal).
 
-## 언제 사용하나
+> ⚙️ 이 문서는 [`bottom-sheet.schema.json`](bottom-sheet.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs sheet`.
 
-- **선택지 제공** — 정렬 방식, 공유 옵션
-- **맥락적 폼** — 필터 설정, 빠른 댓글
-- **모바일 주요 액션** — Dialog의 모바일 대체
+## 언제 사용하나 (Use when)
 
-## 언제 쓰지 않나
+- 모바일 액션 메뉴
+- 필터 설정
+- 지도에서 선택된 POI 상세
 
-- 강제 결정 확인 → [Dialog](dialog.md)
-- 긴 콘텐츠 → 별도 페이지
-- 데스크톱 전용 UI → [Popover](popover-tooltip.md)
+## 언제 쓰지 않나 (Don't use when)
 
-## 구조
+- 데스크톱 우선 UI → Dialog
+- 긴 폼 → 별도 페이지
 
-```
-┌──────────────────┐
-│                  │
-│   (배경 화면)      │
-│                  │
-├─── (스크림) ──────┤
-│ ──               │ ← handle (드래그로 닫기 가능)
-│ 정렬 방식         │ ← title
-│ ● 최근 수정한 순  │
-│   만든 순서대로   │
-│   이름 순         │
-│   즐겨찾기 먼저   │
-│                  │
-│   [적용하기]      │
-└──────────────────┘
-```
+## 변형 (Variants)
 
-- 상단 **핸들** (작은 수평 바): 드래그 가능함을 알림
-- 상단 모서리만 `radius-2xl` (28px), 하단 모서리는 각짐
+| ID | Label | Description |
+| --- | --- | --- |
+| `modal` | Modal Sheet | 배경 scrim 있음, 닫을 때까지 뒤 상호작용 불가 |
+| `non-modal` | Non-modal (Peek) | 하단에 피크, 스크롤로 확장. 뒤 상호작용 유지 |
+| `action-list` | Action List | 액션 메뉴 (공유, 삭제 등) |
 
-## 상호작용
+### HTML Snippets
 
-- **아래로 드래그** → 닫힘
-- **배경(스크림) 탭** → 닫힘
-- **내용 스크롤** → 시트만 스크롤 (배경 고정)
-- 다단계 높이 지원 가능: peek / full
+**Modal Sheet**
 
-## 토큰
-
-```
---cm-sheet-surface → var(--sm-surface-default)
---cm-sheet-handle  → var(--sm-border-default)
---cm-sheet-overlay → rgba(0, 0, 0, 0.5)
---cm-sheet-radius  → var(--radius-2xl)   /* 28px */
+```html
+<div class="sheet sheet-modal">
+  <div class="sheet-handle"></div>
+  <h4>옵션 선택</h4>
+  <ul class="list">
+    <li class="list-item">보관함 이동</li>
+    <li class="list-item">공유</li>
+  </ul>
+</div>
 ```
 
-## 접근성
+**Non-modal (Peek)**
 
-- `role="dialog"` + `aria-modal="true"`.
-- 제목과 연결: `aria-labelledby`.
-- ESC 키로 닫기.
-- 핸들은 스크린리더 사용자도 닫기 가능해야 하므로 **별도 close button** 제공 권장.
-- 배경 스크롤 잠금 + 포커스 트랩.
+```html
+<div class="sheet sheet-peek">
+  <div class="sheet-handle"></div>
+  <div class="sheet-preview"><!-- 카드 프리뷰 --></div>
+</div>
+```
 
-## 모션
+**Action List**
 
-- 등장: `--motion-slow` (320ms) + `--ease-emphasized`
-- 닫힘: `--motion-base` (200ms) + `--ease-accelerate`
+```html
+<div class="sheet"><ul class="action-list"><li>공유</li><li>저장</li><li class="is-danger">삭제</li><li class="is-cancel">취소</li></ul></div>
+```
+
+## 상태 (States)
+
+`closed` · `peek` · `half` · `expanded` · `dragging`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| bg | `--sm-background-default` |
+| handle | `--sm-border-default` |
+| scrim | `--sm-background-overlay` |
+| radius | `20px (상단만)` |
+| elevation | `--elevation-5` |
+
+## 부속 요소 (Sub-parts)
+
+| 클래스 | 역할 |
+| --- | --- |
+| `sheet-handle` | 상단 드래그 핸들 (4px 높이, border-radius:full) |
+| `sheet-preview` | 피크 모드의 미리보기 영역 |
+
+## 접근성 (Accessibility)
+
+- **Role**: dialog
+- **Keyboard**: `Esc (닫기)` · `Arrow Up/Down (드래그 대체)`
+- **ARIA notes**:
+  - modal: aria-modal=true + 포커스 트랩
+  - non-modal: role=region 고려
+  - 드래그 핸들에 aria-label="크기 조절"
+
+## UX Writing 규칙
+
+- 제목은 명사구
+- 취소는 맨 아래 (모바일 iOS 패턴)
+
+## 사용 데모
+
+`demo-map`
+
+수정 시 `window.demoMatrix.byComponent['sheet']` 로 영향 데모 전수 조회 가능.
+
+---
+
+**See also**: [index.html#sheet](../index.html#sheet) · [bottom-sheet.schema.json](bottom-sheet.schema.json) · [AGENTS.md](../AGENTS.md)

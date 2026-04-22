@@ -2,91 +2,113 @@
 component: Text Field
 canonical: "text-field.schema.json"
 category: Components
-since: 0.2.0
-version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L5260-L5349
+version: 0.2.0
+sourceHtml: "index.html#textfield"
+generated: true
 ---
 
 # Text Field
 
-> 입력은 앱에서 가장 위험한 순간입니다. 레이블은 항상 필드 위, 도움말은 항상 아래, 에러는 즉시. 포커스 링은 시각적으로 분명해야 합니다.
+> 텍스트 입력 필드. 레이블은 필드 위, 도움말은 아래, 에러는 즉시.
 
-## 언제 사용하나
+> ⚙️ 이 문서는 [`text-field.schema.json`](text-field.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs textfield`.
 
-- 단일 행 텍스트 입력
-- 이메일, 비밀번호, 전화번호, 금액, URL 등 형식화된 입력
-- 검색 (pill 변형)
+## 언제 사용하나 (Use when)
 
-## 언제 쓰지 않나
+- 사용자 입력 수집
+- 검색
+- 폼
 
-- 여러 줄 입력 → Textarea (별도)
-- 선택지가 한정된 입력 → [Radio](checkbox-radio-toggle.md) · Select
+## 언제 쓰지 않나 (Don't use when)
 
-## 변형
+- 선택지가 유한하면 Select/Radio
+- 파일 업로드는 별도
 
-### Default
+## 변형 (Variants)
 
-```
-┌─────────────┐
-│ Label *     │
-│ ┌─────────┐ │
-│ │ input   │ │
-│ └─────────┘ │
-│ helper text │
-└─────────────┘
-```
+| ID | Label | Description |
+| --- | --- | --- |
+| `default` | Default |  |
+| `affix` | Affix (prefix/suffix) | 좌·우에 심볼/아이콘 부착 |
+| `amount` | Amount | 숫자 입력, 통화 심볼, tabular-nums |
+| `search` | Search | 검색 아이콘 내장, 라운드 풀 |
+| `textarea` | Textarea | 다행 입력 |
 
-- `field-label` 필드 위
-- `field-input` 입력
-- `field-help` 필드 아래 (도움말 또는 에러)
-- `req` — 빨간 별표 `*` (필수 표시, 단어 아님)
-- `opt` — "(선택)" 텍스트
+### HTML Snippets
 
-### Affix · prefix & suffix
+**Default**
 
-단위·도메인 같은 고정 요소는 필드 **내부에** 배치해 입력 폭을 아낍니다.
-
-- `https://` prefix + URL 입력
-- 숫자 입력 + `원` suffix
-
-### Amount · large numeric
-
-금액 입력은 화면 전체를 차지할 수 있습니다. 타이포그래피 자체가 UI가 됩니다.
-
-### Search · pill
-
-`radius-full` + 돋보기 아이콘. 리스트 상단 상단 고정 검색.
-
-## 상태
-
-- **Rest**: `border-default`
-- **Focus**: `border-focus` + 4px `interactive-brand-subtle` glow
-- **Error**: `border-error` + 에러 아이콘 + 아래 도움말에 에러 내용
-- **Disabled**: opacity 낮춤, 커서 not-allowed
-
-## 토큰
-
-```
---cm-input-bg          → var(--sm-background-default)
---cm-input-border      → var(--sm-border-default)
---cm-input-border-focus → var(--sm-border-focus)
---cm-input-border-error → var(--sm-status-error)
---cm-input-content     → var(--sm-content-primary)
---cm-input-placeholder → var(--sm-content-tertiary)
+```html
+<div class="m-field">
+  <label>이메일</label>
+  <input class="m-input" type="email" placeholder="you@example.com">
+</div>
 ```
 
-## 접근성
+**Affix (prefix/suffix)**
 
-- `<label>`은 `for`로 `<input id>`와 연결.
-- 에러 메시지는 `aria-describedby`로 input과 연결.
-- 필수 필드는 `aria-required="true"`.
-- 자동완성에 맞는 `autocomplete` 속성 지정 (`email`, `tel`, `current-password` 등).
+```html
+<div class="field field-affix"><span class="affix">@</span><input class="input" type="text"></div>
+```
 
-## UX Writing
+**Amount**
 
-| ❌ | ✅ |
+```html
+<div class="field field-amount"><input class="input" inputmode="numeric" style="font-variant-numeric:tabular-nums;"><span class="affix">원</span></div>
+```
+
+**Search**
+
+```html
+<div class="field field-search"><svg class="ico ico-sm"><use href="#i-search"/></svg><input class="input" placeholder="검색"></div>
+```
+
+**Textarea**
+
+```html
+<textarea class="m-input" rows="4"></textarea>
+```
+
+## 상태 (States)
+
+`rest` · `hover` · `focus` · `filled` · `disabled` · `error`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
 | --- | --- |
-| (필수) | `*` (빨간 별표) |
-| 올바른 이메일을 입력해주세요 | `'@' 기호가 빠진 것 같아요` |
+| bg | `--sm-background-default` |
+| border | `--sm-border-default` |
+| borderFocus | `--sm-border-focus` |
+| borderError | `--sm-status-error` |
+| fg | `--sm-content-primary` |
+| placeholder | `--sm-content-tertiary` |
+| radius | `--radius-md` |
 
-정확히 무엇이 문제인지 짚어줍니다. 자세히: [../docs/05-ux-writing.md](../docs/05-ux-writing.md).
+## 접근성 (Accessibility)
+
+- **Role**: textbox (기본)
+- **Keyboard**: `Tab` · `Shift+Tab`
+- **Min touch target**: 44px
+- **Focus ring**: `--sm-border-focus`
+- **ARIA notes**:
+  - label 연결: <label for="id"> 또는 aria-label
+  - 에러 메시지: aria-describedby 연결, aria-invalid=true
+  - 필수 필드: required + aria-required=true
+
+## UX Writing 규칙
+
+- Label: 한 단어 또는 짧은 명사구 (이메일, 전화번호)
+- Placeholder: 예시 형식 (you@example.com, 010-0000-0000)
+- Helper: 제약 조건 (8자 이상, 숫자·특수문자 포함)
+- Error: 해결 방법 제시 ("이메일 형식이 아니에요" + 올바른 예시)
+
+## 사용 데모
+
+`demo-login` · `demo-signup` · `demo-store` · `demo-booking` · `demo-foodorder` · `demo-map` · `demo-chat`
+
+수정 시 `window.demoMatrix.byComponent['textfield']` 로 영향 데모 전수 조회 가능.
+
+---
+
+**See also**: [index.html#textfield](../index.html#textfield) · [text-field.schema.json](text-field.schema.json) · [AGENTS.md](../AGENTS.md)

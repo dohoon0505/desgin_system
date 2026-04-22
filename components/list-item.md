@@ -2,69 +2,120 @@
 component: List Item
 canonical: "list-item.schema.json"
 category: Components
-since: 0.2.0
-version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L5486-L5548
+version: 0.2.0
+sourceHtml: "index.html#list"
+generated: true
 ---
 
 # List Item
 
-> 수직으로 스캔하는 가장 기본적인 정보 단위. 3단 구조를 지킵니다.
+> 리스트의 한 행. Leading(아이콘·아바타) + 본문(제목·설명) + Trailing(메타·chevron·체크) 3단 구조.
 
-## 구조
+> ⚙️ 이 문서는 [`list-item.schema.json`](list-item.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs list`.
 
-```
-┌────┬────────────────┬──────────┐
-│ L  │ Body           │  Trail   │
-│    │   Title        │          │
-│    │   Meta         │          │
-└────┴────────────────┴──────────┘
-  ↑         ↑              ↑
- Lead     Body           Trail
-(icon,   (title+        (value·
- image)   meta)         chevron)
-```
+## 언제 사용하나 (Use when)
 
-- **Lead**: 아이콘 배지 또는 아바타
-- **Body**: 제목 + 보조 정보
-- **Trail**: 값(금액, 날짜 등) 또는 chevron(▸)
+- 설정 메뉴
+- 연락처 리스트
+- 메시지 미리보기
+- 옵션 선택
 
-## 변형
+## 언제 쓰지 않나 (Don't use when)
 
-### Standard · avatar/icon + meta + value
+- 카드 그룹 → Card
+- 긴 에디터블 폼 → Text Field
 
-가장 일반적인 형태. 계좌 목록, 설정 메뉴, 프로젝트 리스트.
+## 변형 (Variants)
 
-### Key-Value · detail info
+| ID | Label | Description |
+| --- | --- | --- |
+| `single` | Single line |  |
+| `two-line` | Two line |  |
+| `avatar-row` | Avatar row | 아바타 + 이름 + 부가정보 |
+| `selectable` | Selectable | 체크박스/라디오 내장 |
 
-주문 정보, 계좌 상세 같은 **정적 정보**. 좌측 키, 우측 값.
+### HTML Snippets
 
-```
-주문번호       TDS-2026-04-821
-주문일시       2026.04.21 14:32
-결제수단       신용카드 · 일시불
-배송지         서울특별시 강남구
-───────────────
-총 결제금액    ₩124,800
+**Single line**
+
+```html
+<div class="list-item">
+  <div class="list-body"><div class="title">설정</div></div>
+  <svg class="ico ico-sm trailing"><use href="#i-chevron-right"/></svg>
+</div>
 ```
 
-마지막 행(합계)은 강조 (volume-heavy weight + brand color).
+**Two line**
 
-## 상호작용
-
-- 클릭 가능한 행: hover 시 `background-muted`, 오른쪽 chevron.
-- 드래그 가능: left swipe → 삭제 액션.
-
-## 토큰
-
-```
---cm-list-item-bg       → var(--sm-background-default)
---cm-list-item-bg-hover → var(--sm-background-muted)
---cm-list-item-divider  → var(--sm-border-subtle)
+```html
+<div class="list-item">
+  <div class="list-leading"><svg class="ico"><use href="#i-bell"/></svg></div>
+  <div class="list-body">
+    <div class="title">알림</div>
+    <div class="sub">3 new</div>
+  </div>
+  <svg class="ico ico-sm trailing"><use href="#i-chevron-right"/></svg>
+</div>
 ```
 
-## 접근성
+**Avatar row**
 
-- 전체 행이 링크/버튼일 때는 `role="button"` 또는 `<a>` 사용.
-- 행마다 의미 있는 라벨 (단순 chevron만 있어도 전체 행이 클릭 타깃).
-- 긴 목록에서는 섹션 헤더(`role="heading"`)로 그룹 구분.
+```html
+<div class="list-item">
+  <div class="avatar sz-md">DH</div>
+  <div class="list-body"><div class="title">김도훈</div><div class="sub">2시간 전 · 디자인</div></div>
+</div>
+```
+
+**Selectable**
+
+```html
+<label class="list-item list-selectable">
+  <input type="checkbox">
+  <div class="list-body"><div class="title">옵션</div></div>
+</label>
+```
+
+## 상태 (States)
+
+`rest` · `hover` · `active` · `selected` · `disabled`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| bg | `--sm-surface-default` |
+| hover | `--sm-background-subtle` |
+| border | `--sm-border-subtle` |
+| padding | `var(--size-400) var(--size-500)` |
+
+## 부속 요소 (Sub-parts)
+
+| 클래스 | 역할 |
+| --- | --- |
+| `list-leading` | 좌측 아이콘/아바타 영역 |
+| `list-body` | 제목·설명 영역 |
+| `list-body .title` | 제목 |
+| `list-body .sub` | 보조 설명 |
+| `list-trailing` | 우측 메타 (chevron, badge, 스위치 등) |
+
+## 접근성 (Accessibility)
+
+- **Role**: listitem (부모 ul/ol 아래) 또는 button/link
+- **Keyboard**: `Tab` · `Enter (액션)`
+- **Min touch target**: 44px
+
+## UX Writing 규칙
+
+- 제목은 명사 (알림, 결제 수단)
+- sub는 메타 (시간·수량·상태)
+
+## 사용 데모
+
+`demo-foodorder` · `demo-mypage` · `demo-chat` · `demo-notify` · `demo-banking`
+
+수정 시 `window.demoMatrix.byComponent['list']` 로 영향 데모 전수 조회 가능.
+
+---
+
+**See also**: [index.html#list](../index.html#list) · [list-item.schema.json](list-item.schema.json) · [AGENTS.md](../AGENTS.md)

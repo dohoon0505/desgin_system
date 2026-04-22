@@ -1,104 +1,96 @@
 ---
 component: Accordion · Tree
 canonical: "accordion-tree.schema.json"
-category: Density
-since: 0.3.0
+category: Components
 version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L6378-L6479
+sourceHtml: "index.html#accordion"
+generated: true
 ---
 
 # Accordion · Tree
 
-> 긴 콘텐츠는 접어둡니다. **Accordion은 FAQ·폼 섹션**, **Tree는 폴더 구조·계층적 데이터**.
+> Accordion은 FAQ·폼 섹션의 접힘(단일 레벨), Tree는 계층 구조(중첩 레벨).
 
-## Accordion
+> ⚙️ 이 문서는 [`accordion-tree.schema.json`](accordion-tree.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs accordion`.
 
-### 언제 사용하나
+## 언제 사용하나 (Use when)
 
-- **FAQ**, 긴 설명의 그룹
-- 폼의 섹션 접기 (선택 단계 펼치기)
-- 긴 리스트의 그룹 요약
+- Accordion: FAQ, 긴 폼의 섹션 접기, 설정 그룹
+- Tree: 파일 브라우저, 조직도, 카테고리 네비
 
-### 구조
+## 언제 쓰지 않나 (Don't use when)
 
-```
-┌───────────────────────────────┐
-│ UIUX-DH는 어떤 디자인시스템인가요?  ▼│  ← open
-├───────────────────────────────┤
-│ 토큰 · 규칙 · 컴포넌트 · 운영      │
-│ 프로세스가 하나로 묶인...         │
-├───────────────────────────────┤
-│ 라이트 모드와 다크 모드는?     ▶ │  ← closed
-├───────────────────────────────┤
-│ 컴포넌트 토큰은 시맨틱과 어떻게?▶ │
-└───────────────────────────────┘
-```
+- 탭 전환 성격 → Tabs
+- 2-3 항목 → 단순 섹션 헤더
+- 계층 없는 리스트 → List Item
 
-- 열린 항목의 trigger: `content-primary` + chevron ▼
-- 닫힌 항목: `content-secondary` + chevron ▶
+## 변형 (Variants)
 
-### 정책: 단일 열기 vs 다중 열기
+| ID | Label | Description |
+| --- | --- | --- |
+| `accordion-single` | Accordion · Single open | 한 번에 하나만 펼침 |
+| `accordion-multi` | Accordion · Multi open | 여러 항목 동시에 펼침 가능 |
+| `tree` | Tree | 파일·폴더 구조. 들여쓰기로 계층 표현 |
 
-**별도 결정 사항**입니다. 화면 컨텍스트에 따라:
+### HTML Snippets
 
-- **단일 열기** (한 번에 하나만): FAQ, 고정된 폼 플로우
-- **다중 열기** (여러 개 동시): 필터 그룹, 설정 섹션
+**Accordion · Single open**
 
-한 화면 안에서는 하나의 정책만 사용합니다.
-
-## Tree
-
-### 언제 사용하나
-
-- 파일/폴더 구조
-- 계층적 카테고리
-- 조직도·메뉴
-
-### 구조
-
-```
-▼ 📁 design-system
-   ▼ 📁 tokens
-      📄 primitive.json
-    ◉ 📄 semantic.json    ← 선택됨
-      📄 component.json
-   ▶ 📁 components
-      📄 README.md
+```html
+<div class="accordion" data-mode="single">
+  <div class="acc-item">
+    <button class="acc-trigger" aria-expanded="true">배송 정책<svg class="ico ico-sm"><use href="#i-chevron-down"/></svg></button>
+    <div class="acc-panel">본문…</div>
+  </div>
+</div>
 ```
 
-- `▶` / `▼` chevron
-- 들여쓰기 + 폴더/파일 아이콘
-- 선택 행: `interactive-brand-subtle` 배경
+**Accordion · Multi open**
 
-## 토큰
-
-```
-/* Accordion */
---cm-accordion-trigger-content → var(--sm-content-primary)
---cm-accordion-body-content    → var(--sm-content-secondary)
---cm-accordion-border          → var(--sm-border-subtle)
-
-/* Tree */
---cm-tree-node-bg-hover   → var(--sm-background-muted)
---cm-tree-node-bg-selected→ var(--sm-interactive-brand-subtle)
---cm-tree-indent          : 20px
+```html
+<div class="accordion" data-mode="multi">...</div>
 ```
 
-## 접근성
+**Tree**
 
-### Accordion
-- 각 trigger는 `<button aria-expanded="true/false" aria-controls="body-id">`.
-- Body 영역은 `id` + `role="region"` + `aria-labelledby` 로 trigger와 연결.
-- 키보드: Enter/Space로 토글. Tab으로 trigger 이동.
+```html
+<ul class="tree">
+  <li><button class="tree-node" aria-expanded="true">components/</button>
+    <ul>
+      <li><button class="tree-leaf">button.md</button></li>
+      <li><button class="tree-leaf">banner.md</button></li>
+    </ul>
+  </li>
+</ul>
+```
 
-### Tree
-- `role="tree"` + 각 노드 `role="treeitem"`.
-- 펼침 상태 `aria-expanded="true/false"`.
-- 선택: `aria-selected="true"`.
-- 방향키 이동: ↑/↓ 형제, →/← 펼치기/접기.
+## 상태 (States)
 
-## 모션
+`collapsed` · `expanded` · `focus`
 
-- 펼침: `--motion-base` (200ms) + `--ease-standard`
-- 높이 애니메이션: `max-height` + overflow hidden, 또는 FLIP 기법
-- `prefers-reduced-motion` 시 즉시 전환
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| triggerBg | `--sm-background-default` |
+| triggerFg | `--sm-content-primary` |
+| panelBg | `--sm-background-subtle` |
+| border | `--sm-border-subtle` |
+| chevronTransform | `rotate(180deg) when expanded` |
+
+## 접근성 (Accessibility)
+
+- **Keyboard**: `Enter/Space (토글)` · `Arrow Down/Up (항목 이동)` · `Home/End`
+- **ARIA notes**:
+  - 트리거: aria-expanded + aria-controls=panelId
+  - 패널: role=region + aria-labelledby=triggerId
+  - Tree: role=tree + treeitem, aria-level, aria-expanded
+
+## UX Writing 규칙
+
+- Accordion 트리거: 질문 또는 섹션 제목 (배송 정책, 환불 정책)
+- Tree 노드: 파일·폴더명 그대로
+
+---
+
+**See also**: [index.html#accordion](../index.html#accordion) · [accordion-tree.schema.json](accordion-tree.schema.json) · [AGENTS.md](../AGENTS.md)

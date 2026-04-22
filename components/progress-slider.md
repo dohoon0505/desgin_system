@@ -2,69 +2,109 @@
 component: Progress · Slider
 canonical: "progress-slider.schema.json"
 category: Components
-since: 0.2.0
-version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L5624-L5696
+version: 0.2.0
+sourceHtml: "index.html#progress"
+generated: true
 ---
 
 # Progress · Slider
 
-> 진행 상태는 명확한 시각 메타포가 필요합니다. **연속 진행은 Bar**, **단계적 진행은 Segment**, **값 조정은 Slider**.
+> Progress는 시간 경과·완료율 표시 (수동적), Slider는 값 선택 (상호작용).
 
-## Bar · continuous
+> ⚙️ 이 문서는 [`progress-slider.schema.json`](progress-slider.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs progress`.
 
-0~100% 사이의 연속 진행.
+## 언제 사용하나 (Use when)
 
-```
-업로드 중                    65%
-▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░
-```
+- Progress: 업로드·다운로드·단계 완료율
+- Slider: 음량·밝기·가격 범위·이미지 크롭
 
-- 기본: `--sm-interactive-brand-default`
-- 경고 (80% 이상 등): `--sm-status-warning`
-- 완료: `--sm-status-success`
+## 언제 쓰지 않나 (Don't use when)
 
-**그라데이션 허용**: 같은 색상군의 명도 변화 (예: `indigo-500 → indigo-300`). 정책: [../docs/04-gradient-policy.md](../docs/04-gradient-policy.md).
+- 유한 선택지 → Segment / Radio
+- 500ms 미만 로딩 → Skeleton 또는 아무것도 표시하지 않음
 
-## Segment · step
+## 변형 (Variants)
 
-단계가 **정해진 흐름** (퀴즈, 온보딩, 다단계 폼).
+| ID | Label | Description |
+| --- | --- | --- |
+| `progress-bar` | Progress Bar |  |
+| `progress-segment` | Progress · Segment | 단계별 분리된 진행 |
+| `progress-circular` | Progress · Circular | 원형 진행 (SVG) |
+| `slider-single` | Slider · Single | 단일 값 |
+| `slider-range` | Slider · Range | 이중 썸 (범위) |
 
-```
-Step 3 of 5
-[■][■][■][ ][ ]
-```
+### HTML Snippets
 
-- 완료 단계: 브랜드 컬러로 채움
-- 현재/미래 단계: 중립 subtle
+**Progress Bar**
 
-## Slider · range selector
-
-사용자가 값을 조정.
-
-```
-예산                    ₩320,000
-●───────────○──────────
-₩0                   ₩1,000,000
+```html
+<div class="progress"><div class="progress-fill" style="width:60%;"></div></div>
 ```
 
-- Thumb: `radius-full`, 그림자 `elevation-2`, 드래그 중 `elevation-3`.
-- Track: `size-150` height, filled + unfilled 영역.
+**Progress · Segment**
 
-## 토큰
-
-```
---cm-progress-track → var(--sm-background-muted)
---cm-progress-fill  → var(--sm-interactive-brand-default)
-
---cm-slider-thumb    → var(--sm-background-default)
---cm-slider-thumb-ring → var(--sm-interactive-brand-default)
---cm-slider-fill     → var(--sm-interactive-brand-default)
+```html
+<div class="progress-segments">
+  <span class="seg is-done"></span>
+  <span class="seg is-done"></span>
+  <span class="seg is-current"></span>
+  <span class="seg"></span>
+</div>
 ```
 
-## 접근성
+**Progress · Circular**
 
-- Progress: `role="progressbar"` + `aria-valuenow` / `aria-valuemin` / `aria-valuemax`.
-- 상태 변화가 중요하면 `aria-live="polite"`로 스크린리더에 알림.
-- Slider: `role="slider"` + 동일 aria-value 속성. 키보드 화살표로 조정 가능.
-- 색만으로 경고를 표시하지 않음 — 숫자 텍스트도 함께.
+```html
+<svg class="progress-circular" viewBox="0 0 36 36">...</svg>
+```
+
+**Slider · Single**
+
+```html
+<div class="slider"><div class="slider-fill" style="width:40%;"></div><div class="slider-thumb"></div></div>
+```
+
+**Slider · Range**
+
+```html
+<div class="slider slider-range"><div class="slider-fill"></div><div class="slider-thumb slider-thumb-min"></div><div class="slider-thumb slider-thumb-max"></div></div>
+```
+
+## 상태 (States)
+
+`idle` · `loading` · `complete` · `error` · `hover (slider)` · `dragging (slider)`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| track | `--sm-background-muted` |
+| fill | `--sm-interactive-brand-default` |
+| thumb | `--sm-surface-default` |
+| thumbRing | `--sm-interactive-brand-default` |
+| height | `6px (bar), 4px (segment)` |
+| radius | `--radius-full` |
+
+## 접근성 (Accessibility)
+
+- **Role**: progressbar (Progress) 또는 slider (Slider)
+- **Keyboard**: `Slider: Arrow Left/Right (1 step)` · `Home/End` · `PageUp/Down (10 step)`
+- **ARIA notes**:
+  - Progress: aria-valuenow, aria-valuemin=0, aria-valuemax=100
+  - Slider: 동일 + aria-valuetext (포맷된 값), 키보드 Arrow 지원
+  - 불확정 진행: aria-valuenow 생략 + 애니메이션
+
+## UX Writing 규칙
+
+- Progress: % 또는 x/y 표기 (3/5 완료)
+- Slider: 값 표시에 단위 포함 (12px, ₩15,000)
+
+## 사용 데모
+
+`demo-signup` · `demo-todo`
+
+수정 시 `window.demoMatrix.byComponent['progress']` 로 영향 데모 전수 조회 가능.
+
+---
+
+**See also**: [index.html#progress](../index.html#progress) · [progress-slider.schema.json](progress-slider.schema.json) · [AGENTS.md](../AGENTS.md)

@@ -1,105 +1,106 @@
 ---
 component: Empty State
 canonical: "empty-state.schema.json"
-category: States
-since: 0.3.0
+category: Components
 version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L6240-L6301
+sourceHtml: "index.html#empty"
+generated: true
 ---
 
 # Empty State
 
-> 빈 화면은 **사과해야 할 것이 아니라 초대해야 할 순간**입니다. 다음에 무엇을 할지 명확한 액션으로 안내합니다.
+> 비어 있음을 초대로. 일러스트·제목·설명·액션의 조합. 3가지 시나리오: first use / search / error.
 
-## 세 가지 유형
+> ⚙️ 이 문서는 [`empty-state.schema.json`](empty-state.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs empty`.
 
-### 1. First use · onboarding
+## 언제 사용하나 (Use when)
 
-아직 아무것도 없는 신규 사용자.
+- first use: 아무 데이터도 없는 신규 상태
+- search: 결과 0건
+- error: 실패 후 복구 가능 상태
 
-```
-      ┌───────┐
-      │  [📁]  │
-      └───────┘
-  아직 만든 프로젝트가 없어요
+## 언제 쓰지 않나 (Don't use when)
 
-  첫 프로젝트를 만들면 여기에
-  나타나요. 비어 있는 화면도
-  언젠가 가득 차요.
+- 영구 오류 → 별도 페이지
+- 잠시 로딩 중 → Skeleton
 
-  [첫 프로젝트 만들기]
-```
+## 변형 (Variants)
 
-- 액션은 **맥락을 가진 문구** — "추가" 대신 "첫 프로젝트 만들기"
-
-### 2. Search · no results
-
-검색 결과가 없음.
-
-```
-      ┌───────┐
-      │  [🔍]  │
-      └───────┘
-  '디자인시스템'으로 찾은
-  결과가 없어요
-
-  철자를 확인하거나 다른 단어로
-  검색해보세요.
-
-  [전체 목록 보기]
-```
-
-- **검색어를 문구에 포함** — 사용자가 무엇을 검색했는지 확인 가능
-- 복구 액션 제공 — 전체 보기, 필터 초기화 등
-
-### 3. Error · load failure
-
-네트워크 오류·서버 오류.
-
-```
-      ┌───────┐
-      │  [⚠]   │  (에러 톤)
-      └───────┘
-  목록을 불러오지 못했어요
-
-  네트워크가 불안정한 것 같아요.
-  Wi-Fi를 확인하고 다시
-  시도해주세요.
-
-  [다시 시도하기]
-```
-
-- 아이콘 배경 `--sm-status-error-subtle`
-- **무슨 일이 일어났나 · 왜 · 어떻게** 세 요소 포함
-- 복구 가능한 액션 (재시도)
-
-## 구조
-
-1. **일러스트/아이콘** — 중앙, 의미를 담은 이미지
-2. **제목** — 상황을 구체적으로
-3. **본문** — 설명 한두 줄
-4. **액션** — 다음에 할 일 (권장)
-
-## 토큰
-
-```
---cm-empty-illust-bg      → var(--sm-background-muted)
---cm-empty-illust-content → var(--sm-content-tertiary)
---cm-empty-title          → var(--sm-content-primary)
---cm-empty-desc           → var(--sm-content-secondary)
-```
-
-## 접근성
-
-- `role="status"` (정보 제공).
-- 액션 버튼이 있다면 자동 포커스는 **하지 않습니다** (사용자 이동 방해).
-- 아이콘은 장식이면 `aria-hidden="true"`, 의미 있으면 `<title>` 포함.
-
-## UX Writing
-
-| 컴포넌트 | ❌ | ✅ |
+| ID | Label | Description |
 | --- | --- | --- |
-| 제목 | 데이터가 없습니다 | 아직 저장한 항목이 없어요 |
-| 액션 | 추가 | 첫 항목 추가하기 |
+| `first-use` | First use | 아직 데이터가 없음. 첫 액션 유도 |
+| `search` | No search results |  |
+| `error` | Error | 네트워크 오류, 권한 없음 등 |
 
-어떤 데이터인지 **구체적으로**. 비어 있다는 상황을 맥락으로 가져갑니다. 자세히: [../docs/05-ux-writing.md#컴포넌트별-라이팅-규칙](../docs/05-ux-writing.md).
+### HTML Snippets
+
+**First use**
+
+```html
+<div class="empty">
+  <div class="empty-illust"><!-- 일러스트 --></div>
+  <h3>첫 프로젝트를 만들어보세요</h3>
+  <p>몇 분이면 됩니다. 템플릿으로 빠르게 시작하거나 처음부터 만들 수 있어요.</p>
+  <button class="btn btn-primary">프로젝트 만들기</button>
+</div>
+```
+
+**No search results**
+
+```html
+<div class="empty">
+  <div class="empty-illust empty-illust-search"></div>
+  <h3>'UIUX-DH'와 일치하는 결과가 없어요</h3>
+  <p>다른 키워드로 다시 검색해보세요.</p>
+  <button class="btn btn-outline">검색 초기화</button>
+</div>
+```
+
+**Error**
+
+```html
+<div class="empty">
+  <div class="empty-illust empty-illust-error"></div>
+  <h3>연결에 실패했어요</h3>
+  <p>네트워크를 확인하고 다시 시도해주세요.</p>
+  <button class="btn btn-primary">다시 시도</button>
+</div>
+```
+
+## 상태 (States)
+
+`rest`
+
+## 토큰 (Component Tokens)
+
+| 역할 | CSS 변수 |
+| --- | --- |
+| illustTint | `--sm-content-tertiary (또는 브랜드 subtle)` |
+| titleFg | `--sm-content-primary` |
+| descFg | `--sm-content-secondary` |
+| maxWidth | `360px` |
+| padding | `var(--size-800) var(--size-600)` |
+
+## 접근성 (Accessibility)
+
+- **Role**: region
+- **ARIA notes**:
+  - aria-labelledby=titleId
+  - 에러 variant: aria-live=polite (동적 표시 시)
+
+## UX Writing 규칙
+
+- 제목: 상황 설명 + 방향 제시
+- 설명: 1-2문장, 구체적 해결 방법
+- CTA: 동사로 끝 + 구체적 결과 (프로젝트 만들기, 다시 시도, 검색 초기화)
+- '비어 있음' / '데이터 없음' 같은 기계적 문구 금지
+
+## 사용 데모
+
+`demo-notify`
+
+수정 시 `window.demoMatrix.byComponent['empty']` 로 영향 데모 전수 조회 가능.
+
+---
+
+**See also**: [index.html#empty](../index.html#empty) · [empty-state.schema.json](empty-state.schema.json) · [AGENTS.md](../AGENTS.md)

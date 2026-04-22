@@ -1,88 +1,93 @@
 ---
 component: Popover · Tooltip
 canonical: "popover-tooltip.schema.json"
-category: Overlays
-since: 0.3.0
+category: Components
 version: 0.3.0
-sourceHtml: UIUX-DH-design-system.html#L5963-L6001
+sourceHtml: "index.html#popover"
+generated: true
 ---
 
 # Popover · Tooltip
 
-> Tooltip은 **단순 설명**, Popover는 **상호작용 가능한 미니 화면**. 둘의 경계가 모호해지면 둘 다 신뢰를 잃습니다.
+> Tooltip은 설명(hover/focus, 상호작용 없음), Popover는 상호작용 가능한 팝업(클릭 열림, 메뉴·폼 포함).
 
-| | Tooltip | Popover |
+> ⚙️ 이 문서는 [`popover-tooltip.schema.json`](popover-tooltip.schema.json) 에서 자동 생성됐습니다. 내용 수정은 JSON에서, MD 재생성은 `node scripts/gen-docs.mjs popover`.
+
+## 언제 사용하나 (Use when)
+
+- Tooltip: 아이콘·축약 설명
+- Popover: 빠른 액션 메뉴, 옵션, 필터
+
+## 언제 쓰지 않나 (Don't use when)
+
+- 긴 폼 → Dialog 또는 별도 페이지
+- 모바일 주 액션 → Bottom Sheet
+
+## 변형 (Variants)
+
+| ID | Label | Description |
 | --- | --- | --- |
-| 수명 | hover/focus 시 잠시 | 명시적으로 닫을 때까지 |
-| 내용 | 단문 텍스트 | 제목 + 본문 + 버튼 가능 |
-| 상호작용 | 없음 (passive hint) | 있음 (버튼, 입력) |
-| Trigger | hover · focus · long-press | click · tap |
+| `tooltip` | Tooltip | 짧은 설명. hover/focus 시 표시 |
+| `popover` | Popover | 클릭으로 열고 외부 클릭으로 닫힘 |
+| `date-picker` | Date Picker (Popover variant) | 달력 기반 날짜 선택 |
 
-## Tooltip · passive hint
+### HTML Snippets
 
-hover나 long-press 시 잠시 나타나는 설명. 액션 없음.
+**Tooltip**
 
-```
-  ┌─────────────────────────┐
-  │ Pro 플랜에서만 쓸 수 있어요│
-  └──────┬──────────────────┘
-         ▼
-     [도움말 ?]
+```html
+<button class="btn btn-icon" aria-describedby="tt1"><svg class="ico"><use href="#i-info"/></svg></button>
+<div id="tt1" role="tooltip" class="tooltip">더 알아보기</div>
 ```
 
-- 한 문장, 최대 두 줄
-- `background: var(--p-neutral-100)` (Light 테마에서도 딥톤)
-- `color: var(--p-neutral-0)`
+**Popover**
 
-## Popover · interactive
-
-명시적으로 **열고 닫는** 미니 화면. 링크 공유, 프로필 미리보기, 간단한 폼 등.
-
-```
-  ┌──────────────────────┐
-  │ 공유 링크 만들기       │
-  │                      │
-  │ 이 문서를 볼 수 있는   │
-  │ 링크를 만들어요...     │
-  │                      │
-  │   [링크 만들기]        │
-  └──────────────────────┘
-              ▲
-         [공유 버튼]
+```html
+<div class="popover">
+  <div class="popover-header">공유</div>
+  <ul class="action-list"><li>링크 복사</li><li>이메일</li></ul>
+</div>
 ```
 
-- 배경: `surface-default` + `elevation-3`
-- 화살표(arrow) 옵션 — 트리거와 연결을 표시
+**Date Picker (Popover variant)**
 
-## 토큰
-
-```
-/* Tooltip */
---cm-tooltip-bg      → var(--p-neutral-100)
---cm-tooltip-content → var(--p-neutral-0)
---cm-tooltip-radius  → var(--radius-md)
-
-/* Popover */
---cm-popover-surface → var(--sm-surface-raised)
---cm-popover-border  → var(--sm-border-subtle)
---cm-popover-shadow  → var(--elevation-3)
---cm-popover-radius  → var(--radius-lg)
+```html
+<div class="popover popover-datepicker">...</div>
 ```
 
-## 접근성
+## 상태 (States)
 
-### Tooltip
-- `role="tooltip"` + 트리거와 `aria-describedby`로 연결.
-- 키보드 포커스 시에도 표시되어야 합니다 (hover 전용 금지).
-- `ESC` 키로 닫기.
+`closed` · `opening` · `open` · `closing`
 
-### Popover
-- `role="dialog"` 또는 `role="menu"` (내용에 따라).
-- 트리거 `aria-expanded="true/false"` + `aria-controls="popover-id"`.
-- 열릴 때 포커스 이동, 닫힐 때 트리거로 복귀.
-- 바깥 클릭 또는 `ESC`로 닫기.
+## 토큰 (Component Tokens)
 
-## 모션
+| 역할 | CSS 변수 |
+| --- | --- |
+| bg | `--sm-background-default` |
+| border | `--sm-border-subtle` |
+| shadow | `--elevation-4` |
+| radius | `--radius-md` |
 
-- Tooltip: `--motion-fast` (120ms) fade + scale(0.95→1).
-- Popover: `--motion-base` (200ms) + `--ease-standard`.
+## 접근성 (Accessibility)
+
+- **Role**: tooltip (Tooltip) · dialog (Popover)
+- **Keyboard**: `Esc (닫기)` · `Tab (내부 포커스 이동 — Popover)`
+- **ARIA notes**:
+  - Tooltip: aria-describedby (트리거에서 연결)
+  - Popover: aria-haspopup=dialog, aria-expanded, aria-controls
+  - Tooltip에 상호작용 요소 금지
+
+## UX Writing 규칙
+
+- Tooltip: 6자 이내 명사구
+- Popover: 간결한 액션 리스트
+
+## 사용 데모
+
+`demo-map`
+
+수정 시 `window.demoMatrix.byComponent['popover']` 로 영향 데모 전수 조회 가능.
+
+---
+
+**See also**: [index.html#popover](../index.html#popover) · [popover-tooltip.schema.json](popover-tooltip.schema.json) · [AGENTS.md](../AGENTS.md)
