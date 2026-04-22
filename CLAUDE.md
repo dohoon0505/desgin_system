@@ -6,14 +6,14 @@
 
 - **이름**: UIUX-DH · Unified Design System
 - **형태**: 모바일 중심 디자인시스템의 단일 진실의 출처 (Single Source of Truth)
-- **현재 버전**: v0.3.0 (2026.04.22)
-- **범위**: Foundations(토큰/원칙) + Policy(그라데이션) + UX Writing(7원칙) + Components(24종) + 실제 사용 데모(9종)
+- **현재 버전**: v0.4.6 (2026.04.22)
+- **범위**: Foundations(토큰/원칙) + Policy(그라데이션) + UX Writing(7원칙) + Components(25종) + 실제 사용 데모(18종)
 
 ---
 
-## ⚠️ 가장 중요 · 3단계 작업 원칙
+## ⚠️ 가장 중요 · 4단계 작업 원칙
 
-**디자인시스템을 수정할 때 다음 3가지 작업을 반드시 함께 수행합니다.**
+**디자인시스템을 수정할 때 다음 4가지 작업을 반드시 함께 수행합니다.**
 
 ### 1. 기본 — `index.html` + 바닐라 JS 구조 수정
 
@@ -42,8 +42,46 @@
 | 원칙/정책 갱신 | `docs/0x-*.md` |
 | 새 릴리스 | `CHANGELOG.md` 항목 추가 (Semantic Versioning) |
 
-> **이 3단계 모두를 건너뛰지 마세요.** 하나라도 누락되면 시스템의 일관성이 깨집니다.
-> 예: `index.html`만 고치면 Single HTML 버전이 outdated 되고, AI 문서가 outdated 되면 다음 Claude 세션이 잘못된 근거로 작업합니다.
+### 4. 데모 동시 업데이트 (v0.4 신규) — `data-uses` 매트릭스로 영향 범위 확인
+
+**컴포넌트·토큰을 수정했다면, 그것을 사용하는 데모도 반드시 함께 업데이트합니다.**
+
+각 데모 섹션은 자신이 참조하는 컴포넌트·토큰을 `data-uses` 속성으로 선언합니다.
+
+```html
+<section class="demo-section" id="demo-shopping"
+         data-uses="button,card,badge,tabs,--sm-interactive-brand-default,--p-indigo-500">
+```
+
+페이지 로드 시 `main.js`의 `buildDemoMatrix()`가 이 선언을 스캔해 `window.demoMatrix`를 생성합니다. 수정 전에 브라우저 콘솔에서 영향 범위를 즉시 확인할 수 있습니다.
+
+```js
+// 예: button 컴포넌트를 수정한다면
+window.demoMatrix.byComponent['button']
+// → ["demo-login", "demo-signup", "demo-pricing", "demo-social", ...]
+//   이 데모들을 모두 시각 검수해야 합니다
+
+// 예: 브랜드 색을 바꾼다면
+window.demoMatrix.byToken['--sm-interactive-brand-default']
+// → 영향 데모 리스트
+```
+
+**수정 순서:**
+
+1. 수정 대상 식별 (예: `--sm-interactive-brand-default` 색상 변경)
+2. 브라우저 콘솔에서 `window.demoMatrix.byToken[<token>]` 또는 `byComponent[<name>]` 조회
+3. `index.html` + `Single HTML/` 양쪽에서 해당 데모 섹션을 시각 검수
+4. 마크업/인라인 스타일 수정이 필요하면 **양쪽 파일 동시 반영**
+5. `CHANGELOG.md` "Changed" 항목에 `영향 데모: demo-xxx, demo-yyy` 명시
+
+**새 데모 추가 시:**
+
+- `<section class="demo-section" id="demo-xxx" data-uses="...">` 속성을 **필수**로 선언
+- 사용하는 **컴포넌트 id**(kebab-case, 예: `button`, `card`, `tabs`)와 **시맨틱/프리미티브 토큰 전체 이름**(예: `--sm-interactive-brand-default`, `--p-indigo-500`)을 쉼표로 구분
+- 존재하지 않는 토큰 참조 시 콘솔에 `[demoMatrix] Referenced CSS tokens not found` 경고 발생 — 반드시 해결
+
+> **4단계 모두를 건너뛰지 마세요.** 하나라도 누락되면 시스템의 일관성이 깨집니다.
+> 예: `index.html`만 고치면 Single HTML 버전이 outdated 되고, 컴포넌트 토큰을 바꿨는데 데모를 업데이트 안 하면 데모가 잘못된 시각 예시가 됩니다.
 
 ---
 
@@ -168,14 +206,16 @@ ex) --cm-button-primary-bg, --cm-input-border-focus
 
 요청: "버튼 primary 색상을 조금 더 진하게"
 
-1. `tokens/primitives.json` — 새 인디고 값이 필요하면 추가
-2. `tokens/semantic.light.json` / `semantic.dark.json` — `interactive-brand-default` 매핑 검토
-3. `assets/css/main.css` — `--p-indigo-500` 변수 값 수정
-4. `index.html` — 시각적으로 변화 확인 (보통 마크업 변경 없음)
-5. `Single HTML/UIUX-DH-design-system.html` — 인라인 `<style>` 내부의 `--p-indigo-500` 갱신
-6. `components/button.md` — 토큰 섹션 최신화
-7. `CHANGELOG.md` — "Changed: primary 버튼 기본 색상 더 진하게 (--p-indigo-500: #4F46E5 → ...)"
-8. `git commit` + `push`
+1. **영향 범위 사전 확인** — 브라우저 콘솔에서 `window.demoMatrix.byToken['--p-indigo-500']` 조회 → 영향 데모 목록 확보
+2. `tokens/primitives.json` — 새 인디고 값이 필요하면 추가
+3. `tokens/semantic.light.json` / `semantic.dark.json` — `interactive-brand-default` 매핑 검토
+4. `assets/css/main.css` — `--p-indigo-500` 변수 값 수정
+5. `index.html` — 시각적으로 변화 확인 (보통 마크업 변경 없음)
+6. **영향 데모 시각 검수** — 1단계에서 확인한 모든 데모(`demo-splash`, `demo-community` 등) 시각적 일관성 확인
+7. `Single HTML/UIUX-DH-design-system.html` — 인라인 `<style>` 내부의 `--p-indigo-500` 갱신
+8. `components/button.md` — 토큰 섹션 최신화
+9. `CHANGELOG.md` — `Changed: primary 버튼 기본 색상 더 진하게 (--p-indigo-500: #4F46E5 → ...)` · **영향 데모: demo-splash, demo-community, demo-pricing, ...**
+10. `git commit` + `push`
 
 ### 예시 B — 새 컴포넌트 추가
 
@@ -187,8 +227,22 @@ ex) --cm-button-primary-bg, --cm-input-border-focus
 4. `Single HTML/UIUX-DH-design-system.html` — 위 1·2·3 인라인 반영
 5. `components/tag.md` — 신규 문서 (템플릿 준수)
 6. `components/README.md` — 컴포넌트 인덱스에 추가
-7. `CHANGELOG.md` — "Added: Tag component (information display, no interaction)"
-8. `git commit` + `push`
+7. **데모에 반영**(선택) — `Tag`를 사용할 가치가 있는 데모가 있다면, 해당 데모 마크업에 추가하고 `data-uses`에 `tag` 추가
+8. `CHANGELOG.md` — `Added: Tag component (information display, no interaction)` · 새 데모에 반영했다면 `영향 데모: ...` 명시
+9. `git commit` + `push`
+
+### 예시 C — 새 사용 데모 추가 (v0.4 신규)
+
+요청: "Travel 데모 추가 (호텔 리스트, 예약 UI)"
+
+1. `index.html` — `<section class="demo-section" id="demo-travel" data-uses="...">` 마크업 추가
+   - `data-uses`에는 사용 중인 **컴포넌트 id**와 **토큰 이름**을 쉼표 구분 나열
+2. `assets/js/main.js` — `CATEGORIES['demo'].items`에 항목 추가
+3. `index.html` 사이드바 — `<li><a class="sidebar-link" href="#demo-travel" ...>여행</a></li>` 추가
+4. 브라우저 콘솔에서 `window.demoMatrix.missingTokens` 확인 → 비어 있어야 함 (존재하지 않는 토큰 참조 없음)
+5. `Single HTML/UIUX-DH-design-system.html` — 위 1·2·3 동일하게 반영
+6. `CHANGELOG.md` — `Added: Travel demo (hotel discovery & booking UI)`
+7. `git commit` + `push`
 
 ---
 
