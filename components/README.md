@@ -2,6 +2,8 @@
 
 UIUX-DH 컴포넌트 25종. 모두 [토큰](../tokens/)을 참조하며, Light/Dark 테마를 횡단합니다.
 
+> **v0.5.0부터**: 각 컴포넌트는 `<id>.schema.json`(JSON canonical — AI 기계 판독용) + `<id>.md`(사람용 서술) 둘 다 제공합니다. 구조화 데이터(variants, tokens, html snippet)는 JSON이 정본, 긴 서술(UX Writing, 원칙 설명)은 MD가 맡습니다. AI는 항상 `.schema.json`부터 읽도록 합니다 → [AGENTS.md](../AGENTS.md).
+
 ## 카테고리별 인덱스
 
 ### Part 4 · Components (v0.2.0~)
