@@ -225,19 +225,15 @@ function showSection(id) {
 function highlightSidebar(id) {
   document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('is-active'));
   const link = document.querySelector(`.sidebar-link[data-section="${id}"]`);
-  if (link) {
-    link.classList.add('is-active');
-    // Auto-expand parent expandable
-    const sub = link.closest('.sidebar-sub');
-    if (sub) {
-      const exp = sub.closest('.sidebar-expandable');
-      if (exp) exp.classList.add('is-open');
-    }
-    // If the link itself is an expandable's header, make sure it's open
-    const expHeader = link.parentElement;
-    if (expHeader && expHeader.classList.contains('sidebar-expandable')) {
-      expHeader.classList.add('is-open');
-    }
+  if (!link) return;
+  link.classList.add('is-active');
+  // Auto-expand parent expandable ONLY when the active link is a sub-item.
+  // For category links themselves, defer to manual user toggle (handler below)
+  // so the user can collapse the category they are currently viewing.
+  const sub = link.closest('.sidebar-sub');
+  if (sub) {
+    const exp = sub.closest('.sidebar-expandable');
+    if (exp) exp.classList.add('is-open');
   }
 }
 
@@ -268,18 +264,23 @@ if (document.readyState !== 'loading') route();
 
 /* ============ SIDEBAR INTERACTIONS ============ */
 
-/* Expandable group toggle — first click opens sub-menu, navigates on category */
+/* Expandable group toggle:
+   - Same hash (already on this category) → toggle open/close
+   - Different hash → ensure open, then let navigation proceed */
 document.querySelectorAll('.sidebar-expandable > .sidebar-link').forEach(trig => {
   trig.addEventListener('click', (e) => {
     const parent = trig.parentElement;
-    const wasOpen = parent.classList.contains('is-open');
-    if (!wasOpen) {
-      // Opening: expand
+    const targetHash = trig.getAttribute('href') || '';
+    const currentHash = location.hash || '';
+    if (targetHash === currentHash) {
+      // Same destination — manual toggle (open ↔ close)
+      parent.classList.toggle('is-open');
+    } else {
+      // Different destination — open and let href navigate
       parent.classList.add('is-open');
     }
-    // Always let href navigate (to category landing page)
-    // Close sidebar on mobile after navigation
-    setTimeout(() => closeSidebarMobile(), 50);
+    // Mobile: don't auto-close sidebar when toggling category header
+    // (user might want to click a sub-item next)
   });
 });
 

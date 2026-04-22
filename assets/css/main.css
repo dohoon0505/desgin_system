@@ -2822,9 +2822,14 @@ body {
 .sidebar-expandable { position: relative; }
 .sidebar-expandable > .sidebar-link .chevron {
   margin-left: auto;
-  font-size: 10px;
-  transition: transform var(--motion-fast) var(--ease-standard);
+  width: 14px; height: 14px;
+  flex-shrink: 0;
+  display: inline-block;
+  fill: none;
+  stroke: currentColor;
   color: var(--sm-content-tertiary);
+  transition: transform var(--motion-fast) var(--ease-standard);
+  transform-origin: center;
 }
 .sidebar-expandable.is-open > .sidebar-link .chevron { transform: rotate(180deg); }
 .sidebar-expandable.is-open > .sidebar-link {

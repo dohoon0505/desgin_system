@@ -2831,9 +2831,14 @@ body {
 .sidebar-expandable { position: relative; }
 .sidebar-expandable > .sidebar-link .chevron {
   margin-left: auto;
-  font-size: 10px;
-  transition: transform var(--motion-fast) var(--ease-standard);
+  width: 14px; height: 14px;
+  flex-shrink: 0;
+  display: inline-block;
+  fill: none;
+  stroke: currentColor;
   color: var(--sm-content-tertiary);
+  transition: transform var(--motion-fast) var(--ease-standard);
+  transform-origin: center;
 }
 .sidebar-expandable.is-open > .sidebar-link .chevron { transform: rotate(180deg); }
 .sidebar-expandable.is-open > .sidebar-link {
@@ -4675,7 +4680,7 @@ footer {
 
       <li class="sidebar-expandable">
         <a class="sidebar-link" href="#getting-started" data-section="getting-started">
-          <span class="ico">✦</span>시작하기<span class="chevron">⌄</span>
+          <span class="ico">✦</span>시작하기<svg class="chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
         </a>
         <ul class="sidebar-sub">
           <li><a class="sidebar-link" href="#about" data-section="about">디자인시스템이란</a></li>
@@ -4689,7 +4694,7 @@ footer {
 
       <li class="sidebar-expandable">
         <a class="sidebar-link" href="#foundations" data-section="foundations">
-          <span class="ico">◐</span>Foundations<span class="chevron">⌄</span>
+          <span class="ico">◐</span>Foundations<svg class="chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
         </a>
         <ul class="sidebar-sub">
           <li><a class="sidebar-link" href="#color" data-section="color">Color</a></li>
@@ -4703,7 +4708,7 @@ footer {
 
       <li class="sidebar-expandable">
         <a class="sidebar-link" href="#components" data-section="components">
-          <span class="ico">▢</span>Components<span class="chevron">⌄</span>
+          <span class="ico">▢</span>Components<svg class="chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
         </a>
         <ul class="sidebar-sub">
           <li><a class="sidebar-link" href="#asset" data-section="asset">Asset · Icon</a></li>
@@ -4725,7 +4730,7 @@ footer {
 
       <li class="sidebar-expandable">
         <a class="sidebar-link" href="#overlays" data-section="overlays">
-          <span class="ico">◫</span>Overlays · Navigation<span class="chevron">⌄</span>
+          <span class="ico">◫</span>Overlays · Navigation<svg class="chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
         </a>
         <ul class="sidebar-sub">
           <li><a class="sidebar-link" href="#dialog" data-section="dialog">Dialog</a></li>
@@ -4739,7 +4744,7 @@ footer {
 
       <li class="sidebar-expandable">
         <a class="sidebar-link" href="#states" data-section="states">
-          <span class="ico">▨</span>States<span class="chevron">⌄</span>
+          <span class="ico">▨</span>States<svg class="chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
         </a>
         <ul class="sidebar-sub">
           <li><a class="sidebar-link" href="#skeleton" data-section="skeleton">Skeleton Loader</a></li>
@@ -4749,7 +4754,7 @@ footer {
 
       <li class="sidebar-expandable">
         <a class="sidebar-link" href="#density" data-section="density">
-          <span class="ico">⊞</span>Density<span class="chevron">⌄</span>
+          <span class="ico">⊞</span>Density<svg class="chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
         </a>
         <ul class="sidebar-sub">
           <li><a class="sidebar-link" href="#table" data-section="table">Data Table</a></li>
@@ -4766,7 +4771,7 @@ footer {
     <ul class="sidebar-nav">
       <li class="sidebar-expandable is-open">
         <a class="sidebar-link" href="#demo" data-section="demo">
-          <span class="ico">◉</span>Mobile Demos<span class="chevron">⌄</span>
+          <span class="ico">◉</span>Mobile Demos<svg class="chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
         </a>
         <ul class="sidebar-sub">
           <li><a class="sidebar-link" href="#demo-splash" data-section="demo-splash">Splash · 스플래시</a></li>
@@ -8657,19 +8662,15 @@ function showSection(id) {
 function highlightSidebar(id) {
   document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('is-active'));
   const link = document.querySelector(`.sidebar-link[data-section="${id}"]`);
-  if (link) {
-    link.classList.add('is-active');
-    // Auto-expand parent expandable
-    const sub = link.closest('.sidebar-sub');
-    if (sub) {
-      const exp = sub.closest('.sidebar-expandable');
-      if (exp) exp.classList.add('is-open');
-    }
-    // If the link itself is an expandable's header, make sure it's open
-    const expHeader = link.parentElement;
-    if (expHeader && expHeader.classList.contains('sidebar-expandable')) {
-      expHeader.classList.add('is-open');
-    }
+  if (!link) return;
+  link.classList.add('is-active');
+  // Auto-expand parent expandable ONLY when the active link is a sub-item.
+  // For category links themselves, defer to manual user toggle (handler below)
+  // so the user can collapse the category they are currently viewing.
+  const sub = link.closest('.sidebar-sub');
+  if (sub) {
+    const exp = sub.closest('.sidebar-expandable');
+    if (exp) exp.classList.add('is-open');
   }
 }
 
@@ -8700,18 +8701,23 @@ if (document.readyState !== 'loading') route();
 
 /* ============ SIDEBAR INTERACTIONS ============ */
 
-/* Expandable group toggle — first click opens sub-menu, navigates on category */
+/* Expandable group toggle:
+   - Same hash (already on this category) → toggle open/close
+   - Different hash → ensure open, then let navigation proceed */
 document.querySelectorAll('.sidebar-expandable > .sidebar-link').forEach(trig => {
   trig.addEventListener('click', (e) => {
     const parent = trig.parentElement;
-    const wasOpen = parent.classList.contains('is-open');
-    if (!wasOpen) {
-      // Opening: expand
+    const targetHash = trig.getAttribute('href') || '';
+    const currentHash = location.hash || '';
+    if (targetHash === currentHash) {
+      // Same destination — manual toggle (open ↔ close)
+      parent.classList.toggle('is-open');
+    } else {
+      // Different destination — open and let href navigate
       parent.classList.add('is-open');
     }
-    // Always let href navigate (to category landing page)
-    // Close sidebar on mobile after navigation
-    setTimeout(() => closeSidebarMobile(), 50);
+    // Mobile: don't auto-close sidebar when toggling category header
+    // (user might want to click a sub-item next)
   });
 });
 
