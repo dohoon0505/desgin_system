@@ -2706,6 +2706,237 @@ body {
 }
 .theme-toggle:hover { border-color: var(--sm-border-strong); }
 
+/* ============ SIDEBAR NAVIGATION ============ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background: var(--sm-background-default);
+  border-right: 1px solid var(--sm-border-subtle);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 300;
+  padding: var(--size-500) 0 var(--size-800);
+  box-sizing: border-box;
+  transition: transform var(--motion-base) var(--ease-standard);
+  scrollbar-width: thin;
+  scrollbar-color: var(--sm-border-default) transparent;
+}
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--sm-border-default);
+  border-radius: 3px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover { background: var(--sm-content-tertiary); }
+
+.sidebar-brand {
+  display: flex; align-items: center; gap: var(--size-300);
+  padding: var(--size-200) var(--size-500) var(--size-500);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sm-border-subtle);
+  margin-bottom: var(--size-400);
+}
+.sidebar-brand .brand-mark {
+  width: 32px; height: 32px;
+  background: var(--sm-content-primary);
+  color: var(--sm-content-inverse);
+  border-radius: var(--radius-sm);
+  display: grid; place-items: center;
+  font: 800 13px/1 var(--font-mono);
+  letter-spacing: -0.04em;
+  position: relative;
+  flex-shrink: 0;
+}
+.sidebar-brand .brand-mark::after {
+  content: ""; position: absolute; bottom: 3px; right: 3px;
+  width: 5px; height: 5px;
+  background: var(--p-amber-400);
+  border-radius: 50%;
+}
+.sidebar-brand .brand-name {
+  font: 700 14px/1.2 var(--font-sans);
+  color: var(--sm-content-primary);
+  letter-spacing: -0.02em;
+}
+.sidebar-brand .brand-ver {
+  font: 500 10px/1 var(--font-mono);
+  color: var(--sm-content-tertiary);
+  margin-top: 2px;
+}
+
+.sidebar-group {
+  padding: var(--size-400) var(--size-500) var(--size-200);
+}
+.sidebar-group-title {
+  font: 700 10px/1 var(--font-sans);
+  color: var(--sm-content-tertiary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 var(--size-300);
+  padding: 0 var(--size-300);
+}
+
+.sidebar-nav { list-style: none; margin: 0; padding: 0; }
+.sidebar-nav li { margin: 0; padding: 0; }
+
+.sidebar-link {
+  display: flex; align-items: center; gap: var(--size-300);
+  padding: var(--size-200) var(--size-300);
+  font: 500 13px/1.4 var(--font-sans);
+  color: var(--sm-content-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: background var(--motion-fast) var(--ease-standard),
+              color var(--motion-fast) var(--ease-standard);
+  position: relative;
+}
+.sidebar-link:hover {
+  background: var(--sm-background-muted);
+  color: var(--sm-content-primary);
+}
+.sidebar-link.is-active {
+  background: var(--sm-interactive-brand-subtle);
+  color: var(--sm-content-brand);
+  font-weight: 700;
+}
+.sidebar-link.is-active::before {
+  content: ""; position: absolute;
+  left: -8px; top: 50%; transform: translateY(-50%);
+  width: 3px; height: 18px;
+  background: var(--sm-content-brand);
+  border-radius: 0 2px 2px 0;
+}
+
+.sidebar-link .ico {
+  width: 18px; height: 18px;
+  display: grid; place-items: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  color: var(--sm-content-tertiary);
+}
+.sidebar-link.is-active .ico { color: var(--sm-content-brand); }
+.sidebar-link .ext {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--sm-content-tertiary);
+  opacity: 0.6;
+}
+
+.sidebar-link.is-external:hover .ext { opacity: 1; }
+
+/* Collapsible trigger (parent of sub-list) */
+.sidebar-expandable { position: relative; }
+.sidebar-expandable > .sidebar-link .chevron {
+  margin-left: auto;
+  font-size: 10px;
+  transition: transform var(--motion-fast) var(--ease-standard);
+  color: var(--sm-content-tertiary);
+}
+.sidebar-expandable.is-open > .sidebar-link .chevron { transform: rotate(180deg); }
+.sidebar-expandable.is-open > .sidebar-link {
+  color: var(--sm-content-primary);
+  background: transparent;
+}
+
+.sidebar-sub {
+  list-style: none; margin: 0; padding: var(--size-100) 0 var(--size-200);
+  display: none;
+  border-left: 1px dashed var(--sm-border-subtle);
+  margin-left: var(--size-500);
+  padding-left: var(--size-300);
+}
+.sidebar-expandable.is-open > .sidebar-sub { display: block; }
+
+.sidebar-sub .sidebar-link {
+  padding: 6px var(--size-300);
+  font-size: 12.5px;
+  color: var(--sm-content-secondary);
+  font-weight: 500;
+}
+.sidebar-sub .sidebar-link.is-active {
+  background: var(--sm-interactive-brand-subtle);
+  color: var(--sm-content-brand);
+  font-weight: 700;
+}
+.sidebar-sub .sidebar-link.is-active::before { display: none; }
+
+.sidebar-theme {
+  margin: var(--size-400) var(--size-500) 0;
+  padding: var(--size-400);
+  background: var(--sm-surface-sunken);
+  border: 1px solid var(--sm-border-subtle);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--size-300);
+}
+.sidebar-theme-label {
+  font: 600 12px/1.2 var(--font-sans);
+  color: var(--sm-content-primary);
+}
+.sidebar-theme-sub {
+  font: 500 10px/1.2 var(--font-mono);
+  color: var(--sm-content-tertiary);
+  margin-top: 3px;
+}
+.sidebar-theme-btn {
+  padding: 6px 12px;
+  background: var(--sm-background-default);
+  border: 1px solid var(--sm-border-default);
+  border-radius: var(--radius-full);
+  color: var(--sm-content-primary);
+  font: 600 11px/1 var(--font-mono);
+  cursor: pointer;
+  transition: all var(--motion-fast) var(--ease-standard);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.sidebar-theme-btn:hover { border-color: var(--sm-border-strong); }
+
+/* Mobile toggle (hamburger) */
+.sidebar-toggle {
+  display: none;
+  position: fixed; top: 12px; left: 12px; z-index: 310;
+  width: 40px; height: 40px;
+  background: var(--sm-background-default);
+  border: 1px solid var(--sm-border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  align-items: center; justify-content: center;
+  color: var(--sm-content-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Scrim (mobile) */
+.sidebar-scrim {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(11, 13, 18, 0.5);
+  z-index: 290;
+  opacity: 0;
+  transition: opacity var(--motion-base) var(--ease-standard);
+}
+.sidebar-scrim.is-visible { opacity: 1; }
+
+/* Desktop: reserve sidebar space */
+@media (min-width: 1100px) {
+  body { padding-left: 280px; }
+}
+
+/* Tablet and mobile: hide sidebar by default, show toggle */
+@media (max-width: 1099px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 288px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.15);
+  }
+  .sidebar.is-open { transform: translateX(0); }
+  .sidebar-scrim.is-open { display: block; }
+  .sidebar-toggle { display: inline-flex; }
+  .topbar-inner .brand { margin-left: 48px; }
+}
+
 .container { max-width: 1240px; margin: 0 auto; padding: 0 var(--size-700); }
 
 /* ============ HERO ============ */
@@ -3709,6 +3940,140 @@ footer {
 </style>
 </head>
 <body data-theme="light">
+
+<!-- ============ SIDEBAR TOGGLE (mobile) ============ -->
+<button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="네비게이션 열기">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</button>
+<div class="sidebar-scrim" onclick="closeSidebar()"></div>
+
+<!-- ============ SIDEBAR NAVIGATION ============ -->
+<aside class="sidebar" id="sidebar" aria-label="디자인시스템 네비게이션">
+  <!-- Brand -->
+  <a class="sidebar-brand" href="#top" onclick="closeSidebarMobile()">
+    <div class="brand-mark">DH</div>
+    <div>
+      <div class="brand-name">UIUX-DH</div>
+      <div class="brand-ver">v0.3.0 · 2026.04.22</div>
+    </div>
+  </a>
+
+  <!-- Resources (external) -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">UIUX-DH · Resources</div>
+    <ul class="sidebar-nav">
+      <li><a class="sidebar-link is-external" href="https://github.com/ehgns/desgin_system" target="_blank" rel="noopener">
+        <span class="ico">⎇</span>GitHub 저장소<span class="ext">↗</span></a></li>
+      <li><a class="sidebar-link is-external" href="#changelog">
+        <span class="ico">◷</span>릴리스 노트<span class="ext">→</span></a></li>
+      <li><a class="sidebar-link is-external" href="#writing">
+        <span class="ico">✎</span>UX Writing 가이드<span class="ext">→</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Getting Started -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">시작하기</div>
+    <ul class="sidebar-nav">
+      <li class="sidebar-expandable is-open">
+        <a class="sidebar-link" href="#about" data-section="about">
+          <span class="ico">✦</span>디자인시스템이란<span class="chevron">⌄</span>
+        </a>
+        <ul class="sidebar-sub">
+          <li><a class="sidebar-link" href="#principles" data-section="principles">6가지 원칙</a></li>
+          <li><a class="sidebar-link" href="#tokens" data-section="tokens">토큰 아키텍처</a></li>
+          <li><a class="sidebar-link" href="#naming" data-section="naming">네이밍 컨벤션</a></li>
+          <li><a class="sidebar-link" href="#policy" data-section="policy">그라데이션 정책</a></li>
+        </ul>
+      </li>
+      <li><a class="sidebar-link" href="#writing" data-section="writing">
+        <span class="ico">✎</span>UX Writing 7원칙
+      </a></li>
+    </ul>
+  </div>
+
+  <!-- Foundations -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">Foundations</div>
+    <ul class="sidebar-nav">
+      <li><a class="sidebar-link" href="#color" data-section="color"><span class="ico">◐</span>Color</a></li>
+      <li><a class="sidebar-link" href="#typography" data-section="typography"><span class="ico">Aa</span>Typography</a></li>
+      <li><a class="sidebar-link" href="#sizing" data-section="sizing"><span class="ico">▭</span>Sizing</a></li>
+      <li><a class="sidebar-link" href="#radius" data-section="radius"><span class="ico">◖</span>Radius</a></li>
+      <li><a class="sidebar-link" href="#motion" data-section="motion"><span class="ico">➤</span>Motion</a></li>
+      <li><a class="sidebar-link" href="#component-tokens" data-section="component-tokens"><span class="ico">◇</span>Component Tokens</a></li>
+    </ul>
+  </div>
+
+  <!-- Components -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">Components · 기본</div>
+    <ul class="sidebar-nav">
+      <li><a class="sidebar-link" href="#asset" data-section="asset"><span class="ico">◉</span>Asset · Icon</a></li>
+      <li><a class="sidebar-link" href="#badge" data-section="badge"><span class="ico">◆</span>Badge</a></li>
+      <li><a class="sidebar-link" href="#chart" data-section="chart"><span class="ico">▥</span>Bar Chart</a></li>
+      <li><a class="sidebar-link" href="#border" data-section="border"><span class="ico">│</span>Border · Divider</a></li>
+      <li><a class="sidebar-link" href="#button" data-section="button"><span class="ico">▢</span>Button</a></li>
+      <li><a class="sidebar-link" href="#chip" data-section="chip"><span class="ico">◎</span>Chip</a></li>
+      <li><a class="sidebar-link" href="#textfield" data-section="textfield"><span class="ico">▭</span>Text Field</a></li>
+      <li><a class="sidebar-link" href="#avatar" data-section="avatar"><span class="ico">○</span>Avatar</a></li>
+      <li><a class="sidebar-link" href="#control" data-section="control"><span class="ico">☑</span>Checkbox · Radio · Toggle</a></li>
+      <li><a class="sidebar-link" href="#list" data-section="list"><span class="ico">≡</span>List Item</a></li>
+      <li><a class="sidebar-link" href="#alert" data-section="alert"><span class="ico">!</span>Alert · Toast</a></li>
+      <li><a class="sidebar-link" href="#progress" data-section="progress"><span class="ico">▰</span>Progress · Slider</a></li>
+      <li><a class="sidebar-link" href="#tabs" data-section="tabs"><span class="ico">⧉</span>Tabs · Segment</a></li>
+      <li><a class="sidebar-link" href="#others" data-section="others"><span class="ico">▤</span>Card</a></li>
+    </ul>
+  </div>
+
+  <!-- Overlays & Navigation -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">Overlays · Navigation</div>
+    <ul class="sidebar-nav">
+      <li><a class="sidebar-link" href="#dialog" data-section="dialog"><span class="ico">◫</span>Dialog</a></li>
+      <li><a class="sidebar-link" href="#sheet" data-section="sheet"><span class="ico">⌆</span>Bottom Sheet</a></li>
+      <li><a class="sidebar-link" href="#popover" data-section="popover"><span class="ico">◈</span>Popover · Tooltip</a></li>
+      <li><a class="sidebar-link" href="#appbar" data-section="appbar"><span class="ico">▬</span>Top App Bar</a></li>
+      <li><a class="sidebar-link" href="#tabbar" data-section="tabbar"><span class="ico">▬</span>Tab Bar</a></li>
+      <li><a class="sidebar-link" href="#drawer" data-section="drawer"><span class="ico">◧</span>Drawer · Breadcrumb</a></li>
+    </ul>
+  </div>
+
+  <!-- States & Density -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">States · Density</div>
+    <ul class="sidebar-nav">
+      <li><a class="sidebar-link" href="#skeleton" data-section="skeleton"><span class="ico">▨</span>Skeleton Loader</a></li>
+      <li><a class="sidebar-link" href="#empty" data-section="empty"><span class="ico">◌</span>Empty State</a></li>
+      <li><a class="sidebar-link" href="#table" data-section="table"><span class="ico">⊞</span>Data Table</a></li>
+      <li><a class="sidebar-link" href="#accordion" data-section="accordion"><span class="ico">⌄</span>Accordion · Tree</a></li>
+    </ul>
+  </div>
+
+  <!-- Release -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">운영</div>
+    <ul class="sidebar-nav">
+      <li><a class="sidebar-link" href="#changelog" data-section="changelog"><span class="ico">⎌</span>Release & Governance</a></li>
+    </ul>
+  </div>
+
+  <!-- Theme toggle -->
+  <div class="sidebar-theme">
+    <div>
+      <div class="sidebar-theme-label">테마</div>
+      <div class="sidebar-theme-sub" id="theme-sub">Light Mode</div>
+    </div>
+    <button class="sidebar-theme-btn" onclick="toggleTheme()" aria-label="테마 전환">
+      <span id="sidebar-theme-icon">☾</span>
+      <span id="sidebar-theme-label">Dark</span>
+    </button>
+  </div>
+</aside>
 
 <!-- ============ TOPBAR ============ -->
 <header class="topbar">
@@ -6595,9 +6960,128 @@ function toggleTheme() {
   const current = body.getAttribute('data-theme');
   const next = current === 'light' ? 'dark' : 'light';
   body.setAttribute('data-theme', next);
-  document.getElementById('theme-icon').textContent = next === 'light' ? '☾' : '☀';
-  document.getElementById('theme-label').textContent = next === 'light' ? 'Dark' : 'Light';
+  // Topbar toggle
+  const topIcon = document.getElementById('theme-icon');
+  const topLabel = document.getElementById('theme-label');
+  if (topIcon) topIcon.textContent = next === 'light' ? '☾' : '☀';
+  if (topLabel) topLabel.textContent = next === 'light' ? 'Dark' : 'Light';
+  // Sidebar toggle sync
+  const sbIcon = document.getElementById('sidebar-theme-icon');
+  const sbLabel = document.getElementById('sidebar-theme-label');
+  const sbSub = document.getElementById('theme-sub');
+  if (sbIcon) sbIcon.textContent = next === 'light' ? '☾' : '☀';
+  if (sbLabel) sbLabel.textContent = next === 'light' ? 'Dark' : 'Light';
+  if (sbSub) sbSub.textContent = next === 'light' ? 'Light Mode' : 'Dark Mode';
 }
+
+/* ============ SIDEBAR ============ */
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const scrim = document.querySelector('.sidebar-scrim');
+  const isOpen = sb.classList.toggle('is-open');
+  if (scrim) {
+    if (isOpen) {
+      scrim.classList.add('is-open');
+      requestAnimationFrame(() => scrim.classList.add('is-visible'));
+      document.body.style.overflow = 'hidden';
+    } else {
+      scrim.classList.remove('is-visible');
+      setTimeout(() => scrim.classList.remove('is-open'), 200);
+      document.body.style.overflow = '';
+    }
+  }
+}
+function closeSidebar() {
+  const sb = document.getElementById('sidebar');
+  const scrim = document.querySelector('.sidebar-scrim');
+  sb.classList.remove('is-open');
+  if (scrim) {
+    scrim.classList.remove('is-visible');
+    setTimeout(() => scrim.classList.remove('is-open'), 200);
+  }
+  document.body.style.overflow = '';
+}
+function closeSidebarMobile() {
+  if (window.matchMedia('(max-width: 1099px)').matches) closeSidebar();
+}
+
+/* Expandable group toggle — first click opens sub-menu, second click navigates */
+document.querySelectorAll('.sidebar-expandable > .sidebar-link').forEach(trig => {
+  trig.addEventListener('click', (e) => {
+    const parent = trig.parentElement;
+    const wasOpen = parent.classList.contains('is-open');
+    if (!wasOpen) {
+      // First click: just open the sub-menu, don't navigate
+      e.preventDefault();
+      parent.classList.add('is-open');
+    }
+    // If already open, let the default href navigation proceed
+  });
+});
+
+/* Close sidebar on mobile when clicking a leaf link (not expandable parents) */
+document.querySelectorAll('.sidebar-nav a.sidebar-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const isInSub = link.parentElement && link.parentElement.parentElement &&
+                    link.parentElement.parentElement.classList.contains('sidebar-sub');
+    const isExpandableParent = link.parentElement &&
+                               link.parentElement.classList.contains('sidebar-expandable');
+    if (!isExpandableParent || isInSub) {
+      // Leaf links close the sidebar on mobile
+      closeSidebarMobile();
+    }
+  });
+});
+
+/* ESC key closes sidebar on mobile */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeSidebar();
+});
+
+/* Active section tracking — IntersectionObserver based */
+const sidebarLinks = Array.from(document.querySelectorAll('.sidebar-link[data-section]'));
+const sectionIds = sidebarLinks.map(l => l.getAttribute('data-section')).filter(Boolean);
+const visibleSections = new Set();
+
+function updateActive() {
+  if (visibleSections.size === 0) return;
+  // Prefer the first section (by document order) that's visible
+  let firstVisibleId = null;
+  for (const id of sectionIds) {
+    if (visibleSections.has(id)) { firstVisibleId = id; break; }
+  }
+  if (!firstVisibleId) return;
+  sidebarLinks.forEach(l => {
+    const active = l.getAttribute('data-section') === firstVisibleId;
+    l.classList.toggle('is-active', active);
+    if (active) {
+      // Auto-expand parent group if this link is inside a sub-list
+      const sub = l.closest('.sidebar-sub');
+      if (sub) {
+        const expandable = sub.closest('.sidebar-expandable');
+        if (expandable) expandable.classList.add('is-open');
+      }
+    }
+  });
+}
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const id = entry.target.id;
+    if (!id) return;
+    if (entry.isIntersecting) visibleSections.add(id);
+    else visibleSections.delete(id);
+  });
+  updateActive();
+}, {
+  rootMargin: '-80px 0px -60% 0px',
+  threshold: 0
+});
+
+sectionIds.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) sectionObserver.observe(el);
+});
 
 function toggleAccordion(trigger) {
   const item = trigger.parentElement;
