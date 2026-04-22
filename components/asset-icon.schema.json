@@ -59,6 +59,6 @@
   },
   "whenToUse": ["탭바 / 액션 버튼 / 상태 표시 / 메타 아이콘"],
   "whenNotToUse": ["복잡한 일러스트 → 별도 SVG/IMG"],
-  "usedInDemos": ["demo-login", "demo-signup", "demo-community", "demo-delivery", "demo-store", "demo-calendar", "demo-todo", "demo-booking", "demo-foodorder", "demo-shopping", "demo-social", "demo-banking", "demo-map", "demo-mypage", "demo-chat", "demo-checkout", "demo-notify"],
+  "usedInDemos": ["demo-login", "demo-signup", "demo-community", "demo-store", "demo-calendar", "demo-todo", "demo-booking", "demo-foodorder", "demo-shopping", "demo-social", "demo-banking", "demo-map", "demo-mypage", "demo-chat", "demo-checkout", "demo-notify"],
   "relatedDocs": { "md": "components/asset-icon.md", "sourceHtml": "index.html#asset" }
 }

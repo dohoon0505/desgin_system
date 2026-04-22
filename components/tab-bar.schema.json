@@ -60,6 +60,6 @@
     "웹 데스크톱 → Top Nav"
   ],
   "uxWriting": ["각 탭 2자 권장 (홈, 검색, 찜, 내 정보)", "활성 탭은 bold + 브랜드 색"],
-  "usedInDemos": ["demo-community", "demo-delivery", "demo-store", "demo-booking", "demo-foodorder", "demo-shopping", "demo-social", "demo-banking", "demo-map", "demo-mypage", "demo-chat", "demo-notify"],
+  "usedInDemos": ["demo-community", "demo-store", "demo-booking", "demo-foodorder", "demo-shopping", "demo-social", "demo-banking", "demo-map", "demo-mypage", "demo-chat", "demo-notify"],
   "relatedDocs": { "md": "components/tab-bar.md", "sourceHtml": "index.html#tabbar" }
 }

@@ -37,6 +37,6 @@
   "whenToUse": ["상태 표시", "알림 카운트", "카테고리 태그", "NEW·HOT 강조"],
   "whenNotToUse": ["상호작용 필요 시 Chip 사용", "긴 텍스트 (2단어 이상)"],
   "uxWriting": ["1-3 글자 권장", "대문자 모노 또는 숫자", "동적 수치는 tabular-nums"],
-  "usedInDemos": ["demo-community", "demo-delivery", "demo-store", "demo-todo", "demo-booking", "demo-foodorder", "demo-shopping", "demo-social", "demo-banking", "demo-mypage", "demo-chat", "demo-notify"],
+  "usedInDemos": ["demo-community", "demo-store", "demo-todo", "demo-booking", "demo-foodorder", "demo-shopping", "demo-social", "demo-banking", "demo-mypage", "demo-chat", "demo-notify"],
   "relatedDocs": { "md": "components/badge.md", "sourceHtml": "index.html#badge" }
 }

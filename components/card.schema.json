@@ -33,6 +33,6 @@
   "whenToUse": ["정보 그룹핑", "대시보드 위젯", "상품·프로젝트 카드"],
   "whenNotToUse": ["단순 섹션 구분 → divider 또는 반투명 배경", "리스트 항목 → List Item"],
   "uxWriting": ["제목은 명사구 (저장 내역, 이번 주 지출)", "보조는 날짜·수량 등 메타", "액션 버튼 1개 권장"],
-  "usedInDemos": ["demo-community", "demo-delivery", "demo-store", "demo-calendar", "demo-todo", "demo-booking", "demo-foodorder", "demo-map", "demo-banking", "demo-mypage", "demo-chat", "demo-checkout", "demo-notify"],
+  "usedInDemos": ["demo-community", "demo-store", "demo-calendar", "demo-todo", "demo-booking", "demo-foodorder", "demo-map", "demo-banking", "demo-mypage", "demo-chat", "demo-checkout", "demo-notify"],
   "relatedDocs": { "md": "components/card.md", "sourceHtml": "index.html#others" }
 }

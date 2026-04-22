@@ -51,6 +51,6 @@
   "whenToUse": ["설정 메뉴", "연락처 리스트", "메시지 미리보기", "옵션 선택"],
   "whenNotToUse": ["카드 그룹 → Card", "긴 에디터블 폼 → Text Field"],
   "uxWriting": ["제목은 명사 (알림, 결제 수단)", "sub는 메타 (시간·수량·상태)"],
-  "usedInDemos": ["demo-foodorder", "demo-delivery", "demo-mypage", "demo-chat", "demo-notify", "demo-banking"],
+  "usedInDemos": ["demo-foodorder", "demo-mypage", "demo-chat", "demo-notify", "demo-banking"],
   "relatedDocs": { "md": "components/list-item.md", "sourceHtml": "index.html#list" }
 }
