@@ -3251,6 +3251,7 @@ body.spa-mode .demo-section.is-route-active {
   font: 500 12px/1 var(--font-mono);
   cursor: pointer;
   transition: background 0.12s, color 0.12s, border-color 0.12s, transform 0.1s;
+  width: fit-content;
 }
 .btn-md-dl:hover {
   background: var(--sm-background-muted);
@@ -3260,6 +3261,13 @@ body.spa-mode .demo-section.is-route-active {
 .btn-md-dl:active { transform: scale(0.97); }
 .btn-md-dl:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn-md-dl svg { flex-shrink: 0; }
+/* When injected into 2-column grid headers (.section-head / .section-header),
+   place the button below both columns. */
+.section-head > .btn-md-dl,
+.section-header > .btn-md-dl {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
 
 .demo-stage {
   display: flex; justify-content: center;

@@ -2,7 +2,7 @@
   "$schema": "./schemas/component.schema.json",
   "name": "UIUX-DH",
   "fullName": "UIUX-DH · Unified Design System",
-  "version": "0.5.0",
+  "version": "0.5.3",
   "description": "모바일 중심 디자인시스템. AI 에이전트가 1-2 파일 read로 쿼리 가능하도록 JSON canonical 구조.",
   "entry": {
     "ai": "AGENTS.md",
