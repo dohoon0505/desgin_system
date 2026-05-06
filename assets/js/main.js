@@ -440,3 +440,229 @@ const chartObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 document.querySelectorAll('#chart, #progress').forEach(s => chartObserver.observe(s));
+
+/* ============ MARKDOWN DOWNLOAD ============ */
+
+let _sysJsonCache = null;
+const _schemaCache = {};
+
+async function _fetchSystemJson() {
+  if (_sysJsonCache) return _sysJsonCache;
+  try {
+    const r = await fetch('system.json');
+    _sysJsonCache = await r.json();
+  } catch (e) { _sysJsonCache = null; }
+  return _sysJsonCache;
+}
+
+async function _fetchSchema(path) {
+  if (_schemaCache[path] !== undefined) return _schemaCache[path];
+  try {
+    const r = await fetch(path);
+    _schemaCache[path] = await r.json();
+  } catch (e) { _schemaCache[path] = null; }
+  return _schemaCache[path];
+}
+
+function _triggerDownload(filename, content) {
+  const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+}
+
+function _tokenMeta(tok) {
+  if (tok.startsWith('--sm-content-'))       return ['Semantic', '텍스트 색상 · ' + tok.slice(12)];
+  if (tok.startsWith('--sm-background-'))    return ['Semantic', '배경 색상 · ' + tok.slice(15)];
+  if (tok.startsWith('--sm-interactive-'))   return ['Semantic', '인터랙션 색상 · ' + tok.slice(15)];
+  if (tok.startsWith('--sm-border-'))        return ['Semantic', '테두리 · ' + tok.slice(11)];
+  if (tok.startsWith('--sm-status-'))        return ['Semantic', '상태 색상 · ' + tok.slice(11)];
+  if (tok.startsWith('--sm-'))               return ['Semantic', tok.slice(5)];
+  if (tok.startsWith('--p-indigo-'))         return ['Primitive', '브랜드 인디고 · shade ' + tok.slice(11)];
+  if (tok.startsWith('--p-'))               return ['Primitive', tok.slice(4)];
+  if (tok.startsWith('--font-'))            return ['Typography', tok.slice(7) + ' 폰트 패밀리'];
+  if (tok.startsWith('--cm-'))             return ['Component', tok.slice(5)];
+  return ['Custom', tok];
+}
+
+async function generateDemoMarkdown(sectionId) {
+  const sec = document.getElementById(sectionId);
+  if (!sec) return '';
+
+  const label = (sec.querySelector('.demo-label') || {}).textContent || '';
+  const title = (sec.querySelector('h2') || {}).textContent || sectionId;
+  const desc  = (sec.querySelector('.demo-header p') || {}).textContent || '';
+
+  const raw   = (sec.getAttribute('data-uses') || '').trim();
+  const parts = raw.split(',').map(s => s.trim()).filter(Boolean);
+  const compIds = parts.filter(p => !p.startsWith('--'));
+  const tokens  = parts.filter(p => p.startsWith('--'));
+
+  const sys = await _fetchSystemJson();
+  const compMap = {};
+  if (sys && sys.components) sys.components.forEach(c => { compMap[c.id] = c; });
+
+  const schemas = {};
+  await Promise.all(compIds.map(async cid => {
+    const entry = compMap[cid];
+    if (entry && entry.schema) {
+      const s = await _fetchSchema(entry.schema);
+      if (s) schemas[cid] = { meta: entry, schema: s };
+    }
+  }));
+
+  const today = new Date().toISOString().split('T')[0];
+  const lines = [];
+
+  lines.push(`# ${title} 디자인 가이드`);
+  lines.push('');
+  lines.push(`> **${label.trim()}** · UIUX-DH Unified Design System v0.5.0`);
+  lines.push(`> 생성일: ${today}`);
+  lines.push('');
+  lines.push('---');
+  lines.push('');
+
+  if (desc.trim()) {
+    lines.push('## 개요');
+    lines.push('');
+    lines.push(desc.trim());
+    lines.push('');
+    lines.push('---');
+    lines.push('');
+  }
+
+  if (compIds.length > 0) {
+    lines.push('## 사용 컴포넌트');
+    lines.push('');
+
+    for (const cid of compIds) {
+      const entry = schemas[cid];
+      const metaName = compMap[cid] ? compMap[cid].name : cid;
+      lines.push(`### ${entry ? (entry.schema.name || metaName) : metaName}`);
+      lines.push('');
+
+      if (!entry) { lines.push('_(스키마 정보 없음)_'); lines.push(''); continue; }
+
+      const { schema } = entry;
+      if (schema.description) { lines.push(schema.description); lines.push(''); }
+
+      if (schema.variants && schema.variants.length) {
+        lines.push('**Variants**');
+        lines.push('');
+        lines.push('| Variant | 설명 | 예시 HTML |');
+        lines.push('|---------|------|-----------|');
+        schema.variants.forEach(v => {
+          const html = v.html ? `\`${v.html.replace(/\|/g, '\\|').replace(/\n/g, ' ')}\`` : '-';
+          lines.push(`| ${v.label || v.id} | ${v.description || '-'} | ${html} |`);
+        });
+        lines.push('');
+      }
+
+      if (schema.sizes && schema.sizes.length) {
+        lines.push('**Sizes**');
+        lines.push('');
+        lines.push('| Size | Height | Font |');
+        lines.push('|------|--------|------|');
+        schema.sizes.forEach(s => lines.push(`| \`${s.id}\` | ${s.height}px | ${s.fontSize}px |`));
+        lines.push('');
+      }
+
+      if (schema.states && schema.states.length) {
+        lines.push(`**States:** ${schema.states.join(' · ')}`);
+        lines.push('');
+      }
+
+      if (schema.whenToUse && schema.whenToUse.length) {
+        lines.push('**언제 사용**');
+        schema.whenToUse.forEach(w => lines.push(`- ${w}`));
+        lines.push('');
+      }
+      if (schema.whenNotToUse && schema.whenNotToUse.length) {
+        lines.push('**언제 사용하지 않음**');
+        schema.whenNotToUse.forEach(w => lines.push(`- ${w}`));
+        lines.push('');
+      }
+
+      if (schema.uxWriting && schema.uxWriting.length) {
+        lines.push('**UX Writing**');
+        schema.uxWriting.forEach(u => lines.push(`- ${u}`));
+        lines.push('');
+      }
+
+      if (schema.accessibility) {
+        const a = schema.accessibility;
+        lines.push('**접근성**');
+        if (a.role)            lines.push(`- role: \`${a.role}\``);
+        if (a.keyboardSupport) lines.push(`- 키보드: ${a.keyboardSupport.join(', ')}`);
+        if (a.minTouchTarget)  lines.push(`- 최소 터치 타겟: ${a.minTouchTarget}px`);
+        if (a.focusRing)       lines.push(`- 포커스 링: \`${a.focusRing}\``);
+        if (a.ariaNotes)       a.ariaNotes.forEach(n => lines.push(`- ${n}`));
+        lines.push('');
+      }
+    }
+    lines.push('---');
+    lines.push('');
+  }
+
+  if (tokens.length > 0) {
+    lines.push('## 디자인 토큰');
+    lines.push('');
+    lines.push('| 토큰 | 분류 | 용도 |');
+    lines.push('|------|------|------|');
+    tokens.forEach(tok => {
+      const [cat, usage] = _tokenMeta(tok);
+      lines.push(`| \`${tok}\` | ${cat} | ${usage} |`);
+    });
+    lines.push('');
+    lines.push('**토큰 사용 원칙**');
+    lines.push('');
+    lines.push('- `--sm-*` Semantic 토큰: UI에 직접 사용. Light/Dark 모드 자동 대응');
+    lines.push('- `--p-*` Primitive 토큰: Semantic 토큰의 원천. UI에 직접 사용 금지');
+    lines.push('- `--cm-*` Component 토큰: 특정 컴포넌트 전용');
+    lines.push('');
+    lines.push('---');
+    lines.push('');
+  }
+
+  lines.push('## 참조');
+  lines.push('');
+  lines.push(`- 라이브 데모: \`https://dohoon0505.github.io/desgin_system/#${sectionId}\``);
+  lines.push('- 컴포넌트 스키마: `components/<id>.schema.json`');
+  lines.push('- 토큰 정의: `tokens/theme-map.json`');
+  lines.push('- 검증: `node scripts/validate.mjs`');
+  lines.push('');
+
+  return lines.join('\n');
+}
+
+const _DL_ICON = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+
+function injectDownloadButtons() {
+  document.querySelectorAll('.demo-section').forEach(sec => {
+    const header = sec.querySelector('.demo-header');
+    if (!header || header.querySelector('.btn-md-dl')) return;
+    const btn = document.createElement('button');
+    btn.className = 'btn-md-dl';
+    btn.setAttribute('aria-label', '디자인 가이드 Markdown 다운로드');
+    btn.innerHTML = `${_DL_ICON} <span>Markdown</span>`;
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+      btn.innerHTML = `${_DL_ICON} <span>생성 중…</span>`;
+      try {
+        const content = await generateDemoMarkdown(sec.id);
+        _triggerDownload(`${sec.id}_design_guide.md`, content);
+        btn.innerHTML = `${_DL_ICON} <span>완료!</span>`;
+        setTimeout(() => { btn.innerHTML = `${_DL_ICON} <span>Markdown</span>`; }, 1800);
+      } catch (e) {
+        console.error('[MD Download]', e);
+        btn.innerHTML = `${_DL_ICON} <span>Markdown</span>`;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+    header.appendChild(btn);
+  });
+}
+window.addEventListener('DOMContentLoaded', injectDownloadButtons);

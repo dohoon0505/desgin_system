@@ -3238,6 +3238,29 @@ body.spa-mode .demo-section.is-route-active {
   max-width: 640px;
   margin: 0;
 }
+.btn-md-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--size-400);
+  padding: 7px 14px;
+  background: transparent;
+  border: 1px solid var(--sm-border-default);
+  border-radius: var(--radius-md);
+  color: var(--sm-content-tertiary);
+  font: 500 12px/1 var(--font-mono);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s, transform 0.1s;
+}
+.btn-md-dl:hover {
+  background: var(--sm-background-muted);
+  color: var(--sm-content-primary);
+  border-color: var(--sm-border-strong);
+}
+.btn-md-dl:active { transform: scale(0.97); }
+.btn-md-dl:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-md-dl svg { flex-shrink: 0; }
+
 .demo-stage {
   display: flex; justify-content: center;
   padding: var(--size-700) 0;
